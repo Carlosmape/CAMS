@@ -26,7 +26,7 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="11.2"
-     inkscape:cx="29.87002"
+     inkscape:cx="13.084306"
      inkscape:cy="23.125814"
      inkscape:document-units="px"
      inkscape:current-layer="g4820"
@@ -45,7 +45,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -67,17 +67,17 @@
            cy="958.94318"
            r="103.45127" />
         <circle
-           r="93.387245"
-           style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:2.24894064;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+           r="88.166489"
+           style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:2.24894071;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
            id="path3336-61-2-0"
-           cx="372.3468"
-           cy="969.0072" />
+           cx="367.12604"
+           cy="974.22797" />
         <circle
-           style="fill:#ff0300;fill-opacity:1;stroke:#000000;stroke-width:2.24894064;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+           style="fill:#ff0300;fill-opacity:1;stroke:#000000;stroke-width:2.24894071;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
            id="path3336-3-8-8-9"
-           cx="356.00323"
-           cy="979.63147"
-           r="73.51815" />
+           cx="347.4794"
+           cy="988.47504"
+           r="65.191399" />
       </g>
     </g>
   </g>
