@@ -11,12 +11,20 @@
 						<?php
 						if (isset($database)){
 							$latestposts = $database->getRandomArticles();
+							$i=0;
 							foreach($latestposts as $post){
 								echo "<div class='col-xs-4 col-md-6'>
 												<a href='/blog.php?post=".urlencode($post['TITLE'])."'>
 													<img class='img-responsive widgetRandomPostImage' src='".$post['IMAGEHEADER']."' alt=''>
 												</a>
 											</div>";
+								$i=$i+1;
+								if ($i%2==0) {
+									echo "<div class='clearfix visible-lg-block visible-md-block'></div>";
+								}
+								if ($i%3==0) {
+									echo "<div class='clearfix visible-xs-block visible-sm-block'></div>";
+								}
 							}
 						} ?>
 						</div>
