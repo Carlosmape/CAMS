@@ -36,22 +36,23 @@
 
                 <!-- Post Content -->
                 <div class="articleContent"><?php echo $row['CONTENT']?></div>
-                <hr>
 
                 <!-- Blog Comments -->
                 <!-- Comments Form -->
-                <div class="well">
-									<div class="fb-comments" data-width="100%" data-href="<?php echo FACEBOOK?>" data-numposts="5"></div>
-                </div>
-
-                <hr>
+								<?php if ($row['TYPE']==1){	?>
+									<hr>
+									<div class="well">
+										<div class="fb-comments" data-width="100%" data-href="<?php echo FACEBOOK?>/<?php echo $row['TITLE'] ?>" data-numposts="5"></div>
+                	</div>
+									<hr>
+								<?php } ?>
             </div>
 <?php			}//end while
 			}
 		}else{
 			echo "Error CAMS could not connect to your DATABASE";
 		}
-		
+
 	}else{
 		echo "Ups!";
 	}
