@@ -19,12 +19,12 @@ if (isset($database)){
 ?>
 	<!-- Page Content -->
 	<div class="container">
-	
+
 		<!-- Blog Entries Column -->
 		<div class="col-md-9">
 			<?php if ($searching){?>
 				<div class="row">
-					<h1 class="col-md-8"><span class="glyphicon glyphicon-search"></span> <?echo $_GET['search'];?></h1>
+					<h1 class="col-md-8"><span class="glyphicon glyphicon-search"></span> <?php echo $_GET['search'];?></h1>
 					<h1 class="col-md-4"><small><?echo " ".$articles->num_rows;?> results</small></h1>
 				</div>
 			<?php } ?>
@@ -32,22 +32,22 @@ if (isset($database)){
 			if ($articles)
 			foreach ($articles as $row){
 				?>
-				<h2 class="articleTitle"><?php echo $row['TITLE']?></h2>
-				<p class="articleDate"><span class="glyphicon glyphicon-time"></span><?php echo $row['DATE']?></p>
 				<img  class="img-responsive articleImage" src="<?php echo $row['IMAGEHEADER']?>" alt="">
-				<p></p>
-				<form action="/blog.php" method="get">
+				<p><h2 class="articleTitle"><?php echo $row['TITLE']?></h2><form action="/blog.php" method="get">
 					<input type="hidden" name="post" value="<?php echo $row['TITLE']?>">
-					<button class="btn btn-primary articleReadMore rowID" id="rowID<?php echo $row['ID']?>" type="submit">
+					<button class="btn btn-primary rowID articleReadMore" id="rowID" type="submit">
 						Read<span class="glyphicon glyphicon-chevron-right"></span>
 					</button>
 				</form>
+					<p class="articleDate"><span class="glyphicon glyphicon-time"></span><?php echo $row['DATE']?></p>
+				</p>
+
 				<hr>
 			<?php }?>
 			<?php if (!$searching){?>
 				<!-- Pager -->
 				<ul class="pager">
-					
+
 					<?php if (isset($_GET['p'])){?>
 						<li class="previous">
 							<a href="/blog.php<?php
@@ -58,7 +58,7 @@ if (isset($database)){
 					<?php }?>
 					<?php if ($articles->num_rows==10){?>
 						<li class="next">
-							<a href="/blog.php?p=<?php 
+							<a href="/blog.php?p=<?php
 								if (isset($_GET['p']))
 									echo $_GET['p']+1;
 								else
@@ -69,4 +69,4 @@ if (isset($database)){
 				</ul>
 			<?php }?>
 		</div>
-<?php }?> 
+<?php }?>
