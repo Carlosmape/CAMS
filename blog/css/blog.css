@@ -12,7 +12,7 @@ footer {
 
 /*CUSTOMIZE YOUR BLOG INDEX HERE*/
 .form-control:focus{
-	border-color:#449348;	
+	border-color:#449348;
 }
 a{
 	color:#449348;
@@ -25,8 +25,8 @@ a:hover{
 	text-decoration-line: none;
 }
 .blogNavigator{
-	background-color:#55c65b;
-	border-color: #449348;
+	background-color:#f5f5f5;;
+	border-color:#e3e3e3;;
 }
 .blogMenu>li>.menuOption{
 	color:#333;
@@ -36,9 +36,6 @@ a:hover{
 }
 .articleTitle{}
 .articleDate{
-	float:right;
-	position: relative;
-	top: -2em;
 	color: grey;
 }
 .articleImage{
@@ -56,6 +53,9 @@ a:hover{
 	transform: scale(1.01)
 }
 .articleReadMore{
+  float:right;
+  position: relative;
+  top:-3em;
 	background-color:#449348;
 	border-color:#55c65b;
 	-webkit-transition: all 0.2s ease;
@@ -66,11 +66,15 @@ a:hover{
 	background-color:#55c65b;
 	border-color:#449348;
 }
+.articleReadMore:active{
+	background-color:#55c65b;
+	border-color:#449348;
+}
 .articleContent{
 	text-align:justify;
 }
 .articleContent>img{
-	
+
 }
 .widgetRandomPost{
 }
