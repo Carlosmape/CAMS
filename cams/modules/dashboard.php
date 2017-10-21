@@ -5,7 +5,7 @@
 	 * */
 	 require_once "includes/class/connection.php";
 	 require_once "includes/sqlfunctions.php";
-	 
+	 require_once "modules/collector.php";
 if (isset($_SESSION['connection']) && !$_SESSION['connection']->timeout()) { //you are connected
 	$_SESSION['connection']->keepalive();
 ?>
@@ -45,6 +45,13 @@ if (isset($_SESSION['connection']) && !$_SESSION['connection']->timeout()) { //y
               <li><a id="articles" href="#articles"><span class="glyphicon glyphicon-duplicate" aria-hidden="true"></span> Articles</a></li>
               <li><a id="categories" href="#categories"><span class="glyphicon glyphicon-list" aria-hidden="true"></span> Categories</a></li>
               <li><a id="files" href="#files"><span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span> Files</a></li>
+              <hr>
+              <?php $plugins = collectPlugins();
+								if (!empty($plugins)){
+									foreach ($plugins as $plugin){ ?>
+										<li><a id="<?php echo $plugin; ?>" href="#<?php echo $plugin; ?>"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> <?php echo ucfirst($plugin); ?></a></li>
+									<?php }
+								} ?>
             </ul>
           </div>
           <div class="col-sm-9 col-md-10 main">

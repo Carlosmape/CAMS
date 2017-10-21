@@ -1,4 +1,4 @@
-window.onload = function() {
+//window.onload = function() {
   /*$("table.table") 
   .tablesorter({widthFixed: true, widgets: ['zebra']}) 
   .tablesorterPager({container: $("#pager")}); */    
@@ -102,4 +102,4 @@ window.onload = function() {
  
       });
     });
-};
+//};

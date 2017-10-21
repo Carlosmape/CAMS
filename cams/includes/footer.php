@@ -7,6 +7,13 @@
 	<script src="includes/js/tablesorter/jquery.tablesorter.js"></script> <!--Textarea plugin-->
 	<script src="includes/js/tablesorter/addons/pager/jquery.tablesorter.pager.js"></script> <!--Textarea plugin-->
 	<script src="includes/js/functions.js"></script>
+	<?php require_once "modules/collector.php";
+	$plugins = collectPlugins();
+	if (!empty($plugins)){
+		foreach ($plugins as $plugin){ ?>
+			<?php createPluginLink($plugin); ?>
+		<?php }
+	} ?>
 
 </body>
 </html>
