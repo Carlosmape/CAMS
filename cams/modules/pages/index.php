@@ -3,18 +3,18 @@ require "../../includes/class/connection.php";
 require "../../includes/config.php";
 require "../../includes/sqlfunctions.php";
  
-	if (isset($_SESSION['connection']) && !$_SESSION['connection']->timeout()) { //if you are connected
+	if (isset($_SESSION['connection']) && !$_SESSION['connection']->timeout() && $_SESSION['connection']->isAdmin()) { //if you are connected
 		$_SESSION['connection']->keepalive(); //refresh connection timeout
 		$database = new Sqlconnection;//connect to database in order to extract users info
 		if (isset($database)){
-			$articles = $database->getAllArticles();
-			echo '<h1 class="page-header">Articles</h1>';?>
+			$articles = $database->getAllPages();
+			echo '<h1 class="page-header">Pages</h1>';?>
 				<form id="form" class="row" action="" method="post">
 					<div class="form-group col-md-2">
-						<input class="form-control btn btn-info" type="button" id="newArticle" name="newArticle" value="Add article">
+						<input class="form-control btn btn-info" type="button" id="newArticle" name="newArticle" value="Add page">
 					</div>
 				</form>
-				<script src="modules/articles/functionsArticles.js"></script>
+				<script src="modules/pages/functionsArticles.js"></script>
 				<script src="includes/js/bootstrap.js"></script>
 
 			<?php

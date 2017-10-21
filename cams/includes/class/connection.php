@@ -7,11 +7,13 @@ class Connection{
   var $time;
   var $user;
   var $type;
+  var $userid;
 
-  function __construct($user, $type){
+  function __construct($user, $type, $userid){
     $this->user = $user;
     $this->type = $type;
     $this->time = time();
+    $this->userid = $userid;
   }
 
   function timeout(){ //checks if actual connection is in timeout

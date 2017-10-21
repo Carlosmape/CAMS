@@ -43,10 +43,16 @@
        return $result = $this->connection->query(" SELECT * FROM `ARTICLES` WHERE TYPE=2 ORDER BY `DATE` DESC, `ID` DESC;");
      }
      function getAllArticles(){
-       return $result = $this->connection->query(" SELECT * FROM `ARTICLES` ORDER BY `DATE` DESC, `ID` DESC;");
+       return $result = $this->connection->query(" SELECT * FROM `ARTICLES` WHERE TYPE=1 ORDER BY `DATE` DESC, `ID` DESC;");
+     }
+     function getAllPages(){
+       return $result = $this->connection->query(" SELECT * FROM `ARTICLES` WHERE TYPE!=1 ORDER BY `DATE` DESC, `ID` DESC;");
      }
      function countArticles(){
-       return $result = $this->connection->query(" SELECT COUNT(*) FROM ARTICLES;");
+       return $result = $this->connection->query(" SELECT COUNT(*) FROM ARTICLES WHERE TYPE=1;");
+     }
+     function countPages(){
+       return $result = $this->connection->query(" SELECT COUNT(*) FROM ARTICLES WHERE TYPE!=1;");
      }
      function getRandomArticles(){
        return $result = $this->connection->query(" SELECT TITLE,IMAGEHEADER FROM ARTICLES WHERE TYPE=1 ORDER BY RAND() LIMIT 6;");
@@ -77,18 +83,13 @@
           return $result;
         }
      }
-     function addUser($username, $userpass){
-				$result = $this->connection->query("INSERT INTO `USERS`(`USER`, `MAIL`, `PASSWORD`, `TYPE`) VALUES ('$username',NULL ,'$userpass','1')");
+     function addUser($username, $userpass, $usertype){
+				$result = $this->connection->query("INSERT INTO `USERS`(`USER`, `MAIL`, `PASSWORD`, `TYPE`) VALUES ('$username',NULL ,'$userpass','$usertype')");
 				echo mysqli_error($this->connection);
 				return $result;
 		 }
      function addCategory($title, $parentid){
 				$result = $this->connection->query("INSERT INTO `CATEGORIES`(`PARENTID`, `TITLE`) VALUES ($parentid ,'$title');");
-				echo mysqli_error($this->connection);
-				return $result;
-		 }
-     function addArticle($tite, $type, $category, $date){
-				$result = $this->connection->query("INSERT INTO `ARTICLES`(`TITLE`, `TYPE`, `CATEGORIES`, `DATE`) VALUES ('$title','$type',$category,'$date')");
 				echo mysqli_error($this->connection);
 				return $result;
 		 }
@@ -121,11 +122,11 @@
 				echo mysqli_error($this->connection);
 				return $result;
 		 }
-     function saveArticle($id,$title, $type, $category, $date, $text, $imagepath){
+     function saveArticle($id,$title, $type, $category, $date, $text, $imagepath, $autor){
 				if(!empty($id)){ //modify A NEW ARTICLE
 					$result = $this->connection->query("UPDATE `ARTICLES` SET `TITLE`='$title',`TYPE`=$type,`CATEGORIES`='$category',`CONTENT`='$text',`IMAGEHEADER`='$imagepath' WHERE `ID`=$id;");
 				}else{	//create ONE
-					$result = $this->connection->query("INSERT INTO `ARTICLES`(`ID`, `TITLE`, `TYPE`, `CATEGORIES`, `DATE`, `CONTENT`) VALUES (NULL, '$title','$type','$category','$date','$text')");
+					$result = $this->connection->query("INSERT INTO `ARTICLES`(`ID`, `TITLE`, `TYPE`, `CATEGORIES`, `DATE`, `CONTENT`, `IMAGEHEADER`, `AUTOR`) VALUES (NULL, '$title','$type','$category','$date','$text','$imagepath','$autor')");
 				}
 				echo mysqli_error($this->connection);
 				return $result;

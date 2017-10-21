@@ -19,6 +19,12 @@ require "../../includes/sqlfunctions.php";
 					<div class="form-group col-md-4">
 						<input class="form-control" type="password" id="Password" name="Password" placeholder="A Password ...">
 					</div>
+					<div class="form-group col-md-2">
+						<select class="form-control btn btn-default" type="number" id="Type" name="Type" placeholder="A type" required>
+							<option value="1">User</option>
+							<option value="0">Admin</option>
+						</select>					
+					</div>
 				</form>
 			<?php
 			//will show users info

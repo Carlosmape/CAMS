@@ -12,4 +12,4 @@ if(sudo service lighttpd force-reload)then
 	sudo chown -R www-data /var/www/html/*
 	echo "#CAMS has been configured!. Go to http://yoursite.com/install to do final step"
 fi
-
+sudo rm /var/www/html/configure.sh

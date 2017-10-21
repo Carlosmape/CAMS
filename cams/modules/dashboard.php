@@ -3,7 +3,7 @@
 	 * Buttons functions are linked on /cams/includes/functions.js
 	 * If you want to add one button must keep examples in here
 	 * */
-	 require_once "includes/connection.php";
+	 require_once "includes/class/connection.php";
 	 require_once "includes/sqlfunctions.php";
 	 
 if (isset($_SESSION['connection']) && !$_SESSION['connection']->timeout()) { //you are connected
@@ -26,7 +26,7 @@ if (isset($_SESSION['connection']) && !$_SESSION['connection']->timeout()) { //y
               <?php if ($_SESSION['connection']->isAdmin()) { ?> 
 								<li><a id="settings" href="#settings"><span class="glyphicon glyphicon-cog"></span> Settings</a></li>
 							<?php } ?>
-              <li><a id="profile" href="#profile"><span class="glyphicon glyphicon-user"></span><?php echo " ".$_SESSION['connection']->user; if($_SESSION['connection']->isAdmin()) echo " (Admin)";?></a></li>
+              <li><a id="profile" href="#profile"><span class="glyphicon glyphicon-user"></span><?php echo " ".$_SESSION['connection']->user." ".$_SESSION['connection']->userid; if($_SESSION['connection']->isAdmin()) echo " (Admin)";?></a></li>
               <li><a href="<?php echo HOST.'/cams/modules/logout.php';?>"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> Logout</a></li>
             </ul>
           </div>
@@ -40,8 +40,9 @@ if (isset($_SESSION['connection']) && !$_SESSION['connection']->timeout()) { //y
               <li class="active"><a href="/cams/"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Overview</a></li>
               <?php if ($_SESSION['connection']->isAdmin()) { ?> 
 								<li><a id="users" href="#users"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Users</a></li>
+								<li><a id="pages" href="#pages"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Pages</a></li>
 							<?php } ?>
-              <li><a id="articles" href="#articles"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Articles</a></li>
+              <li><a id="articles" href="#articles"><span class="glyphicon glyphicon-duplicate" aria-hidden="true"></span> Articles</a></li>
               <li><a id="categories" href="#categories"><span class="glyphicon glyphicon-list" aria-hidden="true"></span> Categories</a></li>
               <li><a id="files" href="#files"><span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span> Files</a></li>
             </ul>
@@ -58,14 +59,25 @@ if (isset($_SESSION['connection']) && !$_SESSION['connection']->timeout()) { //y
 										<h4> <span class="glyphicon glyphicon-user"></span> Users - <span class="text-muted"><?php echo mysqli_fetch_array($database->countUsers())['COUNT(*)']?></span></h4>
 									</div>
 									<div class="col-xs-3 col-sm-3 placeholder">
-										<h4> <span class="glyphicon glyphicon-list-alt"></span> Articles - <span class="text-muted"><?php echo mysqli_fetch_array($database->countArticles())['COUNT(*)']?></span></h4>
+										<h4> <span class="glyphicon glyphicon-list-alt"></span> Pages - <span class="text-muted"><?php echo mysqli_fetch_array($database->countPages())['COUNT(*)']?></span></h4>
+									</div>
+									<div class="col-xs-3 col-sm-3 placeholder">
+										<h4> <span class="glyphicon glyphicon-duplicate"></span> Articles - <span class="text-muted"><?php echo mysqli_fetch_array($database->countArticles())['COUNT(*)']?></span></h4>
 									</div>
 									<div class="col-xs-3 col-sm-3 placeholder">
 											<h4> <span class="glyphicon glyphicon-list"></span> Categories - <span class="text-muted"><?php echo mysqli_fetch_array($database->countCategories())['COUNT(*)']?></span></h4>
 									</div>
 									<div class="col-xs-3 col-sm-3 placeholder">
-											<h4> <span class="glyphicon glyphicon-hdd"></span> Disk space - <span class="text-muted"><?php 
-												$bytes = disk_free_space("../../");
+											<h4> <span class="glyphicon glyphicon-hdd"></span> Space used - <span class="text-muted"><?php 
+												function folderSize ($dir)
+												{
+													$size = 0;
+													foreach (glob(rtrim($dir, '/').'/*', GLOB_NOSORT) as $each) {
+															$size += is_file($each) ? filesize($each) : folderSize($each);
+													}
+													return $size;
+												}
+												$bytes = folderSize("../../");
 												$si_prefix = array( 'B', 'KB', 'MB', 'GB', 'TB', 'EB', 'ZB', 'YB' );
 												$base = 1024;
 												$class = min((int)log($bytes , $base) , count($si_prefix) - 1);

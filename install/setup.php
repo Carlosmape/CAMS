@@ -98,6 +98,7 @@ if (isset($_POST['setup'])){
 					`DATE` DATE,
 					`CONTENT`	TEXT,
 					`IMAGEHEADER` TEXT,
+					`AUTOR` INT(11),
 					CHECK (TYPE BETWEEN 0 AND 2));")){
 					echo "Tables created.";
 					if (mysqli_query($connection,

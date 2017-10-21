@@ -44,6 +44,20 @@ window.onload = function() {
  
       });
     });
+  $("a#pages").click(function(){
+        $.ajax({
+          type: "post",
+          url: "modules/pages/index.php",
+          data: $(this).val(),
+          success: function(response){ //si recibimos respuesta, quitamos el anterior artículo y colocamos el uevo
+            // log a message to the console
+            $(".main").empty();
+            $(".main").html(response);
+						$("table.table").tablesorter();
+          }
+ 
+      });
+    });
   $("a#articles").click(function(){
         $.ajax({
           type: "post",

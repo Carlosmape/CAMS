@@ -38,7 +38,17 @@ require "../../includes/sqlfunctions.php";
 					<label class="control-label col-md-2" for="articleTitle">Title</label>
 					<input class="form-control col-md-6" type="text" id="articleTitle" name="articleTitle" value="<?php echo $title?>" placeholder="A title for your article...">
 					<div class="row"></div>
-					<input class="form-control col-md-6" type="hidden" id="articleType" name="articleType" value="1">
+					<label class="control-label col-md-2" for="articleType">Type</label>
+					<select class="form-control col-md-6" type="number" id="articleType" name="articleType">
+						<option value="0" <?php
+							if ($type==0)
+								echo "selected";
+						?>>Static page (Menu)</option>
+						<option value="2" <?php
+							if ($type==2)
+								echo "selected";
+						?>>Static page (Menu hidden)</option>
+					</select>
 				</div>
 				<div class="form-group col-md-6">
 					<label class="control-label col-md-2" for="articleCategory">Category</label>
@@ -90,4 +100,4 @@ require "../../includes/sqlfunctions.php";
 		}
 	}
 ?>
-<script src="modules/pages/functionsArticles.js"></script>
+<script src="modules/articles/functionsArticles.js"></script>
