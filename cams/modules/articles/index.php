@@ -37,21 +37,18 @@ require "../../includes/sqlfunctions.php";
 					<tbody>
 					';
 						while($row = mysqli_fetch_array($articles)) { ?>
+							<?php if ($row['AUTOR']==$_SESSION['connection']->userid || $_SESSION['connection']->isAdmin()){ ?>
 							<tr>
 								<td id="rowID<?php echo $row['ID']?>" class="rowID"><?php echo $row['ID']?></td>
 								<td id="rowUser<?php echo $row['ID']?>" class="rowUser"><?php echo $row['TITLE']?></td>
 								<td id="rowMail<?php echo $row['ID']?>" class="rowMail"><?php echo $row['TYPE']?></td>
 								<td id="rowPass<?php echo $row['ID']?>" class="rowPass"><?php echo $row['CATEGORIES']?></td>
 								<td id="rowType<?php echo $row['ID']?>" class="rowType"><?php echo $row['DATE']?></td>
-								<?php if ($row['AUTOR']==$_SESSION['connection']->userid || $_SESSION['connection']->isAdmin()){ ?>
-									<td><a href="#" class="edit editArticle" id="edit<?php echo $row['ID']?>"><span class="glyphicon glyphicon-pencil"></span></a></td>
-									<td><a href="#" class="delete deleteArticle" id="delete<?php echo $row['ID']?>"><span class="glyphicon glyphicon-trash"></span></a></td>
-								<?php }else { ?>
-									<td></td>
-									<td></td>
-								<?php }?>
+								<td><a href="#" class="edit editArticle" id="edit<?php echo $row['ID']?>"><span class="glyphicon glyphicon-pencil"></span></a></td>
+								<td><a href="#" class="delete deleteArticle" id="delete<?php echo $row['ID']?>"><span class="glyphicon glyphicon-trash"></span></a></td>
 							</tr>
 						<?php }
+						}
 						echo '
 					</tbody>
 				</table>

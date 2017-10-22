@@ -39,6 +39,7 @@ if (isset($_SESSION['connection']) && !$_SESSION['connection']->timeout()) { //y
             <ul class="nav nav-sidebar">
               <li class="active"><a href="/cams/"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Overview</a></li>
               <?php if ($_SESSION['connection']->isAdmin()) { ?> 
+								<li><a id="styles" href="#styles"><span class="glyphicon glyphicon-tint" aria-hidden="true"></span> Styles</a></li>
 								<li><a id="users" href="#users"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Users</a></li>
 								<li><a id="pages" href="#pages"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Pages</a></li>
 							<?php } ?>

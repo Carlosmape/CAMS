@@ -1,4 +1,5 @@
 <?php 
+require "../../includes/class/connection.php";
 if (isset($_SESSION['connection']) && !$_SESSION['connection']->timeout()) { //if you are connected
 		$_SESSION['connection']->keepalive(); //refresh connection timeout
 	if (isset($_POST)){

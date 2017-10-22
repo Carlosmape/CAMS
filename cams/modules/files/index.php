@@ -94,7 +94,7 @@ require "../../includes/sqlfunctions.php";
 				<h4 class="modal-title">File visor</h4>
 			</div>
 			<div class="modal-body">
-				<iframe width="100%" height="100%" id="viewerFile"></iframe>
+				<iframe width="100%" height="100%" id="viewerFile">Canvas not supported</iframe>
 			</div>
 			<div	class="modal-footer">
 			</div>
