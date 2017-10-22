@@ -27,4 +27,11 @@ $("a.deleteFile").click(function() { //deleting a user
 	});
 });
 
+$("a.viewFile").click(function() { //deleting a user
+	var url = this.id;
+	//alert(userID);
+	$('#viewFileModal').modal('show');
+	$('#viewerFile').attr('src', url);
+});
+
 

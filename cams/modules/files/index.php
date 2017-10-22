@@ -43,7 +43,7 @@ require "../../includes/sqlfunctions.php";
 											<tr>
 												<td class="fileName"><?php echo $subdirectorio."/".$row?></td>
 												<td class="fileURL"><p><?php echo HOST.'/blog/uploads/'.$subdirectorio.'/'.$row?></p></td>
-												<td><a href="<?php echo HOST.'/blog/uploads/'.$subdirectorio.'/'.$row;?>" target="_blank"><span class="glyphicon glyphicon-eye-open"></span></a></td>
+												<td><a id="<?php echo HOST.'/blog/uploads/'.$subdirectorio.'/'.$row;?>" class="viewFile"><span class="glyphicon glyphicon-eye-open"></span></a></td>
 												<td><a href="#" class="delete deleteFile" id="<?php echo $subdirectorio.'/'.$row?>"><span class="glyphicon glyphicon-trash"></span></a>
 												</td>
 											</tr> <?php
@@ -54,7 +54,7 @@ require "../../includes/sqlfunctions.php";
 									<tr>
 										<td class="fileName"><?php echo $row?></td>
 										<td class="fileURL"><p><?php echo HOST.'/blog/uploads/'.$row?></p></td>
-										<td><a href="<?php echo HOST.'/blog/uploads/'.$row;?>" target="_blank"><span class="glyphicon glyphicon-eye-open"></span></a></td>
+										<td><a id="<?php echo HOST.'/blog/uploads/'.$row;?>" class="viewFile"><span class="glyphicon glyphicon-eye-open"></span></a></td>
 										<td><a href="#" class="delete deleteFile" id="<?php echo $row?>"><span class="glyphicon glyphicon-trash"></span></a>
 										</td>
 									</tr> <?php
@@ -80,6 +80,23 @@ require "../../includes/sqlfunctions.php";
 					<button type="button" class="col-sm-offset-2 col-sm-4 btn btn-default" data-dismiss="modal">Cancel</button>
 					<button class="btn btn-danger col-sm-4" type="button" id="Delete" name="Delete" data-dismiss="modal" value="Delete">Delete</button>
 				</form>
+			</div>
+		</div>
+		
+	</div>
+</div>
+<div class="modal fade" id="viewFileModal" role="dialog">
+	<div class="modal-dialog">
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title">File visor</h4>
+			</div>
+			<div class="modal-body">
+				<iframe width="100%" height="100%" id="viewerFile"></iframe>
+			</div>
+			<div	class="modal-footer">
 			</div>
 		</div>
 		
