@@ -28,6 +28,7 @@ require "../../includes/config.php";
 				<script src="modules/styles/functions.js"></script>
 				<script src="includes/js/bootstrap.js"></script>		
 			<?php 
+			fclose($file);
 		}
 	}
 ?>
