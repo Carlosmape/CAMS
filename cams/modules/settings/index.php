@@ -43,24 +43,7 @@
 				<label for="save" class="sr-only">Submit</label>
 				<input id="submitsettings" class="form-control btn btn-info" type="button"  name="submit" value="Save">
 			</div>
-			<script>
-				$("input#submitsettings").click(function() {
-					var formData = $("form#form").serialize();
-					alert(formData);
-					$.ajax({
-						type: 'POST',
-						url: 'modules/settings/saveSettings.php',
-						data: formData,
-						success:function(response){
-						 alert(response); 
-						},
-						error: function (xhr, ajaxOptions, thrownError) {
-							alert(xhr.status);
-							alert(thrownError);
-						}
-					})
-				});
-			</script>
+			<script src="modules/settings/functions.js"></script>
 		</form>
 		<?php
 		}else{
