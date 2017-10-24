@@ -63,19 +63,19 @@ if (isset($_SESSION['connection']) && !$_SESSION['connection']->timeout()) { //y
 							{
 								?>
 								<div class="row placeholders">
-									<div class="col-xs-3 col-sm-3 placeholder">
+									<div class="col-xs-6 col-sm-4 col-md-2 placeholder">
 										<h4> <span class="glyphicon glyphicon-user"></span> Users - <span class="text-muted"><?php echo mysqli_fetch_array($database->countUsers())['COUNT(*)']?></span></h4>
 									</div>
-									<div class="col-xs-3 col-sm-3 placeholder">
+									<div class="col-xs-6 col-sm-4 col-md-2 placeholder">
 										<h4> <span class="glyphicon glyphicon-list-alt"></span> Pages - <span class="text-muted"><?php echo mysqli_fetch_array($database->countPages())['COUNT(*)']?></span></h4>
 									</div>
-									<div class="col-xs-3 col-sm-3 placeholder">
+									<div class="col-xs-6 col-sm-4 col-md-2 placeholder">
 										<h4> <span class="glyphicon glyphicon-duplicate"></span> Articles - <span class="text-muted"><?php echo mysqli_fetch_array($database->countArticles())['COUNT(*)']?></span></h4>
 									</div>
-									<div class="col-xs-3 col-sm-3 placeholder">
+									<div class="col-xs-6 col-sm-4 col-md-2 placeholder">
 											<h4> <span class="glyphicon glyphicon-list"></span> Categories - <span class="text-muted"><?php echo mysqli_fetch_array($database->countCategories())['COUNT(*)']?></span></h4>
 									</div>
-									<div class="col-xs-3 col-sm-3 placeholder">
+									<div class="col-xs-6 col-sm-4 col-md-2 placeholder">
 											<h4> <span class="glyphicon glyphicon-hdd"></span> Space used - <span class="text-muted"><?php 
 												function folderSize ($dir)
 												{

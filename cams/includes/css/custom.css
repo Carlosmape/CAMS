@@ -1,6 +1,23 @@
-.main, .sidebar{
-  padding-top:60px;
+body {
+  min-height: 100%;
 }
+.main, .sidebar{
+  height: 100%;
+  margin-top:50px;
+}
+.sidebar{
+  padding-left:0;
+}
+.sidebar>ul.nav-sidebar{
+  height: 100%;
+  border-right: 1px solid lightgrey;
+  background: #eee;
+}
+.sidebar>ul.nav-sidebar>li>a:hover{
+	background:#e0e0e0;
+	color:darkslategray;
+}
+
 a.delete>span{
 	color:#d9534f;
 }
