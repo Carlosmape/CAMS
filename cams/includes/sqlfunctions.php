@@ -131,6 +131,12 @@
 				echo mysqli_error($this->connection);
 				return $result;
 		 }
+     function countArticlesByUser($idautor){
+				$result = $this->connection->query("SELECT COUNT(ID),AUTOR FROM ARTICLES WHERE TYPE = 1 AND AUTOR='$idautor' GROUP BY AUTOR;
+");
+				echo mysqli_error($this->connection);
+				return $result;
+		 }
    }
 
  ?>
