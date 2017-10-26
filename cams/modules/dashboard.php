@@ -25,8 +25,9 @@ if (isset($_SESSION['connection']) && !$_SESSION['connection']->timeout()) { //y
               <li><a href="<?php echo HOST.'/cams';?>"></a></li>
               <?php if ($_SESSION['connection']->isAdmin()) { ?> 
 								<li><a id="settings" href="#settings"><span class="glyphicon glyphicon-cog"></span> Settings</a></li>
+								<li><a id="log" href="#log"><span class="glyphicon glyphicon-cog"></span> Log</a></li>
 							<?php } ?>
-              <li><a id="profile" href="#profile"><span class="glyphicon glyphicon-user"></span><?php echo " ".$_SESSION['connection']->user." ".$_SESSION['connection']->userid; if($_SESSION['connection']->isAdmin()) echo " (Admin)";?></a></li>
+              <li><a id="profile" href="#profile"><span class="glyphicon glyphicon-user"></span><?php echo " ".$_SESSION['connection']->user; if($_SESSION['connection']->isAdmin()) echo " (Admin)";?></a></li>
               <li><a href="<?php echo HOST.'/cams/modules/logout.php';?>"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> Logout</a></li>
             </ul>
           </div>

@@ -84,6 +84,15 @@ if (isset($_POST['setup'])){
 					UNIQUE (`USER`,`MAIL`),
 					CHECK (TYPE BETWEEN 0 AND 1));") 
 				&& mysqli_query($connection,
+					"CREATE TABLE IF NOT EXISTS `RECORD` (
+					`ID` INT(11) NOT NULL AUTO_INCREMENT,
+					`ACTION` VARCHAR(45) NULL,
+					`AUTOR` INT(11) NOT NULL,
+					`RECIBER` INT(11) NOT NULL,
+					`RECIBERCONTEXT` VARCHAR(45) NOT NULL,
+					`DATE` DATETIME NOT NULL,
+					PRIMARY KEY (`ID`));") 
+				&& mysqli_query($connection,
 					"CREATE TABLE IF NOT EXISTS `CATEGORIES`(
 					`ID` INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
 					`PARENTID` INT(11),

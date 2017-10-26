@@ -12,9 +12,11 @@
        $this->connection = mysqli_connect(DBHOST, DBUSER, DBPASS, DBNAME);
        if (!$this->connection) {
          echo "Error CAMS: Unable to connect to MySQL. Debugging errno: ".mysqli_connect_errno()."Debugging error: ".mysqli_connect_error();
+         return NULL;
        }
      }
 			
+		/*USERS*/
      function getAllUsers(){
        return $result = $this->connection->query(" SELECT * FROM USERS;");
      }
@@ -24,6 +26,42 @@
      function countUsers(){
        return $result = $this->connection->query(" SELECT COUNT(*) FROM USERS;");
      }
+     function checkLogin($user, $pass){
+       $result = $this->connection->query(" SELECT * FROM USERS WHERE USER = '$user' AND PASSWORD = '$pass';");
+        //echo ($result->num_rows);
+        if ($result->num_rows < 1) {
+          return false;
+        }
+        else {
+          return $result;
+        }
+		 }
+		 function addUser($username, $userpass, $usertype){
+				$result = $this->connection->query("INSERT INTO `USERS`(`USER`, `MAIL`, `PASSWORD`, `TYPE`) VALUES ('$username',NULL ,'$userpass','$usertype')");
+				echo mysqli_error($this->connection);
+				return $result;
+		 }
+     function editUser($id,$username, $mail, $userpass, $type){
+				if(empty($userpass)){ //DONT MODIFY PASSWORD
+					$result = $this->connection->query("UPDATE `USERS` SET `USER`='$username',`MAIL`='$mail',`TYPE`=$type WHERE `ID`=$id;");
+				}else{
+					$result = $this->connection->query("UPDATE `USERS` SET `USER`='$username',`MAIL`='$mail',`PASSWORD`='".md5($userpass)."',`TYPE`=$type WHERE `ID`=$id;");
+				}
+				echo mysqli_error($this->connection);
+				return $result;
+		 }     
+     function deleteUser($id){
+				$result = $this->connection->query("DELETE FROM `USERS` WHERE `ID`=$id;");
+				echo mysqli_error($this->connection);
+				return $result;
+		 }
+		 function countArticlesByUser($idautor){
+				$result = $this->connection->query("SELECT COUNT(ID),AUTOR FROM ARTICLES WHERE TYPE = 1 AND AUTOR='$idautor' GROUP BY AUTOR;");
+				echo mysqli_error($this->connection);
+				return $result;
+		 }
+
+    /*CATEGORIES*/
      function getAllCategories(){
        return $result = $this->connection->query(" SELECT * FROM CATEGORIES;");
      }
@@ -36,6 +74,24 @@
      function getChildCategories(){
        return $result = $this->connection->query(" SELECT * FROM CATEGORIES WHERE PARENTID>0 ORDER BY PARENTID;");
      }
+     function addCategory($title, $parentid){
+				$result = $this->connection->query("INSERT INTO `CATEGORIES`(`PARENTID`, `TITLE`) VALUES ($parentid ,'$title');");
+				echo mysqli_error($this->connection);
+				return $result;
+		 }
+     function editCategory($id, $title, $parentid){
+				$result = $this->connection->query("UPDATE `CATEGORIES` SET `TITLE`='$title',`PARENTID`='$parentid' WHERE `ID`=$id;");
+				echo mysqli_error($this->connection);
+				return $result;
+		 }
+     function deleteCategory($id){
+				$result = $this->connection->query("DELETE FROM `CATEGORIES` WHERE `ID`=$id;");
+				echo mysqli_error($this->connection);
+				return $result;
+		 }
+
+     
+    /*PAGES AND ARTICLES*/
      function getMenuPages(){
        return $result = $this->connection->query(" SELECT * FROM `ARTICLES` WHERE TYPE=0 ORDER BY `DATE` DESC, `ID` DESC;");
      }
@@ -73,52 +129,8 @@
      function getArticleByTITLE($title){
        return $result = $this->connection->query(" SELECT TITLE,DATE,IMAGEHEADER,CONTENT,TYPE FROM `ARTICLES` WHERE `TITLE`='$title';");
      }
-     function checkLogin($user, $pass){
-       $result = $this->connection->query(" SELECT * FROM USERS WHERE USER = '$user' AND PASSWORD = '$pass';");
-        //echo ($result->num_rows);
-        if ($result->num_rows < 1) {
-          return false;
-        }
-        else {
-          return $result;
-        }
-     }
-     function addUser($username, $userpass, $usertype){
-				$result = $this->connection->query("INSERT INTO `USERS`(`USER`, `MAIL`, `PASSWORD`, `TYPE`) VALUES ('$username',NULL ,'$userpass','$usertype')");
-				echo mysqli_error($this->connection);
-				return $result;
-		 }
-     function addCategory($title, $parentid){
-				$result = $this->connection->query("INSERT INTO `CATEGORIES`(`PARENTID`, `TITLE`) VALUES ($parentid ,'$title');");
-				echo mysqli_error($this->connection);
-				return $result;
-		 }
-     function deleteUser($id){
-				$result = $this->connection->query("DELETE FROM `USERS` WHERE `ID`=$id;");
-				echo mysqli_error($this->connection);
-				return $result;
-		 }
-     function deleteCategory($id){
-				$result = $this->connection->query("DELETE FROM `CATEGORIES` WHERE `ID`=$id;");
-				echo mysqli_error($this->connection);
-				return $result;
-		 }
      function deleteArticle($id){
 				$result = $this->connection->query("DELETE FROM `ARTICLES` WHERE `ID`=$id;");
-				echo mysqli_error($this->connection);
-				return $result;
-		 }
-     function editUser($id,$username, $mail, $userpass, $type){
-				if(empty($userpass)){ //DONT MODIFY PASSWORD
-					$result = $this->connection->query("UPDATE `USERS` SET `USER`='$username',`MAIL`='$mail',`TYPE`=$type WHERE `ID`=$id;");
-				}else{
-					$result = $this->connection->query("UPDATE `USERS` SET `USER`='$username',`MAIL`='$mail',`PASSWORD`='".md5($userpass)."',`TYPE`=$type WHERE `ID`=$id;");
-				}
-				echo mysqli_error($this->connection);
-				return $result;
-		 }
-     function editCategory($id, $title, $parentid){
-				$result = $this->connection->query("UPDATE `CATEGORIES` SET `TITLE`='$title',`PARENTID`='$parentid' WHERE `ID`=$id;");
 				echo mysqli_error($this->connection);
 				return $result;
 		 }
@@ -131,12 +143,18 @@
 				echo mysqli_error($this->connection);
 				return $result;
 		 }
-     function countArticlesByUser($idautor){
-				$result = $this->connection->query("SELECT COUNT(ID),AUTOR FROM ARTICLES WHERE TYPE = 1 AND AUTOR='$idautor' GROUP BY AUTOR;
-");
-				echo mysqli_error($this->connection);
-				return $result;
-		 }
    }
-
+   
+   /*ACTIONS RECORD*/
+		 function getAllRecords(){
+       return $result = $this->connection->query(" SELECT * FROM RECORD ORDER BY DATE;");
+     }
+		 function getLastRecords(){
+       return $result = $this->connection->query(" SELECT * FROM RECORD ORDER BY DATE LIMIT 10;");
+     }
+     function logRecord($action,$autor,$reciber,$context){
+			 $date = new DateTime();
+       return $result = $result = $this->connection->query("INSERT INTO `RECORD`(`ID`, `ACTION`, `AUTOR`, `RECIBER`, `RECIBERCONTEXT`, `DATE`) VALUES (NULL, '$action','$autor','$reciber','$context','".$date->format('Y-m-d H:i:s')."')");
+     }
+     
  ?>

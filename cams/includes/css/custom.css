@@ -24,3 +24,8 @@ a.delete>span{
 .form-signin{
 	margin-top: 15em;
 }
+.alert.alert-dismissible {
+    position: absolute;
+    top: 5px;
+    left: -10px;
+}
