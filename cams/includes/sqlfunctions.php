@@ -134,6 +134,11 @@
 				echo mysqli_error($this->connection);
 				return $result;
 		 }
+     function getLastArticleID(){
+				$result = $this->connection->query("SELECT MAX(ID) FROM ARTICLES;");
+				echo mysqli_error($this->connection);
+				return $result;
+		 }
      function saveArticle($id,$title, $type, $category, $date, $text, $imagepath, $autor){
 				if(!empty($id)){ //modify A NEW ARTICLE
 					$result = $this->connection->query("UPDATE `ARTICLES` SET `TITLE`='$title',`TYPE`=$type,`CATEGORIES`='$category',`CONTENT`='$text',`IMAGEHEADER`='$imagepath' WHERE `ID`=$id;");

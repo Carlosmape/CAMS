@@ -9,10 +9,15 @@ require "../../includes/sqlfunctions.php";
 		if (isset($database)){
 			//save method
 			if (isset($_POST['articleID'])){
-				echo $database->saveArticle($_POST['articleID'],$_POST['articleTitle'],$_POST['articleType'],$_POST['articleCategory'],$_POST['articleDate'],mysqli_real_escape_string($database->connection, $_POST['articleText']), $_POST['articleImage'], $_POST['autorID']);
+				$database->saveArticle($_POST['articleID'],$_POST['articleTitle'],$_POST['articleType'],$_POST['articleCategory'],$_POST['articleDate'],mysqli_real_escape_string($database->connection, $_POST['articleText']), $_POST['articleImage'], $_POST['autorID']);
+				$atabase->logRecord("EDIT",$_SESSION['connection']->userid,$_POST['articleID'],"ARTICLES");
 			}else{
-				echo $database->saveArticle('',$_POST['articleTitle'],$_POST['articleType'],$_POST['articleCategory'],$_POST['articleDate'],mysqli_real_escape_string($database->connection, $_POST['articleText']) , $_POST['articleImage'],$_POST['autorID']);
-			}
+				$database->saveArticle('',$_POST['articleTitle'],$_POST['articleType'],$_POST['articleCategory'],$_POST['articleDate'],mysqli_real_escape_string($database->connection, $_POST['articleText']) , $_POST['articleImage'],$_POST['autorID']);
+				$row = $database->getLastArticleID();
+				$article = mysqli_fetch_array($row);
+				$atabase->logRecord("NEW",$_SESSION['connection']->userid,$article['ID'],"ARTICLES");
+
+			}							
 		}
 	}
 ?>
