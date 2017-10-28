@@ -148,7 +148,6 @@
 				echo mysqli_error($this->connection);
 				return $result;
 		 }
-   }
    
    /*ACTIONS RECORD*/
 		 function getAllRecords(){
@@ -161,5 +160,6 @@
 			 $date = new DateTime();
        return $result = $result = $this->connection->query("INSERT INTO `RECORD`(`ID`, `ACTION`, `AUTOR`, `RECIBER`, `RECIBERCONTEXT`, `DATE`) VALUES (NULL, '$action','$autor','$reciber','$context','".$date->format('Y-m-d H:i:s')."')");
      }
+	}
      
  ?>

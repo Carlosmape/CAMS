@@ -30,6 +30,20 @@
 
       });
     });
+  $("a#log").click(function(){
+        $.ajax({
+          type: "post",
+          url: "modules/record.php",
+          data: $(this).val(),
+          success: function(response){ //si recibimos respuesta, quitamos el anterior artículo y colocamos el uevo
+            // log a message to the console
+             $(".main").empty();
+             $(".main").html(response);
+
+          }
+
+      });
+    });
   $("a#users").click(function(){
         $.ajax({
           type: "post",

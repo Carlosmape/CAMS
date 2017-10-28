@@ -14,7 +14,7 @@ require "../../includes/sqlfunctions.php";
 						<input class="form-control btn btn-info" type="button" id="newArticle" name="newArticle" value="Add page">
 					</div>
 				</form>
-				<script src="modules/pages/functionsArticles.js"></script>
+				<script src="modules/pages/functionsPages.js"></script>
 				<script src="includes/js/bootstrap.js"></script>
 
 			<?php

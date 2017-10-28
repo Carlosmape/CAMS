@@ -1,12 +1,10 @@
 <?php
-	/*
-	 * @AUTOR Carlos Gregorio Martín Pérez
-	 * */
-?>
-<?php
-require "../../includes/connection.php";
-require "../../includes/config.php";
-require "../../includes/sqlfunctions.php";
+/*
+ * @AUTOR Carlos Gregorio Martín Pérez
+ * */
+require_once "../includes/connection.php";
+require_once "../includes/config.php";
+require_once "../includes/sqlfunctions.php";
  
 	if (isset($_SESSION['connection']) && !$_SESSION['connection']->timeout() && $_SESSION['connection']->isAdmin()) { //if you are connected
 		$_SESSION['connection']->keepalive(); //refresh connection timeout
@@ -15,7 +13,7 @@ require "../../includes/sqlfunctions.php";
 			$records = $database->getAllRecords();
 			//will show records info
 			//first open table head and body putting as columns as you need
-			echo '
+			echo '<h1 class="page-header">Log</h1>
 			<div class="table-responsive">
 				<table class="table table-striped">	
 					<thead>
@@ -27,15 +25,14 @@ require "../../includes/sqlfunctions.php";
 							<th>Date</th>
 						</tr>
 					</thead>
-					<tbody>
-					';
+					<tbody>';
 						while($row = mysqli_fetch_array($records)) { ?>
 							<tr>
-								<td id="rowAutor<?php echo $row['ID']?>"><?php echo $row['AUTOR']?></td>
-								<td id="rowAction<?php echo $row['ID']?>"><?php echo $row['ACTION']?></td>
-								<td id="rowContext<?php echo $row['ID']?>"><?php echo $row['RECIBERCONTEXT']?></td>
-								<td id="rowReciber<?php echo $row['ID']?>"><?php echo $row['RECIBER']?></td>
-								<td id="rowDate<?php echo $row['ID']?>"><?php echo $row['DATE']?></td>
+								<td id="rowAutor<?php echo $row['ID'];?>"><?php echo $row['AUTOR'];?></td>
+								<td id="rowAction<?php echo $row['ID'];?>"><?php echo $row['ACTION'];?></td>
+								<td id="rowContext<?php echo $row['ID'];?>"><?php echo $row['RECIBERCONTEXT'];?></td>
+								<td id="rowReciber<?php echo $row['ID'];?>"><?php echo $row['RECIBER'];?></td>
+								<td id="rowDate<?php echo $row['ID'];?>"><?php echo $row['DATE'];?></td>
 							</tr>
 						<?php }
 						echo '
