@@ -24,8 +24,8 @@ if (isset($database)){
 		<div class="col-9">
 			<?php if ($searching){?>
 				<div class="row">
-					<h1 class="col-md-8"><span class="glyphicon glyphicon-search"></span> <?php echo $_GET['search'];?></h1>
-					<h1 class="col-md-4"><small><?php echo ($articles->num_rows); ?> results</small></h1>
+					<h1 class="col-8"><i class="material-icons">search</i>"<?php echo $_GET['search'];?>"</h1>
+					<h1 class="col-4"><small><?php echo ($articles->num_rows); ?> results</small></h1>
 				</div>
 			<?php } ?>
 			<?php //show all posts
@@ -33,15 +33,15 @@ if (isset($database)){
 			foreach ($articles as $row){
 				?>
 				<img  class="img-responsive articleImage" src="<?php echo $row['IMAGEHEADER']?>" alt="">
-				<p><h2 class="articleTitle"><?php echo $row['TITLE']?></h2><form action="<?php echo HOST ?>/blog.php" method="get">
-					<input type="hidden" name="post" value="<?php echo $row['TITLE']?>">
-					<button class="btn btn-primary rowID articleReadMore" id="rowID" type="submit">
-						Read<span class="glyphicon glyphicon-chevron-right"></span>
-					</button>
-				</form>
+				<p><h2 class="articleTitle"><?php echo $row['TITLE']?></h2>
+					<form action="<?php echo HOST ?>/blog.php" method="get">
+						<input type="hidden" name="post" value="<?php echo $row['TITLE']?>">
+						<button class="btn btn-primary rowID articleReadMore" id="rowID" type="submit">
+							Read<span class="glyphicon glyphicon-chevron-right"></span>
+						</button>
+					</form>
 					<p class="articleDate"><span class="glyphicon glyphicon-time"></span><?php echo $row['DATE']?></p>
 				</p>
-
 				<hr>
 			<?php }?>
 			<?php if (!$searching){?>

@@ -35,6 +35,8 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <!-- MATERIAL ICON -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 </head>
 
@@ -80,8 +82,8 @@
         <!-- Search form -->
         <form class="form-inline" action="" method="get">
             <input type="search" name="search" class="form-control mr-sm-2">
-            <button class="btn btn-outline-success" type="submit">
-                Search
+            <button class="btn bt-sm btn-outline-success " type="submit">
+            <i class="material-icons">search</i>
             </button>
         </form><!-- /search form -->
     </nav>
