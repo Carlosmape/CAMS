@@ -16,7 +16,7 @@
     <link rel="shortcut icon" type="image/svg" href="blog/favicon.svg"/>
     
 
-    <title><?php echo TITLE;?>|<?php
+    <title><?php echo TITLE;?> | <?php
 			if(isset($_GET['post']))
 				echo urldecode($_GET['post']);
 			else

@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/svg" href="includes/favicon.svg"/>
-    <title><?php echo TITLE;?>|Panel</title>
+    <title><?php echo TITLE;?> | Panel</title>
 
     <!-- Bootstrap -->
     <link href="includes/css/bootstrap.min.css" rel="stylesheet">
