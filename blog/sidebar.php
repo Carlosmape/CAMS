@@ -3,7 +3,7 @@
 	$database = new Sqlconnection;//connect to database in order to extract users info
 ?>
  <!-- Blog Sidebar Widgets Column -->
-			<div class="col-md-3 sidebar">
+			<div class="col-3 sidebar">
 
 					<!-- Blog Categories Well -->
 					<div class="well blogWidget widgetRandomPost">
@@ -13,9 +13,9 @@
 							$latestposts = $database->getRandomArticles();
 							$i=0;
 							foreach($latestposts as $post){
-								echo "<div class='col-xs-4 col-md-6'>
+								echo "<div class='col col-xs-4 col-md-6'>
 												<a href='/blog.php?post=".urlencode($post['TITLE'])."'>
-													<img class='img-responsive widgetRandomPostImage' src='".$post['IMAGEHEADER']."' alt=''>
+													<img class='img-thumbnail widgetRandomPostImage' src='".$post['IMAGEHEADER']."' alt=''>
 												</a>
 											</div>";
 								$i=$i+1;

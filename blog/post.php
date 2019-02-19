@@ -5,7 +5,7 @@
 		if (isset($database)){
 			$article = $database->getArticleByTITLE($_GET['post']);
 			if (!$article){
-				echo "PAGE NOT FOUND";
+				require "error/index.php";
 			}else{
 				while($row = mysqli_fetch_array($article)){
 ?>

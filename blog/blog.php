@@ -18,10 +18,10 @@ if (isset($database)){
 	}
 ?>
 	<!-- Page Content -->
-	<div class="container">
+	<div class="container row">
 
 		<!-- Blog Entries Column -->
-		<div class="col-md-9">
+		<div class="col-9">
 			<?php if ($searching){?>
 				<div class="row">
 					<h1 class="col-md-8"><span class="glyphicon glyphicon-search"></span> <?php echo $_GET['search'];?></h1>
@@ -33,7 +33,7 @@ if (isset($database)){
 			foreach ($articles as $row){
 				?>
 				<img  class="img-responsive articleImage" src="<?php echo $row['IMAGEHEADER']?>" alt="">
-				<p><h2 class="articleTitle"><?php echo $row['TITLE']?></h2><form action="/blog.php" method="get">
+				<p><h2 class="articleTitle"><?php echo $row['TITLE']?></h2><form action="<?php echo HOST ?>/blog.php" method="get">
 					<input type="hidden" name="post" value="<?php echo $row['TITLE']?>">
 					<button class="btn btn-primary rowID articleReadMore" id="rowID" type="submit">
 						Read<span class="glyphicon glyphicon-chevron-right"></span>
@@ -50,7 +50,7 @@ if (isset($database)){
 
 					<?php if (isset($_GET['p'])){?>
 						<li class="previous">
-							<a href="/blog.php<?php
+							<a href="<?php echo HOST ?>/blog.php<?php
 								if ($_GET['p']>2)
 								echo "?p=".($_GET['p']-1);?>"><span class="glyphicon glyphicon-chevron-left"></span>
 							</a>
@@ -58,7 +58,7 @@ if (isset($database)){
 					<?php }?>
 					<?php if ($articles->num_rows==10){?>
 						<li class="next">
-							<a href="/blog.php?p=<?php
+							<a href="<?php echo HOST ?>/blog.php?p=<?php
 								if (isset($_GET['p']))
 									echo $_GET['p']+1;
 								else

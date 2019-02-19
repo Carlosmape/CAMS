@@ -52,46 +52,40 @@
 	</script>
 	
     <!-- Navigation -->
-    <nav class="navbar navbar-fixed-top blogNavigator" role="navigation">
-        <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="<?php echo HOST;?>"><?php echo TITLE;?></a>
-            </div>
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-								<!-- Search form -->
-								<form class="navbar-form navbar-right" action="" method="get">
-									<div class="input-group">
-											<input type="text" name="search" class="form-control">
-											<span class="input-group-btn">
-													<button class="btn btn-default" type="submit">
-															<span class="glyphicon glyphicon-search"></span>
-											</button>
-											</span>
-									</div>
-								</form><!-- /search form -->
-                <ul class="blogMenu nav navbar-nav navbar-right">
-									<?php 
-									$database = new Sqlconnection;//connect to database in order to extract users info
-									if (isset($database))
-										$menu = $database->getMenuPages();
-									if (isset($menu))
-										foreach($menu as $entry){?>
-                    <li>
-                        <a class="menuOption" href="/blog.php?post=<?php echo $entry['TITLE']?>"><?php echo $entry['TITLE']?></a>
-                    </li>
-									<?php }?>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
+    <nav class="navbar fixed-top navbar-expand-lg blogNavigator">
+
+        <a class="navbar-brand" href="<?php echo HOST;?>"><?php echo TITLE;?></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="blogMenu nav navbar-nav navbar-right">
+            <?php 
+            $database = new Sqlconnection;//connect to database in order to extract users info
+            if (isset($database))
+                $menu = $database->getMenuPages();
+            if (isset($menu))
+            foreach($menu as $entry){?>
+                <li>
+                    <a class="menuOption" href="/blog.php?post=<?php echo $entry['TITLE']?>"><?php echo $entry['TITLE']?></a>
+                </li>
+            <?php }?>
+        </ul>        
+        
+        <!-- Search form -->
+                <form class="form-inline float-right" action="" method="get">
+                    <div class="input-group">
+                        <input type="search" name="search" class="form-control">
+                        <div class="input-group">
+                            <button class="btn btn-outline-success" type="submit">
+                                <span class="glyphicon glyphicon-search"></span>
+                                Search
+                            </button>
+                        </div>
+                </div>
+                </form><!-- /search form -->
             
         </div>
-        <!-- /.container -->
+        <!-- /.navbar-collapse -->
     </nav>
