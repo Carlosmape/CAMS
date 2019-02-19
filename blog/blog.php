@@ -18,14 +18,14 @@ if (isset($database)){
 	}
 ?>
 	<!-- Page Content -->
-	<div class="container row">
-
+	<div class="container-fluid">
+		<div class="row">
 		<!-- Blog Entries Column -->
 		<div class="col-9">
 			<?php if ($searching){?>
 				<div class="row">
 					<h1 class="col-md-8"><span class="glyphicon glyphicon-search"></span> <?php echo $_GET['search'];?></h1>
-					<h1 class="col-md-4"><small><?echo " ".$articles->num_rows;?> results</small></h1>
+					<h1 class="col-md-4"><small><?php echo ($articles->num_rows); ?> results</small></h1>
 				</div>
 			<?php } ?>
 			<?php //show all posts
