@@ -4,55 +4,58 @@
 ?>
  <!-- Blog Sidebar Widgets Column -->
 			<div class="col-3 sidebar">
-
 					<!-- Blog Categories Well -->
-					<div class="well blogWidget widgetRandomPost">
-						<div class="row">
-						<?php
-						if (isset($database)){
-							$latestposts = $database->getRandomArticles();
-							$i=0;
-							foreach($latestposts as $post){
-								echo "<div class='col col-xs-4 col-md-6'>
-												<a href='/blog.php?post=".urlencode($post['TITLE'])."'>
-													<img class='img-thumbnail widgetRandomPostImage' src='".$post['IMAGEHEADER']."' alt=''>
-												</a>
-											</div>";
-								$i=$i+1;
-								if ($i%2==0) {
-									echo "<div class='clearfix visible-lg-block visible-md-block'></div>";
+					<div class="blogWidget widgetRandomPost">
+						<div class="card-body">
+							<div class="row">
+							<?php
+							if (isset($database)){
+								$latestposts = $database->getRandomArticles();
+								$i=0;
+								foreach($latestposts as $post){
+									echo "<div class='col col-xs-4 col-md-6'>
+													<a class='card' href='".HOST."/blog.php?post=".urlencode($post['TITLE'])."'>
+														<img class='img-fluid card-img-top widgetRandomPostImage' src='".$post['IMAGEHEADER']."' alt=''>
+														<h6 class='card-text'>
+														".$post['TITLE']."
+														</h6>
+													</a>
+												</div>";
+									$i=$i+1;
+									if ($i%2==0) {
+										echo "<div class='clearfix visible-lg-block visible-md-block'></div>";
+									}
+									if ($i%3==0) {
+										echo "<div class='clearfix visible-xs-block visible-sm-block'></div>";
+									}
 								}
-								if ($i%3==0) {
-									echo "<div class='clearfix visible-xs-block visible-sm-block'></div>";
-								}
-							}
-						} ?>
+							} ?>
+							</div>
 						</div>
 					</div>
-					<div class="well blogWidget">
-							<h4>Categories</h4>
-							<div class="row">
-									<div class="col-lg-6">
-											<ul class="list-unstyled blogCategoryParent">
-											<?php
-											if (isset($database)){
-												$parentscategories = $database->getParentCategories();
-												$childcategories = $database->getChildCategories();
-												foreach ($parentscategories as $patcat){
-													echo "<li><a href='/blog.php?category=".$patcat['TITLE']."'>".$patcat['TITLE']."</a></li>";
-													echo "<ul class='list-unstyled blogCategoryChild'>";
-													foreach ($childcategories as $chicat){
-														if($patcat['ID'] == $chicat['PARENTID']){
-															echo "<li><a href='/blog.php?category=".$chicat['TITLE']."'>".$chicat['TITLE']."</a></li>";
-														}
-													}
-													echo "</ul>";
-												}
-											}?>
-											</ul>
-									</div>
+					<div class="blogWidget">
+						<h4>Categories</h4>
+						<div class="row">
+							<div class="col-lg-6">
+								<ul class="list-unstyled blogCategoryParent">
+								<?php
+								if (isset($database)){
+									$parentscategories = $database->getParentCategories();
+									$childcategories = $database->getChildCategories();
+									foreach ($parentscategories as $patcat){
+										echo "<li><a href='/blog.php?category=".$patcat['TITLE']."'>".$patcat['TITLE']."</a></li>";
+										echo "<ul class='list-unstyled blogCategoryChild'>";
+										foreach ($childcategories as $chicat){
+											if($patcat['ID'] == $chicat['PARENTID']){
+												echo "<li><a href='/blog.php?category=".$chicat['TITLE']."'>".$chicat['TITLE']."</a></li>";
+											}
+										}
+										echo "</ul>";
+									}
+								}?>
+								</ul>
 							</div>
-							<!-- /.row -->
+						</div>
 					</div>
 
 					<!-- Side Widget Well -->
