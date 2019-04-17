@@ -149,12 +149,12 @@
 				return $result;
 		 }
    
-    /*ACTIONS RECORD*/
+   /*ACTIONS RECORD*/
 		 function getAllRecords(){
        return $result = $this->connection->query(" SELECT * FROM RECORD ORDER BY DATE;");
      }
-		 function getLastRecords(int $n = 10){
-       return $result = $this->connection->query(" SELECT * FROM RECORD ORDER BY DATE LIMIT "+n+";");
+		 function getLastRecords(){
+       return $result = $this->connection->query(" SELECT * FROM RECORD ORDER BY DATE LIMIT 10;");
      }
      function logRecord($action,$autor,$reciber,$context){
 			 $date = new DateTime();
