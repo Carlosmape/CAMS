@@ -5,12 +5,14 @@
 require_once "../includes/class/Connection.php";
 require_once "../includes/config.php";
 require_once "../includes/sqlfunctions.php";
+require "../includes/class/Log.php";
  
 	if (isset($_SESSION['connection']) && !$_SESSION['connection']->timeout() && $_SESSION['connection']->isAdmin()) { //if you are connected
 		$_SESSION['connection']->keepalive(); //refresh connection timeout
 		$database = new Sqlconnection;//connect to database in order to extract users info
 		if (isset($database)){
 			$records = $database->getAllRecords();
+			$records = Log::GetAll($database);
 			//will show records info
 			//first open table head and body putting as columns as you need
 			echo '<h1 class="page-header">Log</h1>
