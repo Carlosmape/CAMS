@@ -9,7 +9,7 @@ require "../../includes/sqlfunctions.php";
 		if (isset($database)){
 			$articles = $database->getAllPages();
 			echo '<h1 class="page-header">Pages</h1>';?>
-				<form id="form" action="" method="post">
+				<form id="form" class="row" action="" method="post">
 					<div class="form-group col-md-2">
 						<input class="form-control btn btn-info" type="button" id="newArticle" name="newArticle" value="Add page">
 					</div>
