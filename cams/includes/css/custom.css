@@ -21,7 +21,7 @@ body {
 	color:darkslategray;
 }
 
-a.delete>span{
+a.delete>i{
 	color:#d9534f;
 }
 .form-signin{
