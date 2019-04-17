@@ -108,7 +108,15 @@ if (isset($_POST['setup'])){
 					`CONTENT`	TEXT,
 					`IMAGEHEADER` TEXT,
 					`AUTOR` INT(11),
-					CHECK (TYPE BETWEEN 0 AND 2));")){
+					CHECK (TYPE BETWEEN 0 AND 2));")
+					&& mysqli_query($connection, 
+					"CREATE TABLE IF NOT EXISTS `LOG` ( 
+					`ID` INT NOT NULL AUTO_INCREMENT PRIMARY KEY, 
+					`LEVEL` INT NOT NULL , 
+					`MESSAGE` TEXT NOT NULL , 
+					`FILE` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_spanish_ci NULL , 
+					`LINE` INT NULL , 
+					`PROCCESS` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL);")){
 					echo "Tables created.";
 					if (mysqli_query($connection,
 						"INSERT INTO USERS (`USER`,`MAIL`,`PASSWORD`, `TYPE`)
