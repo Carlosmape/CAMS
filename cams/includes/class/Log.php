@@ -1,5 +1,4 @@
 <?php
-include_once "../sqlfunctions.php";
 
     abstract class ActionTypes{
         public const EDIT = "EDIT";
@@ -25,9 +24,9 @@ include_once "../sqlfunctions.php";
             }
         }
 
-        public static function Add(Sqlconnection $connection){
+        public static function Add(Sqlconnection $connection, Exception $exception){
             if($connection != null){
-                //$connection->logRecord()
+                $connection->addLog($exception);
             }
         }
     }
