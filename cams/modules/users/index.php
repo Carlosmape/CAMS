@@ -37,7 +37,6 @@ require "../../includes/sqlfunctions.php";
 							<th>Id</th>
 							<th>Name</th>
 							<th>Mail</th>
-							<th>Pass</th>
 							<th>Type</th>
 							<th></th>
 							<th></th>
@@ -50,7 +49,6 @@ require "../../includes/sqlfunctions.php";
 								<td id="rowID<?php echo $row['ID']?>" class="rowID"><?php echo $row['ID']?></td>
 								<td id="rowUser<?php echo $row['ID']?>" class="rowUser"><?php echo $row['USER']?></td>
 								<td id="rowMail<?php echo $row['ID']?>" class="rowMail"><?php echo $row['MAIL']?></td>
-								<td id="rowPass<?php echo $row['ID']?>" class="rowPass"><?php echo $row['PASSWORD']?></td>
 								<td id="rowType<?php echo $row['ID']?>" class="rowType">
 									<?php 
 									if ($row['TYPE']==0)
