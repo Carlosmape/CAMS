@@ -29,10 +29,10 @@ a:hover{
 	border-color:#e3e3e3;;
 }
 .blogMenu>li>.menuOption{
-	color:#333;
+	
 }
 .blogMenu>li>.menuOption:hover{
-	background-color:#449348;
+	color:#f5f5f5;
 }
 .articleTitle{}
 .articleDate{
