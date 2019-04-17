@@ -160,6 +160,16 @@
 			 $date = new DateTime();
        return $result = $result = $this->connection->query("INSERT INTO `RECORD`(`ID`, `ACTION`, `AUTOR`, `RECIBER`, `RECIBERCONTEXT`, `DATE`) VALUES (NULL, '$action','$autor','$reciber','$context','".$date->format('Y-m-d H:i:s')."')");
      }
+
+     #region Log
+     function addLog(Exception $exception){
+       $level = LogLevels::ERROR;
+       
+      $date = new DateTime();
+      return $result = $result = $this->connection->query("INSERT INTO `log` (`ID`, `LEVEL`, `MESSAGE`, `FILE`, `LINE`, `PROCCESS`, `SESSION_VALUE`) 
+                                                            VALUES (NULL, '$level', '".$exception->getMessage()."', '".$exception->getFile()."', '".$exception->getLine()."', '', NULL)");
+     }
+     #endregion
 	}
      
  ?>
