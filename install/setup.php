@@ -117,7 +117,8 @@ if (isset($_POST['setup'])){
 					`FILE` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_spanish_ci NULL , 
 					`LINE` INT NULL , 
 					`PROCCESS` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL , 
-					`SESSION_VALUE` TEXT CHARACTER SET utf8 COLLATE utf8_spanish_ci NULL);")){
+					`SESSION_VALUE` TEXT CHARACTER SET utf8 COLLATE utf8_spanish_ci NULL ,
+					`DATE` DATE NOT NULL DEFAULT CURRENT_TIMESTAMP);")){
 					echo "Tables created.";
 					if (mysqli_query($connection,
 						"INSERT INTO USERS (`USER`,`MAIL`,`PASSWORD`, `TYPE`)
