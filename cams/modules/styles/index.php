@@ -19,7 +19,7 @@ require "../../includes/config.php";
 			echo '<h1 class="page-header">CSS custom style</h1>';?>
 				<form id="styles" class="row" action="" method="post">
 					<div class="form-group col-md-12">
-						<textarea id="editorStyles" style="height: 600px;width: 100%;"><?php echo $text; ?></textarea>
+						<textarea class="form-control" id="editorStyles" style="height: 600px;width: 100%;"><?php echo $text; ?></textarea>
 					</div>
 					<div class="form-group">
 						<input class="btn btn-info form-control" type="button" id="stylesSave" name="stylesSave" value="Save">

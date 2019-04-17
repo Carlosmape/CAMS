@@ -9,49 +9,41 @@
 if (isset($_SESSION['connection']) && !$_SESSION['connection']->timeout()) { //you are connected
 	$_SESSION['connection']->keepalive();
 ?>
-      <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container-fluid">
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="">CAMS panel</a>
-          </div>
-          <div id="navbar" class="navbar-collapse collapse">
-            <ul class="nav navbar-nav navbar-right">
-              <li><a href="<?php echo HOST.'/cams';?>"></a></li>
-              <?php if ($_SESSION['connection']->isAdmin()) { ?> 
-								<li><a id="settings" href="#settings"><span class="glyphicon glyphicon-cog"></span> Settings</a></li>
-								<li><a id="log" href="#log"><span class="glyphicon glyphicon-book"></span> Log</a></li>
-							<?php } ?>
-              <li><a id="profile" href="#profile"><span class="glyphicon glyphicon-user"></span><?php echo " ".$_SESSION['connection']->user; if($_SESSION['connection']->isAdmin()) echo " (Admin)";?></a></li>
-              <li><a href="<?php echo HOST.'/cams/modules/logout.php';?>"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> Logout</a></li>
-            </ul>
-          </div>
-        </div>
+      <nav class="navbar navbar-dark bg-dark fixed-top navbar-expand-lg justify-content-between">
+				<a class="navbar-brand" href="<?php echo HOST;?>/cams/"><?php echo TITLE;?> panel</a>
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+				<div id="cams-navbar-collapse-2" class="collapse navbar-collapse justify-content-end">
+					<ul class="nav navbar-nav navbar-right">
+						<?php if ($_SESSION['connection']->isAdmin()) { ?> 
+							<li class="nav-item"><a class="nav-link"id="settings" href="#settings"><i class="material-icons"> settings </i></span> Settings</a></li>
+							<li class="nav-item"><a class="nav-link" id="log" href="#log"><i class="material-icons">library_books</i></span> Log</a></li>
+						<?php } ?>
+						<li class="nav-item"><a class="nav-link" id="profile" href="#profile"><i class="material-icons">account_circle</i></span><?php echo " ".$_SESSION['connection']->user; if($_SESSION['connection']->isAdmin()) echo " (Admin)";?></a></li>
+						<li class="nav-item"><a class="nav-link" href="<?php echo HOST.'/cams/modules/logout.php';?>"><i class="material-icons">exit_to_app</i> Logout</a></li>
+					</ul>
+				</div>
       </nav>
 
-      <div class="container-fluid">
+      <div class="container-fluid bg">
         <div class="row">
           <div class="col-sm-3 col-md-2 sidebar">
-            <ul class="nav nav-sidebar">
-              <li class="active"><a href="/cams/"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Overview</a></li>
+            <ul class="nav flex-column">
+              <li class="nav-item"><a class="nav-link active" href="<?php echo HOST;?>/cams/"><i class="material-icons">dashboard</i></span> Overview</a></li>
               <?php if ($_SESSION['connection']->isAdmin()) { ?> 
-								<li><a id="styles" href="#styles"><span class="glyphicon glyphicon-tint" aria-hidden="true"></span> Styles</a></li>
-								<li><a id="users" href="#users"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Users</a></li>
-								<li><a id="pages" href="#pages"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Pages</a></li>
+								<li class="nav-item"><a class="nav-link" id="styles" href="#"><i class="material-icons">style</i></span> Styles</a></li>
+								<li class="nav-item"><a class="nav-link" id="users" href="#"><i class="material-icons">supervised_user_circle</i></span> Users</a></li>
+								<li class="nav-item"><a class="nav-link" id="pages" href="#"><i class="material-icons">insert_drive_file</i></span> Pages</a></li>
 							<?php } ?>
-              <li><a id="articles" href="#articles"><span class="glyphicon glyphicon-duplicate" aria-hidden="true"></span> Articles</a></li>
-              <li><a id="categories" href="#categories"><span class="glyphicon glyphicon-list" aria-hidden="true"></span> Categories</a></li>
-              <li><a id="files" href="#files"><span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span> Files</a></li>
+              <li class="nav-item"><a class="nav-link" id="articles" href="#"><i class="material-icons">description</i></span> Articles</a></li>
+              <li class="nav-item"><a class="nav-link" id="categories" href="#"><i class="material-icons">category</i></span> Categories</a></li>
+              <li class="nav-item"><a class="nav-link" id="files" href="#"><i class="material-icons">folder_open</i></span> Files</a></li>
               <hr>
               <?php $plugins = collectPlugins();
 								if (!empty($plugins)){
 									foreach ($plugins as $plugin){ ?>
-										<li><a id="<?php echo $plugin; ?>" href="#<?php echo $plugin; ?>"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> <?php echo ucfirst($plugin); ?></a></li>
+										<li class="nav-item"><a class="nav-link" id="<?php echo $plugin; ?>" href="#<?php echo $plugin; ?>"><i class="material-icons">stars</i></span> <?php echo ucfirst($plugin); ?></a></li>
 									<?php }
 								} ?>
             </ul>
@@ -65,22 +57,26 @@ if (isset($_SESSION['connection']) && !$_SESSION['connection']->timeout()) { //y
 								var_dump($database->getLastArticleID());
 								?>
 								<div class="row placeholders">
-									<div class="col-xs-6 col-sm-4 col-md-2 placeholder">
-										<h4> <span class="glyphicon glyphicon-user"></span> Users - <span class="text-muted"><?php echo mysqli_fetch_array($database->countUsers())['COUNT(*)']?></span></h4>
+									<div class="col-xs-6 col-sm-4 col-md-2 placeholder text-center">
+										<i class="material-icons" style="font-size: 64px;">supervised_user_circle</i> 
+										<h4>Users - <span class="text-muted"><?php echo mysqli_fetch_array($database->countUsers())['COUNT(*)']?></span></h4>
 									</div>
-									<div class="col-xs-6 col-sm-4 col-md-2 placeholder">
-										<h4> <span class="glyphicon glyphicon-list-alt"></span> Pages - <span class="text-muted"><?php echo mysqli_fetch_array($database->countPages())['COUNT(*)']?></span></h4>
+									<div class="col-xs-6 col-sm-4 col-md-2 placeholder text-center">
+										<i class="material-icons" style="font-size: 64px;">insert_drive_file</i>
+										<h4>Pages - <span class="text-muted"><?php echo mysqli_fetch_array($database->countPages())['COUNT(*)']?></span></h4>
 									</div>
-									<div class="col-xs-6 col-sm-4 col-md-2 placeholder">
-										<h4> <span class="glyphicon glyphicon-duplicate"></span> Articles - <span class="text-muted"><?php echo mysqli_fetch_array($database->countArticles())['COUNT(*)']?></span></h4>
+									<div class="col-xs-6 col-sm-4 col-md-2 placeholder text-center">
+										<i class="material-icons" style="font-size: 64px;">description</i>
+										<h4>Articles - <span class="text-muted"><?php echo mysqli_fetch_array($database->countArticles())['COUNT(*)']?></span></h4>
 									</div>
-									<div class="col-xs-6 col-sm-4 col-md-2 placeholder">
-											<h4> <span class="glyphicon glyphicon-list"></span> Categories - <span class="text-muted"><?php echo mysqli_fetch_array($database->countCategories())['COUNT(*)']?></span></h4>
+									<div class="col-xs-6 col-sm-4 col-md-2 placeholder text-center">
+										<i class="material-icons" style="font-size: 64px;">category</i>
+										<h4>Categories - <span class="text-muted"><?php echo mysqli_fetch_array($database->countCategories())['COUNT(*)']?></span></h4>
 									</div>
-									<div class="col-xs-6 col-sm-4 col-md-2 placeholder">
-											<h4> <span class="glyphicon glyphicon-hdd"></span> Space used - <span class="text-muted"><?php 
-												function folderSize ($dir)
-												{
+									<div class="col-xs-6 col-sm-4 col-md-2 placeholder text-center">
+									<i class="material-icons" style="font-size: 64px;">save</i>
+											<h4>Used space - <span class="text-muted"><?php 
+												function folderSize ($dir){
 													$size = 0;
 													foreach (glob(rtrim($dir, '/').'/*', GLOB_NOSORT) as $each) {
 															$size += is_file($each) ? filesize($each) : folderSize($each);
@@ -95,6 +91,7 @@ if (isset($_SESSION['connection']) && !$_SESSION['connection']->timeout()) { //y
 											?></span></h4>
 									</div>
 								</div>
+								<hr>
 								
 								<div class="col-md-6 col-xs-12">
 									<h1>Blog menu</h1>
