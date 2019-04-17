@@ -66,8 +66,8 @@ require "../../includes/sqlfunctions.php";
 									<td></td>
 								<?php }
 								else{?>
-									<td><a href="#" class="editUser" id="editUser<?php echo $row['ID']?>"><span class="glyphicon glyphicon-pencil"></span></a></td>
-									<td><a href="#" class="delete deleteUser" id="deleteUser<?php echo $row['ID']?>"><span class="glyphicon glyphicon-trash"></span></a>
+									<td><a href="#" class="editUser" id="editUser<?php echo $row['ID']?>">				<i class="material-icons">visibility</i></a></td>
+									<td><a href="#" class="delete deleteUser" id="deleteUser<?php echo $row['ID']?>">	<i class="material-icons">delete</i>	</a>
 								<?php }?>
 								</td>
 							</tr>
