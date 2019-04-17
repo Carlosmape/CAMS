@@ -43,7 +43,7 @@ if (isset($_SESSION['connection']) && !$_SESSION['connection']->timeout()) { //y
               <?php $plugins = collectPlugins();
 								if (!empty($plugins)){
 									foreach ($plugins as $plugin){ ?>
-										<li class="nav-item"><a class="nav-link" id="<?php echo $plugin; ?>" href="#<?php echo $plugin; ?>"><i class="material-icons">stars</i></span> <?php echo ucfirst($plugin); ?></a></li>
+										<li class="nav-item"><a class="nav-link" id="<?php echo $plugin; ?>" href="#"><i class="material-icons">stars</i></span> <?php echo ucfirst($plugin); ?></a></li>
 									<?php }
 								} ?>
             </ul>
