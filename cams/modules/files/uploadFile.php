@@ -1,5 +1,5 @@
 <?php
-require "../../includes/class/connection.php";
+require "../../includes/class/Connection.php";
 require "../../includes/config.php";
  
 	if (isset($_SESSION['connection']) && !$_SESSION['connection']->timeout()) { //if you are connected
