@@ -2,7 +2,7 @@
 /*
  * @AUTOR Carlos Gregorio Martín Pérez
  * */
-require_once "../includes/connection.php";
+require_once "../includes/class/connection.php";
 require_once "../includes/config.php";
 require_once "../includes/sqlfunctions.php";
  

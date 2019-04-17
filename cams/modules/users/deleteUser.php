@@ -1,5 +1,5 @@
 <?php
-	require "../../includes/connection.php";
+	require "../../includes/class/connection.php";
 	require "../../includes/config.php";
 	require "../../includes/sqlfunctions.php";
 	if (isset($_SESSION['connection']) && !$_SESSION['connection']->timeout() && $_SESSION['connection']->isAdmin()) { //if you are connected
