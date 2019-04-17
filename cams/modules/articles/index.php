@@ -44,8 +44,8 @@ require "../../includes/sqlfunctions.php";
 								<td id="rowMail<?php echo $row['ID']?>" class="rowMail"><?php echo $row['TYPE']?></td>
 								<td id="rowPass<?php echo $row['ID']?>" class="rowPass"><?php echo $row['CATEGORIES']?></td>
 								<td id="rowType<?php echo $row['ID']?>" class="rowType"><?php echo $row['DATE']?></td>
-								<td><a href="#" class="edit editArticle" id="edit<?php echo $row['ID']?>"><span class="glyphicon glyphicon-pencil"></span></a></td>
-								<td><a href="#" class="delete deleteArticle" id="delete<?php echo $row['ID']?>"><span class="glyphicon glyphicon-trash"></span></a></td>
+								<td><a href="#" class="edit editArticle" id="edit<?php echo $row['ID']?>">		<i class="material-icons">visibility</i></a></td>
+								<td><a href="#" class="delete deleteArticle" id="delete<?php echo $row['ID']?>"><i class="material-icons">delete</i>	</a></td>
 							</tr>
 						<?php }
 						}

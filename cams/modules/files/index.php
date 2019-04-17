@@ -54,8 +54,8 @@ require "../../includes/sqlfunctions.php";
 									<tr>
 										<td class="fileName"><?php echo $row?></td>
 										<td class="fileURL"><p><?php echo HOST.'/blog/uploads/'.$row?></p></td>
-										<td><a id="<?php echo HOST.'/blog/uploads/'.$row;?>" class="viewFile"><span class="glyphicon glyphicon-eye-open"></span></a></td>
-										<td><a href="#" class="delete deleteFile" id="<?php echo $row?>"><span class="glyphicon glyphicon-trash"></span></a>
+										<td><a id="<?php echo HOST.'/blog/uploads/'.$row;?>" class="viewFile">	<i class="material-icons">visibility</i></a></td>
+										<td><a href="#" class="delete deleteFile" id="<?php echo $row?>">		<i class="material-icons">delete</i>		</a>
 										</td>
 									</tr> <?php
 								}

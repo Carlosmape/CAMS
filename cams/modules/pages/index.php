@@ -43,8 +43,8 @@ require "../../includes/sqlfunctions.php";
 								<td id="rowPass<?php echo $row['ID']?>" class="rowPass"><?php echo $row['CATEGORIES']?></td>
 								<td id="rowType<?php echo $row['ID']?>" class="rowType"><?php echo $row['DATE']?></td>
 								<?php if ($row['AUTOR']==$_SESSION['connection']->userid || $_SESSION['connection']->isAdmin()){ ?>
-									<td><a href="#" class="edit editArticle" id="edit<?php echo $row['ID']?>"><i class="material-icons">visibility</i></a></td>
-									<td><a href="#" class="delete deleteArticle" id="delete<?php echo $row['ID']?>"><i class="material-icons">delete</i></a></td>
+									<td><a href="#" class="edit editArticle" id="edit<?php echo $row['ID']?>">		<i class="material-icons">visibility</i></a></td>
+									<td><a href="#" class="delete deleteArticle" id="delete<?php echo $row['ID']?>"><i class="material-icons">delete</i>	</a></td>
 								<?php }else { ?>
 									<td></td>
 									<td></td>

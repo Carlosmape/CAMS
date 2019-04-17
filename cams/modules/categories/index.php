@@ -54,8 +54,8 @@ require "../../includes/sqlfunctions.php";
 										<td id="rowID<?php echo $patcat['ID']?>" class="rowID"><?php echo $patcat['ID']?></td>
 										<td id="rowParent<?php echo $patcat['ID']?>" class="rowParent"><?php echo $patcat['PARENTID']?></td>
 										<td id="rowTitle<?php echo $patcat['ID']?>" class="rowTitle"><?php echo $patcat['TITLE']?></td>
-										<td><a href="#" class="editCategory" id="editCategory<?php echo $patcat['ID']?>"><span class="glyphicon glyphicon-pencil"></span></a></td>
-										<td><a href="#" class="delete deleteCategory" id="deleteCaegory<?php echo $patcat['ID']?>"><span class="glyphicon glyphicon-trash"></span></a>
+										<td><a href="#" class="editCategory" id="editCategory<?php echo $patcat['ID']?>">			<i class="material-icons">visibility</i></a></td>
+										<td><a href="#" class="delete deleteCategory" id="deleteCaegory<?php echo $patcat['ID']?>">	<i class="material-icons">delete</i>	</a>
 										</td>
 									</tr> 
 								<?php 
