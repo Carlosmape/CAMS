@@ -9,14 +9,13 @@ require "../../includes/sqlfunctions.php";
 		if (isset($database)){
 			$articles = $database->getAllPages();
 			echo '<h1 class="page-header">Pages</h1>';?>
-				<form id="form" class="row" action="" method="post">
+				<form id="form" action="" method="post">
 					<div class="form-group col-md-2">
 						<input class="form-control btn btn-info" type="button" id="newArticle" name="newArticle" value="Add page">
 					</div>
 				</form>
 				<script src="modules/pages/functionsPages.js"></script>
 				<script src="includes/js/bootstrap.js"></script>
-
 			<?php
 			//will show articles info
 			//first open table head and body putting as columns as you need

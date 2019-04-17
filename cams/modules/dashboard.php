@@ -54,7 +54,6 @@ if (isset($_SESSION['connection']) && !$_SESSION['connection']->timeout()) { //y
 							$database = new Sqlconnection();
 							if (isset($database))
 							{
-								var_dump($database->getLastArticleID());
 								?>
 								<div class="row placeholders">
 									<div class="col-xs-6 col-sm-4 col-md-2 placeholder text-center">
