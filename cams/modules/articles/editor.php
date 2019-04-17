@@ -90,4 +90,4 @@ require "../../includes/sqlfunctions.php";
 		}
 	}
 ?>
-<script src="modules/pages/functionsArticles.js"></script>
+<script src="modules/articles/functionsArticles.js"></script>

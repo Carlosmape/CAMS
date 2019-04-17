@@ -10,7 +10,7 @@ require "../../includes/sqlfunctions.php";
 			//save method
 			if (isset($_POST['articleID'])){
 				$database->saveArticle($_POST['articleID'],$_POST['articleTitle'],$_POST['articleType'],$_POST['articleCategory'],$_POST['articleDate'],mysqli_real_escape_string($database->connection, $_POST['articleText']), $_POST['articleImage'], $_POST['autorID']);
-				$atabase->logRecord("EDIT",$_SESSION['connection']->userid,$_POST['articleID'],"ARTICLES");
+				$database->logRecord("EDIT",$_SESSION['connection']->userid,$_POST['articleID'],"ARTICLES");
 			}else{
 				$database->saveArticle('',$_POST['articleTitle'],$_POST['articleType'],$_POST['articleCategory'],$_POST['articleDate'],mysqli_real_escape_string($database->connection, $_POST['articleText']) , $_POST['articleImage'],$_POST['autorID']);
 				$row = $database->getLastArticleID();
