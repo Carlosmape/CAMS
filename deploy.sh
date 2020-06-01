@@ -24,7 +24,7 @@ if [ "$1" = "install" ]; then
 	echo "# Reloading lighttpd ..."
 	sudo service lighttpd stop && sudo service lighttpd start
 else
-	filesCopied=$(sudo rsync -av -P . $deploymentFolder --exclude /install)
+	filesCopied=$(sudo rsync -av -P . $deploymentFolder --exclude /install --exclude /cams/includes/config.php)
 fi
 
 # Shows user message
