@@ -1,6 +1,6 @@
 <?php
 	if (file_exists("install/index.php")){
-		echo "Aun no ha terminado la instalación. Ejecute suip/INSTALL en su navegador";
+		echo "CAMS is not totally instaled on the host. Please end installation before try to navigate the website";
 	}else{
 		require "blog/header.php";
 		

@@ -7,9 +7,14 @@
 #!/bin/bash
 
 if(sudo cp -r * /var/www/html/)then
-	echo "# CAMS files copied to /var/www/html/"
-fi
-if(sudo service lighttpd stop && sudo service lighttpd start) then
+
 	sudo chown -R www-data /var/www/html/*
+	echo "# CAMS files copied to /var/www/html/"
+	echo "# Reloading lighttpd ..."
+	sudo service lighttpd stop && sudo service lighttpd start
+
+else
+	echo "# CAMS ERROR: could not copy CAMS files to /var/www/html/"
 fi
+
 
