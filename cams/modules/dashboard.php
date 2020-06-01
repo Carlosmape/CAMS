@@ -3,7 +3,7 @@
 	 * Buttons functions are linked on /cams/includes/functions.js
 	 * If you want to add one button must keep examples in here
 	 * */
-	 require_once "includes/class/Connection.php";
+	 require_once "includes/class/connection.php";
 	 require_once "includes/sqlfunctions.php";
 	 require_once "modules/collector.php";
 if (isset($_SESSION['connection']) && !$_SESSION['connection']->timeout()) { //you are connected
