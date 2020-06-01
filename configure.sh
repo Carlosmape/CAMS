@@ -16,12 +16,12 @@ sudo chown www-data:www-data /var/log/lighttpd
 
 # Creating DataBase stuff
 # TODO: move lines to correspondant .sh script
-if(sudo mysqladmin create "CAMSDB") then
-  echo "# CAMS Default database created 'CAMSDB'"
-fi
+##if(sudo mysqladmin create "CAMSDB") then
+##  echo "# CAMS Default database created 'CAMSDB'"
+##fi
 
 # Copy needed files on correspondant sytem folder
-if(sudo ./deploy.sh) then
+if(sudo ./deploy.sh install) then
   # Remind user how to fix some issue if it appears after CAMS deploy
   echo "# CAMS has been configured!!"
   echo "| There are a few steps to end installation"
