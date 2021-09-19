@@ -1,5 +1,5 @@
 <?php
-  require_once "../../includes/class/Connection.php";
+  require_once "../../includes/class/connection.php";
 	require_once "../../includes/config.php";
 	require_once "../../includes/sqlfunctions.php"; 
 	
