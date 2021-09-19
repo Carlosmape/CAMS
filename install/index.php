@@ -32,8 +32,11 @@
 
       <div class="jumbotron">
         <h1>CAMS</h1>
-        <p class="lead">You are about to install CAMS in your website, a simple and flexible CMS. You can choose yor own existing database or creates new one </p>
-		<pre><?php phpinfo(); ?></pre>                
+		<p class="lead">You are about to install CAMS in your website, a simple and flexible CMS. You can choose yor own existing database or creates new one </p>
+		<a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">View PHP info</a>
+		<div class="collapse" id="collapseExample">
+			<pre><?php phpinfo(); ?></pre>                
+		</div>
 				<form id="form" class="row" action="setup.php" method="post">
 				<div class="form-group col-md-6">
 					<h3>Set up your website</h3>
