@@ -16,15 +16,15 @@ if (isset($_POST['setup'])){
 	$firstDataInserted = false;
 
 	//FIRST OF ALL SAVE CONFIG.PHP TO SAVE YOUR SITE CONFIG
-	echo ('Saving configuration to config.php\n');
+	echo ('Saving configuration to config.php</br>');
 	$configSaved = SaveConfig();
 	//SECOND PIT 
 	//CREATE TABLES TO ADMINISTRATE CAMS
-	echo ('Connecting to DDBB...\n');
+	echo ('Connecting to DDBB...</br>');
 	$connection = new mysqli($_POST['Host'], $_POST['User'], $_POST['Password']);
-	echo ('Creating DDBB for cams...\n');
+	echo ('Creating DDBB for cams...</br>');
 	$result = CreateDatabase($connection);
-	echo ('Deploying needed tables...\n');
+	echo ('Deploying needed tables...</br>');
 	$tablesCreated = CreateTablesStructures($connection);
     if (!$connection) {
 	echo "Error CAMS: Unable to connect to MySQL. Debugging errno: ".mysqli_connect_errno()."Debugging error: ".mysqli_connect_error();
