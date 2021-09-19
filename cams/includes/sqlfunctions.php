@@ -66,7 +66,8 @@
        return $result = $this->connection->query(" SELECT * FROM CATEGORIES;");
      }
      function countCategories(){
-       return $result = $this->connection->query(" SELECT COUNT(*) FROM CATEGORIES;");
+		 $result = $this->connection->query(" SELECT COUNT(*) FROM CATEGORIES;");
+		 return $result;
      }
      function getParentCategories(){
        return $result = $this->connection->query(" SELECT * FROM CATEGORIES WHERE PARENTID=0;");
