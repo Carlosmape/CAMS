@@ -22,15 +22,16 @@ if (isset($_POST['setup'])){
 	//CREATE TABLES TO ADMINISTRATE CAMS
 	echo ('Connecting to DDBB...</br>');
 	$connection = new mysqli($_POST['Host'], $_POST['User'], $_POST['Password']);
-	echo ('Creating DDBB for cams...</br>');
-	$result = CreateDatabase($connection);
-	echo ('Deploying needed tables...</br>');
-	$tablesCreated = CreateTablesStructures($connection);
     if (!$connection) {
 	echo "Error CAMS: Unable to connect to MySQL. Debugging errno: ".mysqli_connect_errno()."Debugging error: ".mysqli_connect_error();
-    }else{
-	if (CreateDefAdminUser($connection) && CreateSampleArticle($connection)){	
-		require_once "../cams/includes/config.php";
+	}else{	
+		echo ('Creating DDBB for cams...</br>');
+		$result = CreateDatabase($connection);
+		echo ('Deploying needed tables...</br>');
+		$tablesCreated = CreateTablesStructures($connection);
+
+		if (CreateDefAdminUser($connection) && CreateSampleArticle($connection)){	
+			require_once "../cams/includes/config.php";
 		?>
 			<!DOCTYPE html>
 			<html lang="en">
@@ -63,7 +64,7 @@ if (isset($_POST['setup'])){
 						<div class="jumbotron alert alert-success" role="alert">
 						<h1>CAMS <span class="glyphicon glyphicon-floppy-saved" aria-hidden="true"></span></h1>
 						<p class="lead">Good! installation done.</p>
-						<p class="lead">You can login with "admin" as user and password. We recomend you to create a new user and era admin one.</p>
+						<p class="lead">You can login with "Admin" as user and password. We recomend you to create a new user and era admin one.</p>
 						<p class="lead">Go <a href="../cams">login page</a></p>
 						</div>
 										
