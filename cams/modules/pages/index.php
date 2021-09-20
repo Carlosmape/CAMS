@@ -46,7 +46,7 @@ require "../../includes/sqlfunctions.php";
 								<td id="rowCategory<?php echo $row['ID']?>" class="rowCategory"><?php echo $row['CATEGORIES']?></td>
 								<td id="rowDate<?php echo $row['ID']?>" class="rowDate"><?php echo $row['DATE']?></td>
 								<?php if ($row['AUTOR']==$_SESSION['connection']->userid || $_SESSION['connection']->isAdmin()){ ?>
-									<td><a href="#" class="edit editArticle" id="edit<?php echo $row['ID']?>">		<i class="material-icons">visibility</i></a></td>
+									<td><a href="#" class="edit editArticle" id="edit<?php echo $row['ID']?>">		<i class="material-icons">edit</i></a></td>
 									<td><a href="#" class="delete deleteArticle" id="delete<?php echo $row['ID']?>"><i class="material-icons">delete</i>	</a></td>
 								<?php }else { ?>
 									<td></td>
