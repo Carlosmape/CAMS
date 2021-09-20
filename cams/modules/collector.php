@@ -10,11 +10,8 @@ function collectPlugins(){
 	}
 	return $plugins;
 }
-?>
 
-<script>
-window.onload = function() {
-	<?php function createPluginLink($item){ ?>
+function createPluginLink($item){ ?>
 	$("a#<?php echo $item; ?>").click(function(){
 		$.ajax({
 		type: "post",
@@ -28,6 +25,4 @@ window.onload = function() {
 			}
 		});
 	});
-	<?php }	?>
-}
-</script> 
+<?php }	?>
