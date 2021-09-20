@@ -20,7 +20,7 @@ require "../../includes/sqlfunctions.php";
 						<input class="form-control" type="password" id="Password" name="Password" placeholder="A Password ...">
 					</div>
 					<div class="form-group col-md-2">
-						<select class="form-control btn btn-default" type="number" id="Type" name="Type" placeholder="A type" required>
+						<select class="form-control btn-default" type="number" id="Type" name="Type" placeholder="A type" required>
 							<option value="1">User</option>
 							<option value="0">Admin</option>
 						</select>					
