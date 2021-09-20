@@ -13,7 +13,7 @@ filesCopied=false
 # Check if parameter "install" is passed then copy all files
 # if not, deploy all files less /install directory
 echo "# CAMS copying files necessary files into system"
-if [ $@ -ge 1 && "$1" != "install" ]; then
+if [ $@ -ge 1 ] && [ "$1" != "install" ]; then
 	
 	echo "This is a script to deploy CAMS into your system."
 	echo "Use 'install' param to deploy installation script too. (Site configuration will be override)."
