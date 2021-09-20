@@ -2,8 +2,7 @@ body {
   min-height: 100%;
 }
 .main, .sidebar{
-  height: 100%;
-  margin-top:55px;
+  margin-top:32px;
 }
 .sidebar{
   padding-left:0;
