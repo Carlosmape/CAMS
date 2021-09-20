@@ -58,27 +58,32 @@ if (isset($_SESSION['connection']) && !$_SESSION['connection']->timeout()) { //y
 								<div class="row placeholders">
 									<div class="col-xs-6 col-sm-4 col-md-2 placeholder text-center">
 										<i class="material-icons" style="font-size: 48px;">supervised_user_circle</i> 
-										<h4>Users - <span class="text-muted"><?php echo mysqli_fetch_array($database->countUsers())['COUNT(*)']?></span></h4>
+										<h4>Users</h4>
+										<span class="text-muted"><?php echo mysqli_fetch_array($database->countUsers())[0]?></span>
 									</div>
 									<div class="col-xs-6 col-sm-4 col-md-2 placeholder text-center">
 										<i class="material-icons" style="font-size: 48px;">insert_drive_file</i>
-										<h4>Pages - <span class="text-muted"><?php echo mysqli_fetch_array($database->countPages())['COUNT(*)']?></span></h4>
+										<h4>Pages</h4>
+										<span class="text-muted"><?php echo mysqli_fetch_array($database->countPages())[0]?></span>
 									</div>
 									<div class="col-xs-6 col-sm-4 col-md-2 placeholder text-center">
 										<i class="material-icons" style="font-size: 48px;">description</i>
-										<h4>Articles - <span class="text-muted"><?php echo mysqli_fetch_array($database->countArticles())['COUNT(*)']?></span></h4>
+										<h4>Articles</h4>
+										<span class="text-muted"><?php echo mysqli_fetch_array($database->countArticles())[0]?></span>
 									</div>
 									<div class="col-xs-6 col-sm-4 col-md-2 placeholder text-center">
 										<i class="material-icons" style="font-size: 48px;">category</i>
-										<h4>Categories - <span class="text-muted"><?php echo mysqli_fetch_array($database->countCategories())[0]?></span></h4>
+										<h4>Categories</h4>
+										<span class="text-muted"><?php echo mysqli_fetch_array($database->countCategories())[0]?></span>
 									</div>
 									<div class="col-xs-6 col-sm-4 col-md-2 placeholder text-center">
-									<i class="material-icons" style="font-size: 48px;">save</i>
-											<h4>Used space - <span class="text-muted"><?php 
-												function folderSize ($dir){
-													$size = 0;
-													foreach (glob(rtrim($dir, '/').'/*', GLOB_NOSORT) as $each) {
-															$size += is_file($each) ? filesize($each) : folderSize($each);
+										<i class="material-icons" style="font-size: 48px;">save</i>
+										<h4>Used space</h4>
+										<span class="text-muted"><?php 
+											function folderSize ($dir){
+												$size = 0;
+												foreach (glob(rtrim($dir, '/').'/*', GLOB_NOSORT) as $each) {
+													$size += is_file($each) ? filesize($each) : folderSize($each);
 													}
 													return $size;
 												}
@@ -87,7 +92,7 @@ if (isset($_SESSION['connection']) && !$_SESSION['connection']->timeout()) { //y
 												$base = 1024;
 												$class = min((int)log($bytes , $base) , count($si_prefix) - 1);
 												echo sprintf('%1.2f' , $bytes / pow($base,$class)) . ' ' . $si_prefix[$class];
-											?></span></h4>
+										?></span>
 									</div>
 								</div>
 								<hr>
