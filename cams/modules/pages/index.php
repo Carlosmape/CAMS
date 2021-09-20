@@ -40,12 +40,9 @@ require "../../includes/sqlfunctions.php";
 								<td id="rowID<?php echo $row['ID']?>" class="rowID"><?php echo $row['ID']?></td>
 								<td id="rowUser<?php echo $row['ID']?>" class="rowUser"><?php echo $row['TITLE']?></td>
 								<td id="rowType<?php echo $row['ID']?>" class="rowType">
-									<?php if($row['TYPE']==2){ ?>
-									<i class="material-icons">visibility_off</i>
-									<?php} else { ?>
-									<i class="material-icons">visibility_on</i>
-									<?php }
-								?></td>
+									<?php if($row['TYPE'] == 2){ ?><i class="material-icons">visibility_off</i>
+									<?php }else{ ?><i class="material-icons">visibility_on</i><?php } ?>
+								</td>
 								<td id="rowCategory<?php echo $row['ID']?>" class="rowCategory"><?php echo $row['CATEGORIES']?></td>
 								<td id="rowDate<?php echo $row['ID']?>" class="rowDate"><?php echo $row['DATE']?></td>
 								<?php if ($row['AUTOR']==$_SESSION['connection']->userid || $_SESSION['connection']->isAdmin()){ ?>
