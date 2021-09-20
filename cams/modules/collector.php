@@ -10,10 +10,11 @@
 		}
 		return $plugins;
 	}
-	function createPluginLink($item){
+
 		?>
 		<script>
 		window.onload = function() {
+<?php function createPluginLink($item){ ?>
 			$("a#<?php echo $item; ?>").click(function(){
 				//alert("Accediendo a <?php echo $item; ?>");
 				$.ajax({
