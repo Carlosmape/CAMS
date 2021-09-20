@@ -70,7 +70,7 @@ if (isset($_SESSION['connection']) && !$_SESSION['connection']->timeout()) { //y
 									</div>
 									<div class="col-xs-6 col-sm-4 col-md-2 placeholder text-center">
 										<i class="material-icons" style="font-size: 64px;">category</i>
-										<h4>Categories - <span class="text-muted"><?php echo mysqli_fetch_array($database->countCategories())['COUNT(*)']?></span></h4>
+										<h4>Categories - <span class="text-muted"><?php echo $database->countCategories();?></span></h4>
 									</div>
 									<div class="col-xs-6 col-sm-4 col-md-2 placeholder text-center">
 									<i class="material-icons" style="font-size: 64px;">save</i>
