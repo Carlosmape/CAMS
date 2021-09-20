@@ -11,8 +11,7 @@
     $userdefines = $alldefines['user'];
 		?>
 		<h1 class="page-header">Settings</h1>
-		<div class="alert alert-warning" role="alert"><strong>CAUTION!</strong> Edit that settings may broke your web site. Dont touch it if you have no idea about what are you doing!</div>
-		<form id="form" class="row" action="" method="post">
+				<form id="form" class="row" action="" method="post">
 			<div class="form-group col-md-6">
 				<h3>Set up your website</h3>
 				<label for="title" class="sr-only">Title</label>Title
@@ -39,7 +38,8 @@
 				<label for="dbpassword" class="sr-only">Password</label>Password
 				<input class="form-control" type="text" id="dbpassword" name="Password" value="<?php echo $userdefines['DBPASS'];?>">
 			</div>
-			<div class="form-group col-md-6">
+			<div class="form-group col-md-12">
+				<div class="alert alert-warning" role="alert"><strong>CAUTION!</strong> Edit that settings may broke your web site. Dont touch it if you have no idea about what are you doing!</div>
 				<label for="save" class="sr-only">Submit</label>
 				<input id="submitsettings" class="form-control btn btn-info" type="button"  name="submit" value="Save">
 			</div>
