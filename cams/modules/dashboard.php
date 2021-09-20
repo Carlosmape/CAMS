@@ -9,7 +9,7 @@
 if (isset($_SESSION['connection']) && !$_SESSION['connection']->timeout()) { //you are connected
 	$_SESSION['connection']->keepalive();
 ?>
-      <nav class="navbar navbar-dark bg-dark fixed-top navbar-expand-lg justify-content-between">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 				<a class="navbar-brand" href="<?php echo HOST;?>/cams/"><?php echo TITLE;?> panel</a>
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>

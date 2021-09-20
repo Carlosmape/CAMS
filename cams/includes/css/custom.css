@@ -1,9 +1,6 @@
 body {
   min-height: 100%;
 }
-.main, .sidebar{
-  margin-top:32px;
-}
 .sidebar{
   padding-left:0;
 }
