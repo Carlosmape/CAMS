@@ -100,4 +100,4 @@ require "../../includes/sqlfunctions.php";
 		}
 	}
 ?>
-<script src="modules/articles/functionsArticles.js"></script>
+<script src="modules/pages/functionsPages.js"></script>
