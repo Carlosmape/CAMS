@@ -22,10 +22,6 @@
 				<input class="form-control" type="text" id="language" name="Language" value="<?php echo LANGUAGE?>">
 				<label for="description" class="sr-only">Description</label>Description
 				<input class="form-control" type="text" id="description" name="Description" value="<?php echo DESCRIPTION?>">
-				<label for="Ganalyticsid" class="sr-only">Google Analytics ID</label>Google Analytics ID
-				<input class="form-control" type="text" id="Ganalyticsid" name="Ganalyticsid" value="<?php echo GANALYTICSID?>">
-				<label for="facebook" class="sr-only">Facebook</label>Facebook
-				<input class="form-control" type="text" id="facebook" name="Facebook" value="<?php echo FACEBOOK?>">
 			</div>
 			<div class="form-group col-md-6">
 				<h3>Set up your database connection</h3>
@@ -37,6 +33,13 @@
 				<input class="form-control" type="text" id="dbname" name="Databasename" value="<?php echo $userdefines['DBNAME'];?>">
 				<label for="dbpassword" class="sr-only">Password</label>Password
 				<input class="form-control" type="text" id="dbpassword" name="Password" value="<?php echo $userdefines['DBPASS'];?>">
+			</div>
+			<div class="form-group col-md-6">
+				<h3>External tools (work in progress)</h3>
+				<label for="Ganalyticsid" class="sr-only">Google Analytics ID</label>Google Analytics ID
+				<input class="form-control" type="text" id="Ganalyticsid" name="Ganalyticsid" value="<?php echo GANALYTICSID?>">
+				<label for="facebook" class="sr-only">Facebook</label>Facebook
+				<input class="form-control" type="text" id="facebook" name="Facebook" value="<?php echo FACEBOOK?>">
 			</div>
 			<div class="form-group col-md-12">
 				<div class="alert alert-warning" role="alert"><strong>CAUTION!</strong> Edit that settings may broke your web site. Dont touch it if you have no idea about what are you doing!</div>
