@@ -104,7 +104,7 @@ if (isset($_SESSION['connection']) && !$_SESSION['connection']->timeout()) { //y
 										
 											<?php 
 											$menu = $database->getMenuPages();
-											if(count($menu)!=0){
+											if(!empty(mysqli_fetch_array($menu))){
 												foreach($menu as $pages){
 													echo "<a target='_blank' href='/blog.php?post=".$pages['TITLE']."' type='button' class='btn btn-default'>".$pages['TITLE']."</a>";
 												}
@@ -120,7 +120,7 @@ if (isset($_SESSION['connection']) && !$_SESSION['connection']->timeout()) { //y
 									
 											<?php 
 											$menu = $database->getHiddenPages();
-											if(count($menu)!=0){
+											if(!empty(mysqli_fetch_array($menu))){
 												foreach($menu as $pages){
 													echo "<a target='_blank' href='/blog.php?post=".$pages['TITLE']."' type='button' class='btn btn-default'>".$pages['TITLE']."</a>";
 												}
