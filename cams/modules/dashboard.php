@@ -40,12 +40,13 @@ if (isset($_SESSION['connection']) && !$_SESSION['connection']->timeout()) { //y
               <li class="nav-item"><a class="nav-link" id="categories" href="#"><i class="material-icons">category</i></span> Categories</a></li>
               <li class="nav-item"><a class="nav-link" id="files" href="#"><i class="material-icons">folder_open</i></span> Files</a></li>
               <hr>
-              <?php $plugins = collectPlugins();
-								if (!empty($plugins)){
-									foreach ($plugins as $plugin){ ?>
-										<li class="nav-item"><a class="nav-link" id="<?php echo $plugin; ?>" href="#"><i class="material-icons">stars</i></span> <?php echo ucfirst($plugin); ?></a></li>
-									<?php }
-								} ?>
+				<?php $plugins = collectPlugins();
+					if (!empty($plugins)){
+						foreach ($plugins as $plugin){ ?>
+							<li class="nav-item"><a class="nav-link" id="<?php echo $plugin; ?>" href="#"><i class="material-icons">stars</i></span> <?php echo ucfirst($plugin); ?></a></li>
+						<?php }
+					} 
+				?>
             </ul>
           </div>
           <div class="col-sm-9 col-md-10 main">
