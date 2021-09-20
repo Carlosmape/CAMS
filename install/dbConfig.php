@@ -59,8 +59,7 @@ function CreateCategoriesTable($connection){
 		"CREATE TABLE IF NOT EXISTS `CATEGORIES`(
 		`ID` INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
 		`PARENTID` INT(11),
-		`TITLE` VARCHAR(32) UNIQUE,
-		CHECK (ID > 0));"); 
+		`TITLE` VARCHAR(32) UNIQUE;"); 
 	} catch(Exception $e){
 		throw $e;
 	}
