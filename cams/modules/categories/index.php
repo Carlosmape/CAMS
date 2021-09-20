@@ -14,12 +14,12 @@ require "../../includes/sqlfunctions.php";
 					<div class="form-group col-md-2">
 						<input class="form-control btn btn-info" type="button" id="Save" name="Save" value="Add category">
 					</div>
-					<div class="form-group col-md-4">
+					<div class="form-group col-md-5">
 						<input class="form-control" type="text" id="Title" name="Title" placeholder="A title ...">
 					</div>
-					<div class="form-group col-md-4 row">
+					<div class="form-group col-md-5 row">
 						<label class="col-form-label col-md-4" for="categoryParent">Parent</label>
-						<select class="form-control btn-default col-md-6" type="number" id="categoryParent" name="categoryParent" placeholder="A category...">
+						<select class="form-control btn-default col-md-8" type="number" id="categoryParent" name="categoryParent" placeholder="A category...">
 							<option value="0">-</option>
 							<?php 
 							foreach ($parentscategories as $patcat){
