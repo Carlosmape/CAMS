@@ -39,9 +39,12 @@ require "../../includes/sqlfunctions.php";
 							<tr>
 								<td id="rowID<?php echo $row['ID']?>" class="rowID"><?php echo $row['ID']?></td>
 								<td id="rowUser<?php echo $row['ID']?>" class="rowUser"><?php echo $row['TITLE']?></td>
-								<td id="rowMail<?php echo $row['ID']?>" class="rowMail"><?php echo $row['TYPE']?></td>
-								<td id="rowPass<?php echo $row['ID']?>" class="rowPass"><?php echo $row['CATEGORIES']?></td>
-								<td id="rowType<?php echo $row['ID']?>" class="rowType"><?php echo $row['DATE']?></td>
+								<td id="rowType<?php echo $row['ID']?>" class="rowType"><?php echo $row['TYPE']==2? 
+									"<i class="material-icons">visibility_off</i>"
+									:"<i class="material-icons">visibility_on</i>"
+								?></td>
+								<td id="rowCategory<?php echo $row['ID']?>" class="rowCategory"><?php echo $row['CATEGORIES']?></td>
+								<td id="rowDate<?php echo $row['ID']?>" class="rowDate"><?php echo $row['DATE']?></td>
 								<?php if ($row['AUTOR']==$_SESSION['connection']->userid || $_SESSION['connection']->isAdmin()){ ?>
 									<td><a href="#" class="edit editArticle" id="edit<?php echo $row['ID']?>">		<i class="material-icons">visibility</i></a></td>
 									<td><a href="#" class="delete deleteArticle" id="delete<?php echo $row['ID']?>"><i class="material-icons">delete</i>	</a></td>
