@@ -124,7 +124,7 @@ if (isset($_SESSION['connection']) && !$_SESSION['connection']->timeout()) { //y
 												foreach($menu as $pages){
 													echo "<a target='_blank' href='/blog.php?post=".$pages['TITLE']."' type='button' class='btn btn-default'>".$pages['TITLE']."</a>";
 												}
-											}esle{
+											}else{
 												echo "<a type='button' class='btn btn-default'>No Hidden pages found.</a>";
 											}
 											?>
