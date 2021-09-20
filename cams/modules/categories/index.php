@@ -17,9 +17,9 @@ require "../../includes/sqlfunctions.php";
 					<div class="form-group col-md-4">
 						<input class="form-control" type="text" id="Title" name="Title" placeholder="A title ...">
 					</div>
-					<div class="form-group col-md-4">
-						<label class="control-label col-md-4" for="categoryParent">Parent</label>
-						<select class="col-md-6 btn btn-default" type="number" id="categoryParent" name="categoryParent" placeholder="A category...">
+					<div class="form-group col-md-4 row">
+						<label class="col-form-label col-md-4" for="categoryParent">Parent</label>
+						<select class="form-control btn-default col-md-6" type="number" id="categoryParent" name="categoryParent" placeholder="A category...">
 							<option value="0">-</option>
 							<?php 
 							foreach ($parentscategories as $patcat){
