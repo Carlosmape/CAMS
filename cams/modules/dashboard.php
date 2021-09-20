@@ -120,6 +120,7 @@ if (isset($_SESSION['connection']) && !$_SESSION['connection']->timeout()) { //y
 									
 											<?php 
 											$menu = $database->getHiddenPages();
+											var_dump($menu);
 											if(!empty($menu)){
 												foreach($menu as $pages){
 													echo "<a target='_blank' href='/blog.php?post=".$pages['TITLE']."' type='button' class='btn btn-default'>".$pages['TITLE']."</a>";
