@@ -2,7 +2,7 @@
 /*
  * plugin.php 
  * 
- * Copyright 2017 Camape <cagrmape@gmail.com>
+ * Copyright 2021 Camape <cagrmape@gmail.com>
  * 
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -21,9 +21,18 @@
  * 
  * 
  */
+
+require "../../includes/class/connection.php";
+require "../../includes/config.php";
+require "../../includes/sqlfunctions.php";
 ?>
+
 <div>
 	<h1>A  traying Plugin</h1>
 	<h2>Hello World!</h2>
-	<p>This is an example of static plugin. No modules loaded and no PHP script running</p>
+	<p>This is an example of dynamic plugin. Some Modules loaded and PHP script running.</p>
+	<h3>Samples</h3>
+	<span>TODO: insert here some usage samples... </span>
+	<div>
+	</div>
 </div>
