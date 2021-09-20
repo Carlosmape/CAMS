@@ -57,23 +57,23 @@ if (isset($_SESSION['connection']) && !$_SESSION['connection']->timeout()) { //y
 								?>
 								<div class="row placeholders">
 									<div class="col-xs-6 col-sm-4 col-md-2 placeholder text-center">
-										<i class="material-icons" style="font-size: 64px;">supervised_user_circle</i> 
+										<i class="material-icons" style="font-size: 48px;">supervised_user_circle</i> 
 										<h4>Users - <span class="text-muted"><?php echo mysqli_fetch_array($database->countUsers())['COUNT(*)']?></span></h4>
 									</div>
 									<div class="col-xs-6 col-sm-4 col-md-2 placeholder text-center">
-										<i class="material-icons" style="font-size: 64px;">insert_drive_file</i>
+										<i class="material-icons" style="font-size: 48px;">insert_drive_file</i>
 										<h4>Pages - <span class="text-muted"><?php echo mysqli_fetch_array($database->countPages())['COUNT(*)']?></span></h4>
 									</div>
 									<div class="col-xs-6 col-sm-4 col-md-2 placeholder text-center">
-										<i class="material-icons" style="font-size: 64px;">description</i>
+										<i class="material-icons" style="font-size: 48px;">description</i>
 										<h4>Articles - <span class="text-muted"><?php echo mysqli_fetch_array($database->countArticles())['COUNT(*)']?></span></h4>
 									</div>
 									<div class="col-xs-6 col-sm-4 col-md-2 placeholder text-center">
-										<i class="material-icons" style="font-size: 64px;">category</i>
+										<i class="material-icons" style="font-size: 48px;">category</i>
 										<h4>Categories - <span class="text-muted"><?php echo mysqli_fetch_array($database->countCategories())['COUNT(*)']?></span></h4>
 									</div>
 									<div class="col-xs-6 col-sm-4 col-md-2 placeholder text-center">
-									<i class="material-icons" style="font-size: 64px;">save</i>
+									<i class="material-icons" style="font-size: 48px;">save</i>
 											<h4>Used space - <span class="text-muted"><?php 
 												function folderSize ($dir){
 													$size = 0;
