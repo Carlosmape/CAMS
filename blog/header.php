@@ -54,28 +54,27 @@
 	</script>
 	
     <!-- Navigation -->
-    <nav class="navbar navbar-dark bg-dark fixed-top navbar-expand-lg justify-content-between blogNavigator">
+    <nav class="navbar navbar-expand-lg navbar-darl bg-dark blogNavigator">
 
-        <a class="navbar-brand" href="<?php echo HOST;?>"><?php echo TITLE;?></a>
+		<a class="navbar-brand" href="<?php echo HOST;?>"><?php echo TITLE;?></a>
+
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="blogMenu nav navbar-nav navbar-right">
-                <?php 
+    		<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNav">
+
+    		<ul class="navbar-nav">
+				<?php 
                 $database = new Sqlconnection;//connect to database in order to extract users info
                 if (isset($database))
                     $menu = $database->getMenuPages();
                 if (isset($menu))
                 foreach($menu as $entry){?>
-                    <li>
-                        <a class="menuOption" href="/blog.php?post=<?php echo $entry['TITLE']?>"><?php echo $entry['TITLE']?></a>
+                    <li class="nav-item">
+                        <a class="nav-link menuOption" href="/blog.php?post=<?php echo $entry['TITLE']?>"><?php echo $entry['TITLE']?></a>
                     </li>
                 <?php }?>
             </ul>        
-            
-
             
         </div>
         <!-- /.navbar-collapse -->
