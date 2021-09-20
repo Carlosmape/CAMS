@@ -43,7 +43,7 @@ require "../../includes/sqlfunctions.php";
 									<?php if($row['TYPE'] == 2){ ?><i class="material-icons">visibility_off</i>
 									<?php }else{ ?><i class="material-icons">visibility_on</i><?php } ?>
 								</td>
-								<td id="rowCategory<?php echo $row['ID']?>" class="rowCategory"><?php echo $row['CATEGORIES']?></td>
+								<td id="rowCategory<?php echo $row['ID']?>" class="rowCategory"><?php echo $row['CATEGORY']?></td>
 								<td id="rowDate<?php echo $row['ID']?>" class="rowDate"><?php echo $row['DATE']?></td>
 								<?php if ($row['AUTOR']==$_SESSION['connection']->userid || $_SESSION['connection']->isAdmin()){ ?>
 									<td><a href="#" class="edit editArticle" id="edit<?php echo $row['ID']?>">		<i class="material-icons">edit</i></a></td>
