@@ -59,7 +59,7 @@ if (isset($_SESSION['connection']) && !$_SESSION['connection']->timeout()) { //i
 						<strong>Error!</strong> Can not write stettings
 						</div></div>';
 			}else{
-				$atabase->logRecord("SAVE",$_SESSION['connection']->userid,0,"SETTINGS");
+				$database->logRecord("SAVE",$_SESSION['connection']->userid,0,"SETTINGS");
 				echo '<div class="container-fluid"><div class="alert alert-success alert-dismissible col-md-12" role="alert">
 							<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 							<strong>Saved!</strong> Your settings have been saved!
