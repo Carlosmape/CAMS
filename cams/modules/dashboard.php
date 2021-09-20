@@ -104,8 +104,12 @@ if (isset($_SESSION['connection']) && !$_SESSION['connection']->timeout()) { //y
 										
 											<?php 
 											$menu = $database->getMenuPages();
-											foreach($menu as $pages){
-												echo "<a target='_blank' href='/blog.php?post=".$pages['TITLE']."' type='button' class='btn btn-default'>".$pages['TITLE']."</a>";
+											if(!empty($menu)){
+												foreach($menu as $pages){
+													echo "<a target='_blank' href='/blog.php?post=".$pages['TITLE']."' type='button' class='btn btn-default'>".$pages['TITLE']."</a>";
+												}
+											}else{
+												echo "<a type='button' class='btn btn-default'>No Pages found.</a>";
 											}
 											?>
 										</div>
@@ -116,8 +120,12 @@ if (isset($_SESSION['connection']) && !$_SESSION['connection']->timeout()) { //y
 									
 											<?php 
 											$menu = $database->getHiddenPages();
-											foreach($menu as $pages){
-												echo "<a target='_blank' href='/blog.php?post=".$pages['TITLE']."' type='button' class='btn btn-default'>".$pages['TITLE']."</a>";
+											if(!empty($menu)){
+												foreach($menu as $pages){
+													echo "<a target='_blank' href='/blog.php?post=".$pages['TITLE']."' type='button' class='btn btn-default'>".$pages['TITLE']."</a>";
+												}
+											}esle{
+												echo "<a type='button' class='btn btn-default'>No Hidden pages found.</a>";
 											}
 											?>
 										</div>
