@@ -12,9 +12,9 @@
 	}
 
 		?>
-		<script>
+<script>
 		window.onload = function() {
-<?php function createPluginLink($item){ ?>
+		<?php function createPluginLink($item){ ?>
 			$("a#<?php echo $item; ?>").click(function(){
 				//alert("Accediendo a <?php echo $item; ?>");
 				$.ajax({
@@ -28,10 +28,10 @@
 						 $(".main").html(response);
 						 $("table.table").tablesorter();
 					}
-
 				});
 			});
+		<?php
+			}
+		?>
 		}
-		</script> <?php
-	}
-?>
+</script> 
