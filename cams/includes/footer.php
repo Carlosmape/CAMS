@@ -9,11 +9,12 @@
 	<script src="includes/js/functions.js"></script>
 	<?php require_once "modules/collector.php";
 	$plugins = collectPlugins();
-	if (!empty($plugins)){
-		foreach ($plugins as $plugin){ ?>
-			<?php createPluginLink($plugin); ?>
-		<?php }
-	} ?>
-
+	if (!empty($plugins)){ ?>
+		<script>
+		<?php foreach ($plugins as $plugin){ 
+			createPluginLink($plugin);
+		} ?>
+		</script>
+	<?php } ?>
 </body>
 </html>
