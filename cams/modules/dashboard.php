@@ -57,27 +57,27 @@ if (isset($_SESSION['connection']) && !$_SESSION['connection']->timeout()) { //y
 							{
 								?>
 								<div class="row placeholders">
-									<div class="col-xs-6 col-sm-4 col-md-2 placeholder text-center">
+									<div class="col-xs-6 col-sm-4 col-md-2 placeholder text-center" data-toggle="tooltip" data-placement="bottom" title="Total users in your website">
 										<i class="material-icons" style="font-size: 48px;">supervised_user_circle</i> 
 										<h4>Users</h4>
 										<span class="text-muted"><?php echo mysqli_fetch_array($database->countUsers())[0]?></span>
 									</div>
-									<div class="col-xs-6 col-sm-4 col-md-2 placeholder text-center">
+									<div class="col-xs-6 col-sm-4 col-md-2 placeholder text-center" data-toggle="tooltip" data-placement="bottom" title="Total pages (public and hidden) in your website">
 										<i class="material-icons" style="font-size: 48px;">insert_drive_file</i>
 										<h4>Pages</h4>
 										<span class="text-muted"><?php echo mysqli_fetch_array($database->countPages())[0]?></span>
 									</div>
-									<div class="col-xs-6 col-sm-4 col-md-2 placeholder text-center">
+									<div class="col-xs-6 col-sm-4 col-md-2 placeholder text-center" data-toggle="tooltip" data-placement="bottom" title="Total articles in your website">
 										<i class="material-icons" style="font-size: 48px;">description</i>
 										<h4>Articles</h4>
 										<span class="text-muted"><?php echo mysqli_fetch_array($database->countArticles())[0]?></span>
 									</div>
-									<div class="col-xs-6 col-sm-4 col-md-2 placeholder text-center">
+									<div class="col-xs-6 col-sm-4 col-md-2 placeholder text-center" data-toggle="tooltip" data-placement="bottom" title="Total categories in your website">
 										<i class="material-icons" style="font-size: 48px;">category</i>
 										<h4>Categories</h4>
 										<span class="text-muted"><?php echo mysqli_fetch_array($database->countCategories())[0]?></span>
 									</div>
-									<div class="col-xs-6 col-sm-4 col-md-2 placeholder text-center">
+									<div class="col-xs-6 col-sm-4 col-md-2 placeholder text-center" data-toggle="tooltip" data-placement="bottom" title="Total used space by your website (whiout counting DDBB size)">
 										<i class="material-icons" style="font-size: 48px;">save</i>
 										<h4>Used space</h4>
 										<span class="text-muted"><?php 
@@ -98,7 +98,7 @@ if (isset($_SESSION['connection']) && !$_SESSION['connection']->timeout()) { //y
 								</div>
 								<hr>
 								<div class="row">	
-									<div class="col-md-6 col-xs-12">
+									<div class="col-md-6 col-xs-12" data-toggle="tooltip" data-placement="bottom" title="These are visible pages created in your website. Shown in blog's menu">
 										<h2>Blog menu</h2>
 										<div class="btn-group" role="group" aria-label="...">
 										
@@ -114,7 +114,7 @@ if (isset($_SESSION['connection']) && !$_SESSION['connection']->timeout()) { //y
 											?>
 										</div>
 									</div>
-									<div class="col-md-6 col-xs-12">
+									<div class="col-md-6 col-xs-12" data-toggle="tooltip" data-placement="bottom" title="These are hidden pages created in your website. These pages are accesible only with the URL, not shown in the blog's menu">
 										<h2>Hidden pages</h2>
 										<div class="btn-group" role="group" aria-label="...">
 									
