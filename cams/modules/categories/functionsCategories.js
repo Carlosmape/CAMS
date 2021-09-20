@@ -6,6 +6,7 @@ $("input#Save").click(function() {
 		url: 'modules/categories/createCategory.php',
 		data: formData,
 		success:function(response){
+			alert(response);
 			$.ajax({//refreshing the page
 				type: "post",
 				url: "modules/categories/index.php",
