@@ -7,10 +7,10 @@
 		$database = new Sqlconnection;//connect to database in order to extract users info
 		if (isset($database)){
 			if($database->addCategory(strip_tags($_POST['Title']), strip_tags($_POST['categoryParent']))){
-				echo "User added!";
+				echo "User Category added!";
 			}
 			else{
-				echo "Cant create user";
+				echo "Cant create category";
 			}
 		}else{
 		  echo "Error CAMS could not connect to your DATABASE";
