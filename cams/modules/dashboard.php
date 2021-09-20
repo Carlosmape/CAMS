@@ -96,29 +96,30 @@ if (isset($_SESSION['connection']) && !$_SESSION['connection']->timeout()) { //y
 									</div>
 								</div>
 								<hr>
-								
-								<div class="col-md-6 col-xs-12">
-									<h1>Blog menu</h1>
-									<div class="btn-group" role="group" aria-label="...">
+								<div class="row">	
+									<div class="col-md-6 col-xs-12">
+										<h2>Blog menu</h2>
+										<div class="btn-group" role="group" aria-label="...">
 										
-										<?php 
-										$menu = $database->getMenuPages();
-										foreach($menu as $pages){
-											echo "<a target='_blank' href='/blog.php?post=".$pages['TITLE']."' type='button' class='btn btn-default'>".$pages['TITLE']."</a>";
-										}
-										?>
+											<?php 
+											$menu = $database->getMenuPages();
+											foreach($menu as $pages){
+												echo "<a target='_blank' href='/blog.php?post=".$pages['TITLE']."' type='button' class='btn btn-default'>".$pages['TITLE']."</a>";
+											}
+											?>
+										</div>
 									</div>
-								</div>
-								<div class="col-md-6 col-xs-12">
-									<h1>Hidden pages</h1>
-									<div class="btn-group" role="group" aria-label="...">
-										
-										<?php 
-										$menu = $database->getHiddenPages();
-										foreach($menu as $pages){
-											echo "<a target='_blank' href='/blog.php?post=".$pages['TITLE']."' type='button' class='btn btn-default'>".$pages['TITLE']."</a>";
-										}
-										?>
+									<div class="col-md-6 col-xs-12">
+										<h2>Hidden pages</h2>
+										<div class="btn-group" role="group" aria-label="...">
+									
+											<?php 
+											$menu = $database->getHiddenPages();
+											foreach($menu as $pages){
+												echo "<a target='_blank' href='/blog.php?post=".$pages['TITLE']."' type='button' class='btn btn-default'>".$pages['TITLE']."</a>";
+											}
+											?>
+										</div>
 									</div>
 								</div>
 							</div>
