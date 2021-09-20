@@ -1,6 +1,4 @@
 <?php
-var_dump(($_SESSION['connection']));
-
 require_once "includes/class/connection.php";
 require_once "includes/config.php";
 require_once "includes/header.php";
