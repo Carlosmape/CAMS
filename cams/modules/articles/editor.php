@@ -31,7 +31,7 @@ require "../../includes/sqlfunctions.php";
 			
 			?>
 			<div class="row"></div>
-			<form action="" id="article">
+			<form action="" id="article" class="row">
 				<input type="text" name="articleID" value="<?php echo $id;?>" hidden>
 				<div class="form-group col-md-6">
 					<input type="hidden" name="autorID" value="<?php echo $_SESSION['connection']->userid;?>">
