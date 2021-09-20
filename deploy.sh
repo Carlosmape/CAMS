@@ -10,26 +10,38 @@
 deploymentFolder="/var/www/html"
 filesCopied=false
 
-CopyAndChangeOwn () {
-	return $(sudo rsync -av -P . $deploymentFolder &&
-	sudo chown -R www-data $deploymentFolder*)
-}
-
-
 # Check if parameter "install" is passed then copy all files
 # if not, deploy all files less /install directory
 echo "# CAMS copying files necessary files into system"
-if [ "$1" = "install" ]; then
-	filesCopied=$( CopyAndChangeOwn )
-	echo "# Reloading lighttpd ..."
-	sudo service lighttpd stop && sudo service lighttpd start
+if [ $@ -ge 1 && "$1" != "install" ]; then
+	
+	echo "This is a script to deploy CAMS into your system."
+	echo "Use 'install' param to deploy installation script too. (Site configuration will be override)."
+	exit 0;
+
+elif [ "$1" = "install" ]; then
+
+	filesCopied=$(sudo rsync -av -P . $deploymentFolder)
+
 else
+
 	filesCopied=$(sudo rsync -av -P . $deploymentFolder --exclude /install --exclude /cams/includes/config.php)
+
 fi
 
 # Shows user message
 if [ "$filesCopied" != false ]; then
+
 	echo "# CAMS files copied to $deploymentFolder"
+	sudo chown -R www-data $deploymentFolder*
+	echo "# Reloading lighttpd ..."
+	sudo service lighttpd stop && sudo service lighttpd start
+	echo "#CAMS Properly deployed! "
+	exit 0
+
 else
+
 	echo "# CAMS ERROR: could not copy CAMS files to $deploymentFolder"
+	exit 1
+
 fi
