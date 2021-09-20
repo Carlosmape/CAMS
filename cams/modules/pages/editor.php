@@ -1,5 +1,5 @@
 <?php
-require "../../includes/class/Connection.php";
+require "../../includes/class/connection.php";
 require "../../includes/config.php";
 require "../../includes/sqlfunctions.php";
 	
