@@ -62,7 +62,7 @@ class Sqlconnection {
 	}
 	/*ROLES*/
 	function getRoles(){
-		return $result = $this->connection->quey(" SELECT * FROM ROLES;");
+		return $result = $this->connection->query(" SELECT * FROM ROLES;");
 	}
 
 	/*CATEGORIES*/
