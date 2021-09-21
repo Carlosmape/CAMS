@@ -40,10 +40,10 @@ require "../../includes/sqlfunctions.php";
 							<?php if ($row['AUTOR']==$_SESSION['connection']->userid || $_SESSION['connection']->isAdmin()){ ?>
 							<tr>
 								<td id="rowID<?php echo $row['ID']?>" class="rowID"><?php echo $row['ID']?></td>
-								<td id="rowUser<?php echo $row['ID']?>" class="rowUser"><?php echo $row['TITLE']?></td>
-								<td id="rowMail<?php echo $row['ID']?>" class="rowMail"><?php echo $row['TYPE']?></td>
-								<td id="rowPass<?php echo $row['ID']?>" class="rowPass"><?php echo $row['CATEGORIES']?></td>
-								<td id="rowType<?php echo $row['ID']?>" class="rowType"><?php echo $row['DATE']?></td>
+								<td id="rowTitle<?php echo $row['ID']?>" class="rowTitle"><?php echo $row['TITLE']?></td>
+								<td id="rowType<?php echo $row['ID']?>" class="rowType"><?php echo $row['TYPE']?></td>
+								<td id="rowCategory<?php echo $row['ID']?>" class="rowCategory"><?php echo $row['CATEGORY']?></td>
+								<td id="rowDate<?php echo $row['ID']?>" class="rowDate"><?php echo $row['DATE']?></td>
 								<td><a href="#" class="edit editArticle" id="edit<?php echo $row['ID']?>"><i class="material-icons">edit</i></a></td>
 								<td><a href="#" class="delete deleteArticle" id="delete<?php echo $row['ID']?>"><i class="material-icons">delete</i></a></td>
 							</tr>
