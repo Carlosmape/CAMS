@@ -65,6 +65,14 @@ class Sqlconnection {
 		return $result = $this->connection->query(" SELECT * FROM ROLES;");
 	}
 
+	function countRoles(){
+		return $result = $this->connection->query(" SELECT COUNT(*) FROM ROLES;")
+	}
+
+	function addRole($name, $description){
+		return $result = $this->connection->query(" INSERT INTO `ROLES`(`NAME`, `DESCRIPTION`) VALUES ('$name', '$description');")
+	}
+
 	/*CATEGORIES*/
 	function getAllCategories(){
 		return $result = $this->connection->query(" SELECT * FROM CATEGORIES;");
