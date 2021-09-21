@@ -2,7 +2,7 @@ $("input#Save").click(function() {
 	var formData = $("form#form").serialize();
 	//alert(formData);
 	event.preventDefault();
-	if( $("form#form").checkValidity()) {
+	if( $("form#form")[0].checkValidity()) {
 	$.ajax({
 		type: 'POST',
 		url: 'modules/users/createUser.php',
