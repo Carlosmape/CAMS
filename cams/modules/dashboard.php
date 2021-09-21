@@ -1,11 +1,11 @@
 <?php 
-	/*
-	 * Buttons functions are linked on /cams/includes/functions.js
-	 * If you want to add one button must keep examples in here
-	 * */
-	 require_once "includes/class/connection.php";
-	 require_once "includes/sqlfunctions.php";
-	 require_once "modules/collector.php";
+/*
+ * Buttons functions are linked on /cams/includes/functions.js
+ * If you want to add one button must keep examples in here
+ * */
+require_once "includes/class/connection.php";
+require_once "includes/sqlfunctions.php";
+require_once "modules/collector.php";
 if (isset($_SESSION['connection']) && !$_SESSION['connection']->timeout()) { //you are connected
 	$_SESSION['connection']->keepalive();
 ?>
@@ -13,9 +13,9 @@ if (isset($_SESSION['connection']) && !$_SESSION['connection']->timeout()) { //y
 		<a class="navbar-brand" href="<?php echo HOST;?>/cams/"><?php echo TITLE;?> panel</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
-  		</button>
-  		<div class="collapse navbar-collapse" id="navbarNav">
-    		<ul class="navbar-nav">						
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNav">
+			<ul class="navbar-nav">						
 				<?php if ($_SESSION['connection']->isAdmin()) { ?> 
 				<li class="nav-item"><a class="nav-link"id="settings" href="#settings"><i class="material-icons"> settings </i></span> Settings</a></li>
 				<li class="nav-item"><a class="nav-link" id="log" href="#log"><i class="material-icons">library_books</i></span> Log</a></li>
@@ -24,38 +24,39 @@ if (isset($_SESSION['connection']) && !$_SESSION['connection']->timeout()) { //y
 				<li class="nav-item"><a class="nav-link" href="<?php echo HOST.'/cams/modules/logout.php';?>"><i class="material-icons">exit_to_app</i> Logout</a></li>
 			</ul>
 		</div>
-      </nav>
+	</nav>
 
-      <div class="container-fluid bg">
-        <div class="row">
-          <div class="col-sm-3 col-md-2 sidebar">
-            <ul class="nav flex-column">
-              <li class="nav-item"><a class="nav-link active" href="<?php echo HOST;?>/cams/"><i class="material-icons">dashboard</i></span> Overview</a></li>
-              <?php if ($_SESSION['connection']->isAdmin()) { ?> 
-								<li class="nav-item"><a class="nav-link" id="styles" href="#"><i class="material-icons">style</i></span> Styles</a></li>
-								<li class="nav-item"><a class="nav-link" id="users" href="#"><i class="material-icons">supervised_user_circle</i></span> Users</a></li>
-								<li class="nav-item"><a class="nav-link" id="pages" href="#"><i class="material-icons">insert_drive_file</i></span> Pages</a></li>
+	<div class="container-fluid bg">
+		<div class="row">
+			<div class="col-sm-3 col-md-2 sidebar">
+				<ul class="nav flex-column">
+			  	<li class="nav-item"><a class="nav-link active" href="<?php echo HOST;?>/cams/"><i class="material-icons">dashboard</i></span> Overview</a></li>
+			  <?php if ($_SESSION['connection']->isAdmin()) { ?> 
+				<li class="nav-item"><a class="nav-link" id="styles" href="#"><i class="material-icons">style</i></span> Styles</a></li>
+				<li class="nav-item"><a class="nav-link" id="users" href="#"><i class="material-icons">supervised_user_circle</i></span> Users</a></li>
+				<li class="nav-item"><a class="nav-link" id="roles" href="#"><i class="material-icons">manage_accounts</i></span> Roles</a></li>
+				<li class="nav-item"><a class="nav-link" id="pages" href="#"><i class="material-icons">insert_drive_file</i></span> Pages</a></li>
 							<?php } ?>
-              <li class="nav-item"><a class="nav-link" id="articles" href="#"><i class="material-icons">description</i></span> Articles</a></li>
-              <li class="nav-item"><a class="nav-link" id="categories" href="#"><i class="material-icons">category</i></span> Categories</a></li>
-              <li class="nav-item"><a class="nav-link" id="files" href="#"><i class="material-icons">folder_open</i></span> Files</a></li>
-              <hr>
-				<?php $plugins = collectPlugins();
-					if (!empty($plugins)){
-						foreach ($plugins as $plugin){ ?>
+			  <li class="nav-item"><a class="nav-link" id="articles" href="#"><i class="material-icons">description</i></span> Articles</a></li>
+			  <li class="nav-item"><a class="nav-link" id="categories" href="#"><i class="material-icons">category</i></span> Categories</a></li>
+			  <li class="nav-item"><a class="nav-link" id="files" href="#"><i class="material-icons">folder_open</i></span> Files</a></li>
+			  <hr>
+<?php $plugins = collectPlugins();
+if (!empty($plugins)){
+	foreach ($plugins as $plugin){ ?>
 							<li class="nav-item"><a class="nav-link" id="<?php echo $plugin; ?>" href="#"><i class="material-icons">stars</i></span> <?php echo ucfirst($plugin); ?></a></li>
-						<?php }
-					} 
-				?>
-            </ul>
-          </div>
-          <div class="col-sm-9 col-md-10 main">
-            <h1 class="page-header">Overview</h1>
-            <?php
-							$database = new Sqlconnection();
-							if (isset($database))
-							{
-								?>
+<?php }
+} 
+?>
+			</ul>
+		  </div>
+		  <div class="col-sm-9 col-md-10 main">
+			<h1 class="page-header">Overview</h1>
+<?php
+$database = new Sqlconnection();
+if (isset($database))
+{
+?>
 								<div class="row placeholders">
 									<div class="col-xs-6 col-sm-4 col-md-2 placeholder text-center" data-toggle="tooltip" data-placement="bottom" title="Total users in your website">
 										<i class="material-icons" style="font-size: 48px;">supervised_user_circle</i> 
@@ -81,19 +82,19 @@ if (isset($_SESSION['connection']) && !$_SESSION['connection']->timeout()) { //y
 										<i class="material-icons" style="font-size: 48px;">save</i>
 										<h4>Used space</h4>
 										<span class="text-muted"><?php 
-											function folderSize ($dir){
-												$size = 0;
-												foreach (glob(rtrim($dir, '/').'/*', GLOB_NOSORT) as $each) {
-													$size += is_file($each) ? filesize($each) : folderSize($each);
-													}
-													return $size;
-												}
-												$bytes = folderSize("../../");
-												$si_prefix = array( 'B', 'KB', 'MB', 'GB', 'TB', 'EB', 'ZB', 'YB' );
-												$base = 1024;
-												$class = min((int)log($bytes , $base) , count($si_prefix) - 1);
-												echo sprintf('%1.2f' , $bytes / pow($base,$class)) . ' ' . $si_prefix[$class];
-										?></span>
+	function folderSize ($dir){
+		$size = 0;
+		foreach (glob(rtrim($dir, '/').'/*', GLOB_NOSORT) as $each) {
+			$size += is_file($each) ? filesize($each) : folderSize($each);
+		}
+		return $size;
+	}
+	$bytes = folderSize("../../");
+	$si_prefix = array( 'B', 'KB', 'MB', 'GB', 'TB', 'EB', 'ZB', 'YB' );
+	$base = 1024;
+	$class = min((int)log($bytes , $base) , count($si_prefix) - 1);
+	echo sprintf('%1.2f' , $bytes / pow($base,$class)) . ' ' . $si_prefix[$class];
+?></span>
 									</div>
 								</div>
 								<hr>
@@ -101,45 +102,45 @@ if (isset($_SESSION['connection']) && !$_SESSION['connection']->timeout()) { //y
 									<div class="col-md-6 col-xs-12" data-toggle="tooltip" data-placement="bottom" title="These are visible pages created in your website. Shown in blog's menu">
 										<h2>Blog menu</h2>
 										<div class="btn-group" role="group" aria-label="...">
-										
-											<?php 
-											$menu = $database->getMenuPages();
-											if(!empty(mysqli_fetch_array($menu))){
-												foreach($menu as $pages){
-													echo "<a target='_blank' href='/blog.php?post=".$pages['TITLE']."' type='button' class='btn btn-default'>".$pages['TITLE']."</a>";
-												}
-											}else{
-												echo "<a type='button' class='btn btn-default'>No Pages found.</a>";
-											}
-											?>
+
+<?php 
+	$menu = $database->getMenuPages();
+	if(!empty(mysqli_fetch_array($menu))){
+		foreach($menu as $pages){
+			echo "<a target='_blank' href='/blog.php?post=".$pages['TITLE']."' type='button' class='btn btn-default'>".$pages['TITLE']."</a>";
+		}
+	}else{
+		echo "<a type='button' class='btn btn-default'>No Pages found.</a>";
+	}
+?>
 										</div>
 									</div>
 									<div class="col-md-6 col-xs-12" data-toggle="tooltip" data-placement="bottom" title="These are hidden pages created in your website. These pages are accesible only with the URL, not shown in the blog's menu">
 										<h2>Hidden pages</h2>
 										<div class="btn-group" role="group" aria-label="...">
-									
-											<?php 
-											$menu = $database->getHiddenPages();
-											if(!empty(mysqli_fetch_array($menu))){
-												foreach($menu as $pages){
-													echo "<a target='_blank' href='/blog.php?post=".$pages['TITLE']."' type='button' class='btn btn-default'>".$pages['TITLE']."</a>";
-												}
-											}else{
-												echo "<a type='button' class='btn btn-default'>No Hidden pages found.</a>";
-											}
-											?>
+
+<?php 
+	$menu = $database->getHiddenPages();
+	if(!empty(mysqli_fetch_array($menu))){
+		foreach($menu as $pages){
+			echo "<a target='_blank' href='/blog.php?post=".$pages['TITLE']."' type='button' class='btn btn-default'>".$pages['TITLE']."</a>";
+		}
+	}else{
+		echo "<a type='button' class='btn btn-default'>No Hidden pages found.</a>";
+	}
+?>
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
-					 <?php
-							}else{
-								echo "Error CAMS could not connect to your DATABASE";
-							}
-					?>
 <?php
-	}
+}else{
+	echo "Error CAMS could not connect to your DATABASE";
+}
 ?>
-						
+<?php
+}
+?>
+
