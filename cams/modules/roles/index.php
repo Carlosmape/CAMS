@@ -23,7 +23,7 @@ require "../../includes/sqlfunctions.php";
 					<div class="form-group col-md-2">
    						<select multiple class="form-control btn-default" type="number" id="Permission" name="Permission" placeholder="Permissions" >
 							<?php while($section = mysqli_fetch_array($sections)) { ?>
-							<option value=<?php echo $role['ID'] ?>><?php echo $section['ENTITY'] ?></option>
+							<option value=<?php echo $section['ID'] ?>><?php echo $section['ENTITY'] ?></option>
 							<?php } ?>
 						</select>					
 					</div>
