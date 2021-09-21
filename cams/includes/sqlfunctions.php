@@ -66,7 +66,7 @@ class Sqlconnection {
 	}
 
 	function countRoles(){
-		return $result = $this->connection->query(" SELECT COUNT(*) FROM ROLES;")
+		return $result = $this->connection->query(" SELECT COUNT(*) FROM ROLES;");
 	}
 
 	function addRole($name, $description){
