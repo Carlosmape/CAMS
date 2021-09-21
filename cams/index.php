@@ -36,8 +36,8 @@ try{
 } catch(Exception $ex) {
 	if(isset($database)){
 		$database->addLog($ex);
+	} else {
+		var_dump($ex);
 	}
-
-	var_dump($ex);
 }
 ?>
