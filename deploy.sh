@@ -31,8 +31,8 @@ if [ "$filesCopied" != false ]; then
 
 	tput setaf 2; echo "# CAMS files copied to $deploymentFolder"
 	sudo chown -R www-data $deploymentFolder*
-	tput setaf 2; echo "# Reloading lighttpd ..."
-	sudo service lighttpd stop && sudo service lighttpd start
+	#tput setaf 2; echo "# Reloading lighttpd ..."
+	#sudo service lighttpd stop && sudo service lighttpd start
 	tput setaf 2; echo "# CAMS Properly deployed! "
 	exit 0
 
