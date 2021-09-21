@@ -99,11 +99,12 @@ require "../../includes/sqlfunctions.php";
 						<label class="control-label col-sm-2" for="editDescription">Description:</label>
 						<input class="form-control col-sm-8" type="text" id="editDescription" name="editDescription" placeholder="">
 					</div>
-					<div class="form-group col-md-12">
+					<div class="form-group">
    						<label for="permission"="">Grant permissions to manage</label>
 						<span class="badge badge-info">Press CTRL to multiple selection</span>
 						<select multiple class="form-control btn-default" type="number" id="editPermission" name="editPermission[]" placeholder="Permissions" >
-							<?php while($section = mysqli_fetch_array($sections)) { ?>
+							<?php $sections = $database->getSections(); 
+							while($section = mysqli_fetch_array($sections)) { ?>
 							<option value=<?php echo $section['ID'] ?>><?php echo $section['ENTITY'] ?></option>
 							<?php } ?>
 						</select>					
