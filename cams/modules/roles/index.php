@@ -21,11 +21,11 @@ require "../../includes/sqlfunctions.php";
 						<input class="form-control" type="text" id="Description" name="Description" placeholder="A brief description ...">
 					</div>
 					<div class="form-group col-md-12">
-   						<label for="" "permission"="">Grant permissions to manage</label>
+   						<label for="Permission">Grant permissions to manage</label>
 						<span class="badge badge-info">Press CTRL to multiple selection</span>
 						<select multiple class="form-control btn-default" type="number" id="Permission" name="Permission[]" placeholder="Permissions" >
 							<?php while($section = mysqli_fetch_array($sections)) { ?>
-							<option value=<?php echo $section['ID'] ?>><?php echo $section['ENTITY'] ?></option>
+							<option value="<?php echo $section['ID'] ?>" <?php if($section['ENTITY']='ARTICLES') echo "selected" ?> ><?php echo $section['ENTITY'] ?></option>
 							<?php } ?>
 						</select>					
 					</div>
@@ -98,6 +98,15 @@ require "../../includes/sqlfunctions.php";
 					<div class="form-group">
 						<label class="control-label col-sm-2" for="editDescription">Description:</label>
 						<input class="form-control col-sm-8" type="text" id="editDescription" name="editDescription" placeholder="">
+					</div>
+					<div class="form-group col-md-12">
+   						<label for="permission"="">Grant permissions to manage</label>
+						<span class="badge badge-info">Press CTRL to multiple selection</span>
+						<select multiple class="form-control btn-default" type="number" id="editPermission" name="editPermission[]" placeholder="Permissions" >
+							<?php while($section = mysqli_fetch_array($sections)) { ?>
+							<option value=<?php echo $section['ID'] ?>><?php echo $section['ENTITY'] ?></option>
+							<?php } ?>
+						</select>					
 					</div>
 					<div class="form-group">
 						<button type="button" class="col-sm-offset-2 col-sm-4 btn btn-default" data-dismiss="modal">Cancel</button>
