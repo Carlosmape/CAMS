@@ -8,10 +8,10 @@ if (isset($_SESSION['connection']) && !$_SESSION['connection']->timeout() && $_S
 	if (isset($database)){
 		if($database->addRole(strip_tags($_POST['Name']), strip_tags($_POST['Description']))){
 			echo "Role added!";
-			$role = $database->getRole(strip_tags($_POST['Name']));
+			$role = mysqli_fetch_array($database->getRole(strip_tags($_POST['Name'])));
 			//Assign given permissions
 			foreach($_POST['Permission'] as $permission){
-				$database->addPermissionToRole($role['ID'], $permission);
+				$database->addPermissionToRole($role['ID'], strip_tags($permission));
 			}
 		}
 		else{
