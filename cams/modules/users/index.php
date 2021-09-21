@@ -26,7 +26,7 @@ require "../../includes/sqlfunctions.php";
 					<div class="form-group col-md-2">
 						<select class="form-control btn-default" type="number" id="Type" name="Type" placeholder="A type" required>
 							<?php while($role = mysqli_fetch_array($roles)) { ?>
-							<option value=<?php echo $role['ID'] ?>><?php echo $role['NAME'] ?>></option>
+							<option value=<?php echo $role['ID'] ?>><?php echo $role['NAME'] ?></option>
 							<?php } ?>
 						</select>					
 					</div>
