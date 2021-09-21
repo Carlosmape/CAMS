@@ -70,7 +70,7 @@ class Sqlconnection {
 	}
 
 	function addRole($name, $description){
-		return $result = $this->connection->query(" INSERT INTO `ROLES`(`NAME`, `DESCRIPTION`) VALUES ('$name', '$description');")
+		return $result = $this->connection->query(" INSERT INTO `ROLES`(`NAME`, `DESCRIPTION`) VALUES ('$name', '$description');");
 	}
 
 	/*CATEGORIES*/
