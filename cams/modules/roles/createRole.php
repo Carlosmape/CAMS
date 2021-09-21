@@ -8,7 +8,8 @@
 		if (isset($database)){
 			if($database->addRole(strip_tags($_POST['Name']), strip_tags($_POST['Description']))){
 				echo "Role added!";
-				$role = mysqli_fetch_array($database->getRole($_POST['Name']));
+				$role = $database->geRole($_POST['Name']);
+				var_dump($role);
 				//Assign given permissions
 				foreach($_POST['Permission'] as $permission){
 					$database->addPermissionToRole($role['ID'], $permission);
