@@ -17,11 +17,13 @@ require "../../includes/sqlfunctions.php";
 					<div class="form-group col-md-4">
 						<input required class="form-control" type="text" id="Name" name="Name" placeholder="A rolename ...">
 					</div>
-					<div class="form-group col-md-4">
+					<div class="form-group col-md-6">
 						<input class="form-control" type="text" id="Description" name="Description" placeholder="A brief description ...">
 					</div>
-					<div class="form-group col-md-2">
-   						<select multiple class="form-control btn-default" type="number" id="Permission" name="Permission" placeholder="Permissions" >
+					<div class="form-group col-md-12">
+   						<label for="" "permission"="">Grant permissions to manage</label>
+						<span class="badge badge-info">Press CTRL to multiple selection</span>
+						<select multiple class="form-control btn-default" type="number" id="Permission" name="Permission" placeholder="Permissions" >
 							<?php while($section = mysqli_fetch_array($sections)) { ?>
 							<option value=<?php echo $section['ID'] ?>><?php echo $section['ENTITY'] ?></option>
 							<?php } ?>
