@@ -6,7 +6,7 @@
 		$_SESSION['connection']->keepalive(); //refresh connection timeout
 		$database = new Sqlconnection;//connect to database in order to extract roles info
 		if (isset($database)){
-			var_dump($_POST['Permission']);
+			var_dump($_POST['Permission'][0]);
 			/*if($database->addRole(strip_tags($_POST['Name']), strip_tags($_POST['Description']))){
 				echo "Role added!";
 			}
