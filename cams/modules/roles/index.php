@@ -8,16 +8,24 @@ require "../../includes/sqlfunctions.php";
 		$database = new Sqlconnection;//connect to database in order to extract roles info
 		if (isset($database)){
 			$roles = $database->getRoles();
+			$sections = $database->getSections();
 			echo '<h1 class="page-header">Roles</h1>';?>
 				<form id="form" class="row" action="" method="post">
 					<div class="form-group col-md-2">
 						<input class="form-control btn btn-info" type="button" id="Save" name="Save" value="Add role">
 					</div>
-					<div class="form-group col-md-5">
+					<div class="form-group col-md-4">
 						<input required class="form-control" type="text" id="Name" name="Name" placeholder="A rolename ...">
 					</div>
-					<div class="form-group col-md-5">
+					<div class="form-group col-md-4">
 						<input class="form-control" type="text" id="Description" name="Description" placeholder="A brief description ...">
+					</div>
+					<div class="form-group col-md-2">
+   						<select multiple class="form-control btn-default" type="number" id="Permission" name="Permission" placeholder="Permissions" >
+							<?php while($section = mysqli_fetch_array($sections)) { ?>
+							<option value=<?php echo $role['ID'] ?>><?php echo $section['ENTITY'] ?></option>
+							<?php } ?>
+						</select>					
 					</div>
 				</form>
 			<?php
