@@ -54,7 +54,7 @@ require "../../includes/sqlfunctions.php";
 								<td id="rowID<?php echo $row['ID']?>" class="rowID"><?php echo $row['ID']?></td>
 								<td id="rowUser<?php echo $row['ID']?>" class="rowUser"><?php echo $row['USER']?></td>
 								<td id="rowMail<?php echo $row['ID']?>" class="rowMail"><?php echo $row['MAIL']?></td>
-								<td id="rowType<?php echo $row['ID']?>" class="rowType"><?php echo $row['NAME']?></td>
+								<td id="rowType<?php echo $row['ID']?>" class="rowType"><?php echo $row['ROLE']?></td>
 								<?php
 								if ($_SESSION['connection']->user == $row['USER']){?>
 									<td></td>
