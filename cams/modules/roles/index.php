@@ -17,7 +17,7 @@ require "../../includes/sqlfunctions.php";
 						<input required class="form-control" type="text" id="Name" name="Name" placeholder="A rolename ...">
 					</div>
 					<div class="form-group col-md-5">
-						<input required class="form-control" type="text" id="Description" name="Description" placeholder="A brief description ...">
+						<input class="form-control" type="text" id="Description" name="Description" placeholder="A brief description ...">
 					</div>
 				</form>
 			<?php
