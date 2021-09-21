@@ -6,12 +6,13 @@
 		$_SESSION['connection']->keepalive(); //refresh connection timeout
 		$database = new Sqlconnection;//connect to database in order to extract roles info
 		if (isset($database)){
-			if($database->addRole(strip_tags($_POST['Name']), strip_tags($_POST['Description']))){
+			var_dump($_POST['Permissions']);
+			/*if($database->addRole(strip_tags($_POST['Name']), strip_tags($_POST['Description']))){
 				echo "Role added!";
 			}
 			else{
 				echo "Cant create role";
-			}
+			}*/
 		}else{
 		  echo "Error CAMS could not connect to your DATABASE";
 		}
