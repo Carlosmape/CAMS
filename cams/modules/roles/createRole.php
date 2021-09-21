@@ -10,7 +10,7 @@
 				echo "Role added!";
 				$role = mysqli_fetch_array($database->getRole($_POST['Name']));
 				//Assign given permissions
-				foreach($permission in $_POST['Permission']){
+				foreach($_POST['Permission'] as $permission){
 					$database->addPermissionToRole($role['ID'], $permission);
 				}
 			}
