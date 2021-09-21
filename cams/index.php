@@ -35,7 +35,9 @@ try{
 	require ("includes/footer.php");
 } catch(Exception $ex) {
 	if(isset($database)){
-		$database->addLog($ex);
+		if(!$database->addLog($ex)){
+			mysqli_errno($database->connection);
+		}
 	} else {
 		var_dump($ex);
 	}
