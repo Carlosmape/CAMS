@@ -8,6 +8,7 @@ require "../../includes/sqlfunctions.php";
 		$database = new Sqlconnection;//connect to database in order to extract users info
 		if (isset($database)){
 			$users = $database->getAllUsers();
+			var_dump(mysqli_fetch_all($users));
 			$roles = $database->getRoles();
 			echo '<h1 class="page-header">Users</h1>';?>
 				<form id="form" class="row" action="" method="post">
