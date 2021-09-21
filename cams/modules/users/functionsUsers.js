@@ -1,6 +1,7 @@
 $("input#Save").click(function() {
 	var formData = $("form#form").serialize();
 	//alert(formData);
+	event.preventDefault();
 	if( $("form#form").checkValidity()) {
 	$.ajax({
 		type: 'POST',
@@ -21,7 +22,7 @@ $("input#Save").click(function() {
 			alert(thrownError);
 		}
 	})
-}
+	}
 });
 $("a.editUser").click(function() { //editing a user
 	//rellenamos el modal con los datos de este usuario
