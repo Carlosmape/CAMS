@@ -12,7 +12,7 @@ require "../../includes/sqlfunctions.php";
 			echo '<h1 class="page-header">Users</h1>';?>
 				<form id="form" class="row" action="" method="post">
 					<div class="form-group col-md-2">
-						<input class="form-control btn btn-info" type="submit" id="Save" name="Save" value="Add user">
+						<input class="form-control btn btn-info" type="button" id="Save" name="Save" value="Add user">
 					</div>
 					<div class="form-group col-md-2">
 						<input required class="form-control" type="text" id="Name" name="Name" placeholder="A username ...">
