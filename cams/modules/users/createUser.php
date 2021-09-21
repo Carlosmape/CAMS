@@ -6,7 +6,7 @@
 		$_SESSION['connection']->keepalive(); //refresh connection timeout
 		$database = new Sqlconnection;//connect to database in order to extract users info
 		if (isset($database)){
-			if($database->addUser(strip_tags($_POST['Name']), md5(strip_tags($_POST['Password'])), strip_tags($_POST['Type']))){
+			if($database->addUser(strip_tags($_POST['Name']), strip_tags($_POST['Mail']), md5(strip_tags($_POST['Password'])), strip_tags($_POST['Type']))){
 				echo "User added!";
 			}
 			else{
