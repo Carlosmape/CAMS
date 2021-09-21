@@ -14,13 +14,13 @@ require "../../includes/sqlfunctions.php";
 						<input class="form-control btn btn-info" type="button" id="Save" name="Save" value="Add user">
 					</div>
 					<div class="form-group col-md-2">
-						<input class="form-control" type="text" id="Name" name="Name" placeholder="A username ...">
+						<input required class="form-control" type="text" id="Name" name="Name" placeholder="A username ...">
 					</div>
 					<div class="form-group col-md-3">
-						<input class="form-control" type="email" id="Mail" name="Mail" placeholder="username@mail ...">
+						<input required class="form-control" type="email" id="Mail" name="Mail" placeholder="username@mail ...">
 					</div>
 					<div class="form-group col-md-3">
-						<input class="form-control" type="password" id="Password" name="Password" placeholder="A Password ...">
+						<input required class="form-control" type="password" id="Password" name="Password" placeholder="A Password ...">
 					</div>
 					<div class="form-group col-md-2">
 						<select class="form-control btn-default" type="number" id="Type" name="Type" placeholder="A type" required>
