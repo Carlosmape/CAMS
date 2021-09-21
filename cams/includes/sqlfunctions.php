@@ -60,6 +60,10 @@ class Sqlconnection {
 		echo mysqli_error($this->connection);
 		return $result;
 	}
+	/*ROLES*/
+	function getRoles(){
+		return $result = $this->connection->quey(" SELECT * FROM ROLES;")
+	}
 
 	/*CATEGORIES*/
 	function getAllCategories(){

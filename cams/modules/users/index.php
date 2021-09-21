@@ -8,6 +8,7 @@ require "../../includes/sqlfunctions.php";
 		$database = new Sqlconnection;//connect to database in order to extract users info
 		if (isset($database)){
 			$users = $database->getAllUsers();
+			$roles = $database->getRoles();
 			echo '<h1 class="page-header">Users</h1>';?>
 				<form id="form" class="row" action="" method="post">
 					<div class="form-group col-md-2">
@@ -24,8 +25,9 @@ require "../../includes/sqlfunctions.php";
 					</div>
 					<div class="form-group col-md-2">
 						<select class="form-control btn-default" type="number" id="Type" name="Type" placeholder="A type" required>
-							<option value="1">User</option>
-							<option value="0">Admin</option>
+							<?php while($role = mysqli_fetch_array($roles)) { ?>
+							<option value=<?php echo $role['ID'] ?>><?php echo $role['NAME'] ?>></option>
+							<?php } ?>
 						</select>					
 					</div>
 				</form>
