@@ -25,7 +25,7 @@ require "../../includes/sqlfunctions.php";
 						<span class="badge badge-info">Press CTRL to multiple selection</span>
 						<select multiple class="form-control btn-default" type="number" id="Permission" name="Permission[]" placeholder="Permissions" >
 							<?php while($section = mysqli_fetch_array($sections)) { ?>
-							<option value="<?php echo $section['ID'] ?>" <?php if($section['ENTITY']='ARTICLES') echo "selected" ?> ><?php echo $section['ENTITY'] ?></option>
+							<option value="<?php echo $section['ID'] ?>" <?php if($section['ENTITY']=='ARTICLES') echo "selected" ?> ><?php echo $section['ENTITY'] ?></option>
 							<?php } ?>
 						</select>					
 					</div>
