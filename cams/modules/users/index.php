@@ -8,7 +8,7 @@ require "../../includes/sqlfunctions.php";
 		$database = new Sqlconnection;//connect to database in order to extract users info
 		if (isset($database)){
 			$users = $database->getAllUsers();
-			var_dump(mysqli_fetch_all($users));
+			var_dump($users);
 			$roles = $database->getRoles();
 			echo '<h1 class="page-header">Users</h1>';?>
 				<form id="form" class="row" action="" method="post">
@@ -55,7 +55,7 @@ require "../../includes/sqlfunctions.php";
 								<td id="rowID<?php echo $row['ID']?>" class="rowID"><?php echo $row['ID']?></td>
 								<td id="rowUser<?php echo $row['ID']?>" class="rowUser"><?php echo $row['USER']?></td>
 								<td id="rowMail<?php echo $row['ID']?>" class="rowMail"><?php echo $row['MAIL']?></td>
-								<td id="rowType<?php echo $row['ID']?>" class="rowType"><?php echo $row['R.NAME']?></td>
+								<td id="rowType<?php echo $row['ID']?>" class="rowType"><?php echo $row['NAME']?></td>
 								<?php
 								if ($_SESSION['connection']->user == $row['USER']){?>
 									<td></td>
