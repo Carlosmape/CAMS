@@ -24,7 +24,7 @@ require "../../includes/sqlfunctions.php";
 						<input required class="form-control" type="password" id="Password" name="Password" placeholder="A Password ...">
 					</div>
 					<div class="form-group col-md-2">
-						<select class="form-control btn-default" type="number" id="Type" name="Type" placeholder="A type" required>
+						<select class="form-control btn-default" type="number" id="Type" name="Type" placeholder="A type" >
 							<?php while($role = mysqli_fetch_array($roles)) { ?>
 							<option value=<?php echo $role['ID'] ?>><?php echo $role['NAME'] ?></option>
 							<?php } ?>
