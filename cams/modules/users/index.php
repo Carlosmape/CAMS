@@ -54,15 +54,7 @@ require "../../includes/sqlfunctions.php";
 								<td id="rowID<?php echo $row['ID']?>" class="rowID"><?php echo $row['ID']?></td>
 								<td id="rowUser<?php echo $row['ID']?>" class="rowUser"><?php echo $row['USER']?></td>
 								<td id="rowMail<?php echo $row['ID']?>" class="rowMail"><?php echo $row['MAIL']?></td>
-								<td id="rowType<?php echo $row['ID']?>" class="rowType">
-									<?php 
-									if ($row['TYPE']==0)
-										echo "Admin";
-									else if($row['TYPE']==1){
-										echo "User";
-									}
-									?>
-								</td>
+								<td id="rowType<?php echo $row['ID']?>" class="rowType"><?php echo $row['R.NAME']?></td>
 								<?php
 								if ($_SESSION['connection']->user == $row['USER']){?>
 									<td></td>
