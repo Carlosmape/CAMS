@@ -9,7 +9,6 @@ if (isset($_SESSION['connection']) && !$_SESSION['connection']->timeout() && $_S
 		if($database->addRole(strip_tags($_POST['Name']), strip_tags($_POST['Description']))){
 			echo "Role added!";
 			$role = $database->getRole(strip_tags($_POST['Name']));
-			var_dump($role);
 			//Assign given permissions
 			foreach($_POST['Permission'] as $permission){
 				$database->addPermissionToRole($role['ID'], $permission);
