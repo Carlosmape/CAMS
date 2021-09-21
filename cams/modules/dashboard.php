@@ -3,6 +3,7 @@
  * Buttons functions are linked on /cams/includes/functions.js
  * If you want to add one button must keep examples in here
  * */
+throw new Exception("SampleError");
 require_once "includes/class/connection.php";
 require_once "includes/sqlfunctions.php";
 require_once "modules/collector.php";
