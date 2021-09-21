@@ -7,28 +7,17 @@ require "../../includes/sqlfunctions.php";
 		$_SESSION['connection']->keepalive(); //refresh connection timeout
 		$database = new Sqlconnection;//connect to database in order to extract roles info
 		if (isset($database)){
-			$roles = $database->getAllRoles();
 			$roles = $database->getRoles();
 			echo '<h1 class="page-header">Roles</h1>';?>
 				<form id="form" class="row" action="" method="post">
 					<div class="form-group col-md-2">
 						<input class="form-control btn btn-info" type="button" id="Save" name="Save" value="Add role">
 					</div>
-					<div class="form-group col-md-2">
+					<div class="form-group col-md-5">
 						<input required class="form-control" type="text" id="Name" name="Name" placeholder="A rolename ...">
 					</div>
-					<div class="form-group col-md-3">
-						<input required class="form-control" type="email" id="Mail" name="Mail" placeholder="rolename@mail ...">
-					</div>
-					<div class="form-group col-md-3">
-						<input required class="form-control" type="password" id="Password" name="Password" placeholder="A Password ...">
-					</div>
-					<div class="form-group col-md-2">
-						<select class="form-control btn-default" type="number" id="Type" name="Type" placeholder="A type" >
-							<?php while($role = mysqli_fetch_array($roles)) { ?>
-							<option value=<?php echo $role['ID'] ?>><?php echo $role['NAME'] ?></option>
-							<?php } ?>
-						</select>					
+					<div class="form-group col-md-5">
+						<input required class="form-control" type="text" id="Description" name="Description" placeholder="A brief description ...">
 					</div>
 				</form>
 			<?php
@@ -41,8 +30,8 @@ require "../../includes/sqlfunctions.php";
 						<tr>
 							<th>Id</th>
 							<th>Name</th>
-							<th>Mail</th>
-							<th>Type</th>
+							<th>Description</th>
+							<th>Permissions</th>
 							<th></th>
 							<th></th>
 						</tr>
@@ -52,19 +41,18 @@ require "../../includes/sqlfunctions.php";
 						while($row = mysqli_fetch_array($roles)) { ?>
 							<tr>
 								<td id="rowID<?php echo $row['ID']?>" class="rowID"><?php echo $row['ID']?></td>
-								<td id="rowRole<?php echo $row['ID']?>" class="rowRole"><?php echo $row['USER']?></td>
-								<td id="rowMail<?php echo $row['ID']?>" class="rowMail"><?php echo $row['MAIL']?></td>
-								<td id="rowType<?php echo $row['ID']?>" class="rowType"><?php echo $row['ROLE']?></td>
+								<td id="rowName<?php echo $row['ID']?>" class="rowRole"><?php echo $row['NAME']?></td>
+								<td id="rowDescription<?php echo $row['ID']?>" class="rowDescription"><?php echo $row['DESCRIPTION']?></td>
+								<td id="rowPermissions<?php echo $row['ID']?>" class="rowPermissions"></td>
 								<?php
-								if ($_SESSION['connection']->role == $row['USER']){?>
-									<td></td>
-									<td></td>
+								if (!$_SESSION['connection']->isAdmin()){?>
+								<td></td>
+								<td></td>
 								<?php }
 								else{?>
-									<td><a href="#" class="editRole" id="editRole<?php echo $row['ID']?>">				<i class="material-icons">edit</i></a></td>
-									<td><a href="#" class="delete deleteRole" id="deleteRole<?php echo $row['ID']?>">	<i class="material-icons">delete</i>	</a>
+								<td><a href="#" class="editRole" id="editRole<?php echo $row['ID']?>"><i class="material-icons">edit</i></a></td>
+								<td><a href="#" class="delete deleteRole" id="deleteRole<?php echo $row['ID']?>"><i class="material-icons">delete</i></a></td>
 								<?php }?>
-								</td>
 							</tr>
 						<?php }
 						echo '
