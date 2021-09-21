@@ -5,20 +5,20 @@ require "../../includes/sqlfunctions.php";
  
 	if (isset($_SESSION['connection']) && !$_SESSION['connection']->timeout() && $_SESSION['connection']->isAdmin()) { //if you are connected
 		$_SESSION['connection']->keepalive(); //refresh connection timeout
-		$database = new Sqlconnection;//connect to database in order to extract users info
+		$database = new Sqlconnection;//connect to database in order to extract roles info
 		if (isset($database)){
-			$users = $database->getAllUsers();
+			$roles = $database->getAllRoles();
 			$roles = $database->getRoles();
-			echo '<h1 class="page-header">Users</h1>';?>
+			echo '<h1 class="page-header">Roles</h1>';?>
 				<form id="form" class="row" action="" method="post">
 					<div class="form-group col-md-2">
-						<input class="form-control btn btn-info" type="button" id="Save" name="Save" value="Add user">
+						<input class="form-control btn btn-info" type="button" id="Save" name="Save" value="Add role">
 					</div>
 					<div class="form-group col-md-2">
-						<input required class="form-control" type="text" id="Name" name="Name" placeholder="A username ...">
+						<input required class="form-control" type="text" id="Name" name="Name" placeholder="A rolename ...">
 					</div>
 					<div class="form-group col-md-3">
-						<input required class="form-control" type="email" id="Mail" name="Mail" placeholder="username@mail ...">
+						<input required class="form-control" type="email" id="Mail" name="Mail" placeholder="rolename@mail ...">
 					</div>
 					<div class="form-group col-md-3">
 						<input required class="form-control" type="password" id="Password" name="Password" placeholder="A Password ...">
@@ -32,7 +32,7 @@ require "../../includes/sqlfunctions.php";
 					</div>
 				</form>
 			<?php
-			//will show users info
+			//will show roles info
 			//first open table head and body putting as columns as you need
 			echo '
 			<div class="table-responsive">
@@ -49,20 +49,20 @@ require "../../includes/sqlfunctions.php";
 					</thead>
 					<tbody>
 					';
-						while($row = mysqli_fetch_array($users)) { ?>
+						while($row = mysqli_fetch_array($roles)) { ?>
 							<tr>
 								<td id="rowID<?php echo $row['ID']?>" class="rowID"><?php echo $row['ID']?></td>
-								<td id="rowUser<?php echo $row['ID']?>" class="rowUser"><?php echo $row['USER']?></td>
+								<td id="rowRole<?php echo $row['ID']?>" class="rowRole"><?php echo $row['USER']?></td>
 								<td id="rowMail<?php echo $row['ID']?>" class="rowMail"><?php echo $row['MAIL']?></td>
 								<td id="rowType<?php echo $row['ID']?>" class="rowType"><?php echo $row['ROLE']?></td>
 								<?php
-								if ($_SESSION['connection']->user == $row['USER']){?>
+								if ($_SESSION['connection']->role == $row['USER']){?>
 									<td></td>
 									<td></td>
 								<?php }
 								else{?>
-									<td><a href="#" class="editUser" id="editUser<?php echo $row['ID']?>">				<i class="material-icons">edit</i></a></td>
-									<td><a href="#" class="delete deleteUser" id="deleteUser<?php echo $row['ID']?>">	<i class="material-icons">delete</i>	</a>
+									<td><a href="#" class="editRole" id="editRole<?php echo $row['ID']?>">				<i class="material-icons">edit</i></a></td>
+									<td><a href="#" class="delete deleteRole" id="deleteRole<?php echo $row['ID']?>">	<i class="material-icons">delete</i>	</a>
 								<?php }?>
 								</td>
 							</tr>
@@ -79,14 +79,14 @@ require "../../includes/sqlfunctions.php";
 ?>
 <!--MODAL WINDOW FOR EDITING USERS -->
   <!-- Modal -->
-<div class="modal fade" id="editUserModal" role="dialog">
+<div class="modal fade" id="editRoleModal" role="dialog">
 	<div class="modal-dialog">
 	
 		<!-- Modal content-->
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal">&times;</button>
-				<h4 class="modal-title">Editing user</h4>
+				<h4 class="modal-title">Editing role</h4>
 			</div>
 			<div class="modal-body">
 				<form id="editForm" class="form-horizontal col-md-12">
@@ -94,8 +94,8 @@ require "../../includes/sqlfunctions.php";
 						<input class="form-control col-sm-8" type="text" id="editID" name="editID" placeholder="" hidden required>
 					</div>
 					<div class="form-group">
-						<label class="control-label col-sm-2" for="email">User:</label>
-						<input class="form-control col-sm-8" type="text" id="editUser" name="editUser" placeholder="" required>
+						<label class="control-label col-sm-2" for="email">Role:</label>
+						<input class="form-control col-sm-8" type="text" id="editRole" name="editRole" placeholder="" required>
 					</div>
 					<div class="form-group">
 						<label class="control-label col-sm-2" for="email">Mail:</label>
@@ -108,7 +108,7 @@ require "../../includes/sqlfunctions.php";
 					<div class="form-group">
 						<label class="control-label col-sm-2" for="email">Type:</label>
 						<select class="form-control col-sm-8 btn btn-default" type="number" id="editType" name="editType" placeholder="A type" required>
-							<option value="1">User</option>
+							<option value="1">Role</option>
 							<option value="0">Admin</option>
 						</select>					
 					</div>						
@@ -124,7 +124,7 @@ require "../../includes/sqlfunctions.php";
 		
 	</div>
 </div>
-<div class="modal fade" id="deleteUserModal" role="dialog">
+<div class="modal fade" id="deleteRoleModal" role="dialog">
 	<div class="modal-dialog">
 		<!-- Modal content-->
 		<div class="modal-content">
@@ -141,4 +141,4 @@ require "../../includes/sqlfunctions.php";
 		
 	</div>
 </div>
-<script src="modules/users/functionsUsers.js"></script>
+<script src="modules/roles/functionsRoles.js"></script>
