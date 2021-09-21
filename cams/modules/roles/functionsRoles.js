@@ -7,6 +7,7 @@ $("input#Save").click(function() {
 		url: 'modules/roles/createRole.php',
 		data: formData,
 		success:function(response){
+			alert(response);
 			$.ajax({//refreshing the page
 				type: "post",
 				url: "modules/roles/index.php",
