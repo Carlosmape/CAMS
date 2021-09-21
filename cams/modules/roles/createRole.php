@@ -8,7 +8,7 @@
 		if (isset($database)){
 			if($database->addRole(strip_tags($_POST['Name']), strip_tags($_POST['Description']))){
 				echo "Role added!";
-				$role = $database->geRole($_POST['Name']);
+				$role = $database->getRole($_POST['Name']);
 				var_dump($role);
 				//Assign given permissions
 				foreach($_POST['Permission'] as $permission){
