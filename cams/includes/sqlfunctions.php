@@ -36,8 +36,8 @@ class Sqlconnection {
 			return $result;
 		}
 	}
-	function addUser($username, $userpass, $usertype){
-		$result = $this->connection->query("INSERT INTO `USERS`(`USER`, `MAIL`, `PASSWORD`, `TYPE`) VALUES ('$username',NULL ,'$userpass','$usertype')");
+	function addUser($username, $mail, $userpass, $usertype){
+		$result = $this->connection->query("INSERT INTO `USERS`(`USER`, `MAIL`, `PASSWORD`, `TYPE`) VALUES ('$username','$mail','$userpass','$usertype')");
 		echo mysqli_error($this->connection);
 		return $result;
 	}
