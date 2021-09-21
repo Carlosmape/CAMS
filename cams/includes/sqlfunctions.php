@@ -64,13 +64,27 @@ class Sqlconnection {
 	function getRoles(){
 		return $result = $this->connection->query(" SELECT * FROM ROLES;");
 	}
-
 	function countRoles(){
 		return $result = $this->connection->query(" SELECT COUNT(*) FROM ROLES;");
 	}
-
 	function addRole($name, $description){
 		return $result = $this->connection->query(" INSERT INTO `ROLES`(`NAME`, `DESCRIPTION`) VALUES ('$name', '$description');");
+	}
+
+	/*SECTIONS*/
+	function getSections(){
+		return $result = $this->connection->query(" SELECT * FROM SECTIONS;");
+	}
+
+	/*PERMISSIONS*/
+	function getPermissionsPerRole($role){
+		return $result = $this->connection->query(" SELECT * FROM ROLES_PERMISSIONS WHERE `ID_ROLE` = '$role'");
+	}
+	function addPermissionToRole($role, $permission){
+		return $result = $this->connection->query(" INSERT INTO `ROLES_PERMISSIONS` (`ID_ROLE`, `ID_PERMISSION`) VALUES ('$role', '$permission');");
+	}
+	function deletePermissionFromRole($role, $permission){
+		return $result = $this->connection->query("DELETE FROM `ROLES_PERMISSIONS` WHERE `ID_ROLE` = '$role' AND `ID_PERMISSION` = '$permission';");
 	}
 
 	/*CATEGORIES*/
