@@ -18,7 +18,7 @@ class Sqlconnection {
 
 	/*USERS*/
 	function getAllUsers(){
-		return $result = $this->connection->query(" SELECT * FROM USERS;");
+		return $result = $this->connection->query(" SELECT * FROM USERS AS U INNER JOIN ROLES AS R ON (U.TYPE = R.ID);");
 	}
 	function getUser($username){
 		return $result = $this->connection->query(" SELECT * FROM USERS WHERE USER='$username';");
