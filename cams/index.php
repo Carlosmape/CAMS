@@ -36,7 +36,7 @@ try{
 } catch(Exception $ex) {
 	if(isset($database)){
 		if(!$database->addLog($ex)){
-			mysqli_errno($database->connection);
+			var_dump(mysqli_errno($database->connection));
 		}
 	} else {
 		var_dump($ex);
