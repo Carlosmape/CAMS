@@ -195,7 +195,7 @@ class Sqlconnection {
 	function addLog(Exception $exception){
 		$level = LogLevels::ERROR;
 		$date = new DateTime();
-		return $result = $result = $this->connection->query("INSERT INTO `log` (`ID`, `LEVEL`, `MESSAGE`, `FILE`, `LINE`, `PROCCESS`, `SESSION_VALUE`, `DATE`) 
+		return $result = $result = $this->connection->query("INSERT INTO `LOG` (`ID`, `LEVEL`, `MESSAGE`, `FILE`, `LINE`, `PROCCESS`, `SESSION_VALUE`, `DATE`) 
 			VALUES (NULL, '$level', '".$exception->getMessage()."', '".$exception->getFile()."', '".$exception->getLine()."', '', '".serialize($_SESSION)."', '".$date->format('Y-m-d H:i:s')."')");
 	}
 	#endregion
