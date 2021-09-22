@@ -19,7 +19,7 @@ require "../../includes/sqlfunctions.php";
 			$childcategories = $database->getChildCategories();
 			if(isset($_POST['ID'])){
 				$id=$_POST['ID'];
-				$result = $database->getArticle($id);
+				$result = $database->getPage($id);
 				$row =mysqli_fetch_array($result);	
 				$title=$row['TITLE'];
 				$type=$row['TYPE'];

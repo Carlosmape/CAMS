@@ -123,22 +123,22 @@ class Sqlconnection {
 
 	/*PAGES AND ARTICLES*/
 	function getMenuPages(){
-		return $result = $this->connection->query(" SELECT * FROM `ARTICLES` WHERE TYPE=0 ORDER BY `DATE` DESC, `ID` DESC;");
+		return $result = $this->connection->query(" SELECT * FROM `PAGES` WHERE TYPE=0 ORDER BY `DATE` DESC, `ID` DESC;");
 	}
 	function getHiddenPages(){
-		return $result = $this->connection->query(" SELECT * FROM `ARTICLES` WHERE TYPE=2 ORDER BY `DATE` DESC, `ID` DESC;");
+		return $result = $this->connection->query(" SELECT * FROM `PAGES` WHERE TYPE=2 ORDER BY `DATE` DESC, `ID` DESC;");
 	}
 	function getAllArticles(){
 		return $result = $this->connection->query(" SELECT * FROM `ARTICLES` WHERE TYPE=1 ORDER BY `DATE` DESC, `ID` DESC;");
 	}
 	function getAllPages(){
-		return $result = $this->connection->query(" SELECT * FROM `ARTICLES` WHERE TYPE!=1 ORDER BY `DATE` DESC, `ID` DESC;");
+		return $result = $this->connection->query(" SELECT * FROM `PAGES` WHERE TYPE!=1 ORDER BY `DATE` DESC, `ID` DESC;");
 	}
 	function countArticles(){
 		return $result = $this->connection->query(" SELECT COUNT(*) FROM ARTICLES WHERE TYPE=1;");
 	}
 	function countPages(){
-		return $result = $this->connection->query(" SELECT COUNT(*) FROM ARTICLES WHERE TYPE!=1;");
+		return $result = $this->connection->query(" SELECT COUNT(*) FROM PAGES WHERE TYPE!=1;");
 	}
 	function getRandomArticles(){
 		return $result = $this->connection->query(" SELECT TITLE,IMAGEHEADER FROM ARTICLES WHERE TYPE=1 ORDER BY RAND() LIMIT 6;");
@@ -156,6 +156,9 @@ class Sqlconnection {
 	function getArticle($id){
 		return $result = $this->connection->query(" SELECT * FROM `ARTICLES` WHERE `ID`=$id;");
 	}
+	function getPage($id){
+		return $result = $this->connection->query(" SELECT * FROM `PAGES` WHERE `ID`=$id;");
+	}	
 	function getArticleByTITLE($title){
 		return $result = $this->connection->query(" SELECT TITLE,DATE,IMAGEHEADER,CONTENT,TYPE FROM `ARTICLES` WHERE `TITLE`='$title';");
 	}
@@ -164,6 +167,11 @@ class Sqlconnection {
 		echo mysqli_error($this->connection);
 		return $result;
 	}
+	function deletePage($id){
+		$result = $this->connection->query("DELETE FROM `PAGES` WHERE `ID`=$id;");
+		echo mysqli_error($this->connection);
+		return $result;
+	}	
 	function getLastArticleID(){
 		$result = $this->connection->query("SELECT MAX(ID) FROM ARTICLES;");
 		echo mysqli_error($this->connection);
@@ -174,6 +182,15 @@ class Sqlconnection {
 			$result = $this->connection->query("UPDATE `ARTICLES` SET `TITLE`='$title',`TYPE`=$type,`CATEGORIES`='$category',`CONTENT`='$text',`IMAGEHEADER`='$imagepath' WHERE `ID`=$id;");
 		}else{	//create ONE
 			$result = $this->connection->query("INSERT INTO `ARTICLES`(`ID`, `TITLE`, `TYPE`, `CATEGORIES`, `DATE`, `CONTENT`, `IMAGEHEADER`, `AUTOR`) VALUES (NULL, '$title','$type','$category','$date','$text','$imagepath','$autor')");
+		}
+		echo mysqli_error($this->connection);
+		return $result;
+	}
+	function savePage($id,$title, $type, $category, $date, $text, $imagepath, $autor){
+		if(!empty($id)){ //modify A NEW ARTICLE
+			$result = $this->connection->query("UPDATE `PAGES` SET `TITLE`='$title',`TYPE`=$type,`CATEGORIES`='$category',`CONTENT`='$text',`IMAGEHEADER`='$imagepath' WHERE `ID`=$id;");
+		}else{	//create ONE
+			$result = $this->connection->query("INSERT INTO `PAGES`(`ID`, `TITLE`, `TYPE`, `CATEGORIES`, `DATE`, `CONTENT`, `IMAGEHEADER`, `AUTOR`) VALUES (NULL, '$title','$type','$category','$date','$text','$imagepath','$autor')");
 		}
 		echo mysqli_error($this->connection);
 		return $result;
