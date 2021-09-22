@@ -53,7 +53,7 @@ require "../../includes/sqlfunctions.php";
 				<div class="form-group col-md-6">
 					<label class="control-label col-md-2" for="articleCategory">Category</label>
 					<select class="form-control col-md-12" type="number" id="articleCategory" name="articleCategory" placeholder="A category...">
-						<option value="0">-</option>
+					<option value="NULL" <?php if ($category=="NULL") echo "selected";?>>None</option>
 						<?php 
 						foreach ($parentscategories as $patcat){
 							?>
