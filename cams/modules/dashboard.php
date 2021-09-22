@@ -9,7 +9,6 @@ require_once "includes/sqlfunctions.php";
 require_once "modules/collector.php";
 if (isset($_SESSION['connection']) && !$_SESSION['connection']->timeout()) { //you are connected
 	$_SESSION['connection']->keepalive();
-throw new Exception("SampleError");
 ?>
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 		<a class="navbar-brand" href="<?php echo HOST;?>/cams/"><?php echo TITLE;?> panel</a>
