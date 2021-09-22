@@ -99,10 +99,10 @@ class Sqlconnection {
 		return $result = $this->connection->query(" SELECT COUNT(*) FROM CATEGORIES;");
 	}
 	function getParentCategories(){
-		return $result = $this->connection->query(" SELECT * FROM CATEGORIES WHERE PARENTID=0;");
+		return $result = $this->connection->query(" SELECT * FROM CATEGORIES WHERE PARENTID IS NULL;");
 	}
 	function getChildCategories(){
-		return $result = $this->connection->query(" SELECT * FROM CATEGORIES WHERE PARENTID>0 ORDER BY PARENTID;");
+		return $result = $this->connection->query(" SELECT * FROM CATEGORIES WHERE PARENTID IS NOT NULL ORDER BY PARENTID;");
 	}
 	function addCategory($title, $parentid){
 		$result = $this->connection->query("INSERT INTO `CATEGORIES`(`PARENTID`, `TITLE`) VALUES ($parentid ,'$title');");
