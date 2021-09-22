@@ -48,16 +48,15 @@ require "../../includes/sqlfunctions.php";
 					</thead>
 					<tbody>
 					';
-							foreach ($parentscategories as $patcat){
-								?>
-									<tr>
-										<td id="rowID<?php echo $patcat['ID']?>" class="rowID"><?php echo $patcat['ID']?></td>
-										<td id="rowParent<?php echo $patcat['ID']?>" class="rowParent"><?php echo $patcat['PARENTID']?></td>
-										<td id="rowTitle<?php echo $patcat['ID']?>" class="rowTitle"><?php echo $patcat['TITLE']?></td>
-										<td><a href="#" class="editCategory" id="editCategory<?php echo $patcat['ID']?>">			<i class="material-icons">edit</i></a></td>
-										<td><a href="#" class="delete deleteCategory" id="deleteCaegory<?php echo $patcat['ID']?>">	<i class="material-icons">delete</i>	</a>
-										</td>
-									</tr> 
+							foreach ($parentscategories as $patcat){ ?>
+								<tr>
+									<td id="rowID<?php echo $patcat['ID']?>" class="rowID"><?php echo $patcat['ID']?></td>
+									<td id="rowParent<?php echo $patcat['ID']?>" class="rowParent"><?php echo $patcat['PARENTID']?></td>
+									<td id="rowTitle<?php echo $patcat['ID']?>" class="rowTitle"><?php echo $patcat['TITLE']?></td>
+									<td><a href="#" class="editCategory" id="editCategory<?php echo $patcat['ID']?>"><i class="material-icons">edit</i></a></td>
+									<td><a href="#" class="delete deleteCategory" id="deleteCaegory<?php echo $patcat['ID']?>"><i class="material-icons">delete</i></a>
+									</td>
+								</tr> 
 								<?php 
 								foreach ($childcategories as $chicat){
 									if($patcat['ID'] == $chicat['PARENTID']){
