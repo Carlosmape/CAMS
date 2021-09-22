@@ -23,7 +23,7 @@ require "../../includes/sqlfunctions.php";
 				$row =mysqli_fetch_array($result);	
 				$title=$row['TITLE'];
 				$type=$row['TYPE'];
-				$category=$row['CATEGORIES'];
+				$category=$row['CATEGORY'];
 				$date=$row['DATE'];
 				$text=$row['CONTENT'];
 				$image=$row['IMAGEHEADER'];
