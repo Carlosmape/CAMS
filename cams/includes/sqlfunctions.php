@@ -179,18 +179,18 @@ class Sqlconnection {
 	}
 	function saveArticle($id,$title, $type, $category, $date, $text, $imagepath, $autor){
 		if(!empty($id)){ //modify A NEW ARTICLE
-			$result = $this->connection->query("UPDATE `ARTICLES` SET `TITLE`='$title',`TYPE`=$type,`CATEGORY`='$category',`CONTENT`='$text',`IMAGEHEADER`='$imagepath' WHERE `ID`=$id;");
+			$result = $this->connection->query("UPDATE `ARTICLES` SET `TITLE`='$title',`TYPE`=$type,`CATEGORY`=$category,`CONTENT`='$text',`IMAGEHEADER`='$imagepath' WHERE `ID`=$id;");
 		}else{	//create ONE
-			$result = $this->connection->query("INSERT INTO `ARTICLES`(`ID`, `TITLE`, `TYPE`, `CATEGORY`, `DATE`, `CONTENT`, `IMAGEHEADER`, `AUTOR`) VALUES (NULL, '$title','$type','$category','$date','$text','$imagepath','$autor')");
+			$result = $this->connection->query("INSERT INTO `ARTICLES`(`ID`, `TITLE`, `TYPE`, `CATEGORY`, `DATE`, `CONTENT`, `IMAGEHEADER`, `AUTOR`) VALUES (NULL, '$title','$type',$category,'$date','$text','$imagepath','$autor')");
 		}
 		echo mysqli_error($this->connection);
 		return $result;
 	}
 	function savePage($id,$title, $type, $category, $date, $text, $imagepath, $autor){
 		if(!empty($id)){ //modify A NEW ARTICLE
-			$result = $this->connection->query("UPDATE `PAGES` SET `TITLE`='$title',`TYPE`=$type,`CATEGORY`='$category',`CONTENT`='$text',`IMAGEHEADER`='$imagepath' WHERE `ID`=$id;");
+			$result = $this->connection->query("UPDATE `PAGES` SET `TITLE`='$title',`TYPE`=$type,`CATEGORY`=$category,`CONTENT`='$text',`IMAGEHEADER`='$imagepath' WHERE `ID`=$id;");
 		}else{	//create ONE
-			$result = $this->connection->query("INSERT INTO `PAGES`(`ID`, `TITLE`, `TYPE`, `CATEGORY`, `DATE`, `CONTENT`, `IMAGEHEADER`, `AUTOR`) VALUES (NULL, '$title','$type','$category','$date','$text','$imagepath','$autor')");
+			$result = $this->connection->query("INSERT INTO `PAGES`(`ID`, `TITLE`, `TYPE`, `CATEGORY`, `DATE`, `CONTENT`, `IMAGEHEADER`, `AUTOR`) VALUES (NULL, '$title','$type',$category,'$date','$text','$imagepath','$autor')");
 		}
 		echo mysqli_error($this->connection);
 		return $result;
