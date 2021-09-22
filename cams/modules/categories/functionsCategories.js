@@ -1,25 +1,29 @@
 $("input#Save").click(function() {
 	var formData = $("form#form").serialize();
 	//alert(formData);
-	$.ajax({
-		type: 'POST',
-		url: 'modules/categories/createCategory.php',
-		data: formData,
-		success:function(response){
-			$.ajax({//refreshing the page
-				type: "post",
-				url: "modules/categories/index.php",
-				success: function(refresh){ //si recibimos respuesta, quitamos el anterior artículo y colocamos el uevo
-					 $(".main").empty();
-					 $(".main").html(refresh);
-				}
-			});
-		},
-		error: function (xhr, ajaxOptions, thrownError) {
-			alert(xhr.status);
-			alert(thrownError);
-		}
-	})
+	if( $("form#form")[0].checkValidity()) {
+		$.ajax({
+			type: 'POST',
+			url: 'modules/categories/createCategory.php',
+			data: formData,
+			success:function(response){
+				$.ajax({//refreshing the page
+					type: "post",
+					url: "modules/categories/index.php",
+					success: function(refresh){ //si recibimos respuesta, quitamos el anterior artículo y colocamos el uevo
+						$(".main").empty();
+						$(".main").html(refresh);
+					}
+				});
+			},
+			error: function (xhr, ajaxOptions, thrownError) {
+				alert(xhr.status);
+				alert(thrownError);
+			}
+		})
+	}else{
+		$("form#form")[0].reportValidity();
+	}
 });
 $("a.editCategory").click(function() { //editing a user
 	//rellenamos el modal con los datos de este usuario
@@ -28,7 +32,7 @@ $("a.editCategory").click(function() { //editing a user
 	$("input#editTitle").val($("#rowTitle"+userID).html());
 	$("input#editParent").val($("#rowParent"+userID).html());
 	$('#editCategoryModal').modal('show');
--	$("button#Edit").click(function() {
+	-	$("button#Edit").click(function() {
 		$('#editCategoryModal').modal('hide');
 		$('.modal-backdrop.fade.in').remove();
 		var formData = $("form#editForm").serialize();
@@ -38,12 +42,12 @@ $("a.editCategory").click(function() { //editing a user
 			url: 'modules/categories/editCategory.php',
 			data: formData,
 			success:function(response){
-			 $.ajax({//refreshing the page
+				$.ajax({//refreshing the page
 					type: "post",
 					url: "modules/categories/index.php",
 					success: function(refresh){ //si recibimos respuesta, quitamos el anterior artículo y colocamos el uevo
-						 $(".main").empty();
-						 $(".main").html(refresh);
+						$(".main").empty();
+						$(".main").html(refresh);
 					}
 				}); 
 			},
@@ -72,8 +76,8 @@ $("a.deleteCategory").click(function() { //deleting a user
 					type: "post",
 					url: "modules/categories/index.php",
 					success: function(refresh){ //si recibimos respuesta, quitamos el anterior artículo y colocamos el uevo
-						 $(".main").empty();
-						 $(".main").html(refresh);
+						$(".main").empty();
+						$(".main").html(refresh);
 					}
 				}); 
 			},

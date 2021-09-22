@@ -15,7 +15,7 @@ require "../../includes/sqlfunctions.php";
 						<input class="form-control btn btn-info" type="button" id="Save" name="Save" value="Add category">
 					</div>
 					<div class="form-group col-md-5">
-						<input class="form-control" type="text" id="Title" name="Title" placeholder="A title ...">
+						<input required class="form-control" type="text" id="Title" name="Title" placeholder="A title ...">
 					</div>
 					<div class="form-group col-md-5 row">
 						<label class="col-form-label col-md-4" for="categoryParent">Parent</label>
