@@ -41,7 +41,7 @@ try{
 	} else {
 		echo "<pre>";
 		echo "DATABASE:";
-		var_dump($database):
+		var_dump($database);
 		echo "EX:";
 		var_dump($ex);
 		echo "</pre>";
