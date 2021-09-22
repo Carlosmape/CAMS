@@ -20,7 +20,7 @@ require "../../includes/sqlfunctions.php";
 					<div class="form-group col-md-5 row">
 						<label class="col-form-label col-md-4" for="categoryParent">Parent</label>
 						<select class="form-control btn-default col-md-8" type="number" id="categoryParent" name="categoryParent" placeholder="A category...">
-							<option value="0">-</option>
+							<option value="NULL">No parent</option>
 							<?php 
 							foreach ($parentscategories as $patcat){
 								echo "<option value='".$patcat['ID']."'>".$patcat['TITLE']."</option>";
@@ -62,11 +62,11 @@ require "../../includes/sqlfunctions.php";
 								if($patcat['ID'] == $chicat['PARENTID']){
 								?>
 								<tr class="active">
-									<td id="rowID<?php echo $chicat['ID']?>" class="rowID">|- <?php echo $chicat['ID']?></td>
+									<td id="rowID<?php echo $chicat['ID']?>" class="rowID"><?php echo $chicat['ID']?></td>
 									<td id="rowParent<?php echo $chicat['ID']?>" class="rowParent"><?php echo $chicat['PARENTID']?></td>
 									<td id="rowTitle<?php echo $chicat['ID']?>" class="rowTitle"><?php echo $chicat['TITLE']?></td>
-									<td><a href="#" class="editCategory" id="editCategory<?php echo $chicat['ID']?>"><span class="glyphicon glyphicon-pencil"></span></a></td>
-									<td><a href="#" class="delete deleteCategory" id="deleteCaegory<?php echo $chicat['ID']?>"><span class="glyphicon glyphicon-trash"></span></a>
+									<td><a href="#" class="editCategory" id="editCategory<?php echo $chicat['ID']?>"><i class="material-icons">edit</i></a></td>
+									<td><a href="#" class="delete deleteCategory" id="deleteCaegory<?php echo $chicat['ID']?>"><i class="material-icons">delete</i></a>
 									</td>
 								</tr> 
 							<?php
