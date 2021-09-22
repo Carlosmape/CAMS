@@ -32,13 +32,11 @@ try{
 	require ("includes/footer.php");
 } catch(Exception $ex) {
 	if(isset($database)){
+		echo "<pre>";
 		if(!$database->addLog($ex)){
+			echo "SQL ERRNO:";
 			var_dump(mysqli_errno($database->connection));
 		}
-	} else {
-		echo "<pre>";
-		echo "DATABASE:";
-		var_dump($database);
 		echo "EX:";
 		var_dump($ex);
 		echo "</pre>";
