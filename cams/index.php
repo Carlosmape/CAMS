@@ -39,6 +39,10 @@ try{
 			var_dump(mysqli_errno($database->connection));
 		}
 	} else {
+		echo "<pre>";
+		echo "DATABASE:";
+		var_dump($database):
+		echo "EX:";
 		var_dump($ex);
 	}
 }
