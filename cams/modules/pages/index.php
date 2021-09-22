@@ -7,7 +7,7 @@ require "../../includes/sqlfunctions.php";
 		$_SESSION['connection']->keepalive(); //refresh connection timeout
 		$database = new Sqlconnection;//connect to database in order to extract users info
 		if (isset($database)){
-			$articles = $database->getAllPages();
+			$pages = $database->getAllPages();
 			echo '<h1 class="page-header">Pages</h1>';?>
 				<form id="form" class="row" action="" method="post">
 					<div class="form-group col-md-2">
@@ -35,7 +35,7 @@ require "../../includes/sqlfunctions.php";
 					</thead>
 					<tbody>
 					';
-						while($row = mysqli_fetch_array($articles)) { ?>
+						while($row = mysqli_fetch_array($pages)) { ?>
 							<tr>
 								<td id="rowID<?php echo $row['ID']?>" class="rowID"><?php echo $row['ID']?></td>
 								<td id="rowUser<?php echo $row['ID']?>" class="rowUser"><?php echo $row['TITLE']?></td>
