@@ -44,6 +44,7 @@ try{
 		var_dump($database):
 		echo "EX:";
 		var_dump($ex);
+		echo "</pre>";
 	}
 }
 ?>
