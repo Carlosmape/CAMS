@@ -209,11 +209,14 @@ class Sqlconnection {
 	}
 
 	#region Log
-	function addLog(Exception $exception){
-		$level = LogLevels::ERROR;
+	function addLogException(Exception $exception){
+		return $this->addLog(LogLevels::ERROR, $exception->getMessage(), $exception->getFile(), $exception->getLine(),
+		   $exception->getTraceAsString());
+	}
+	function addLog(LogLevels $level, string $message, string $file = "", string $line = "", string $proccess = ""){
 		$date = new DateTime();
-		return $result = $result = $this->connection->query("INSERT INTO `LOG` (`ID`, `LEVEL`, `MESSAGE`, `FILE`, `LINE`, `PROCCESS`, `SESSION_VALUE`, `DATE`) 
-			VALUES (NULL, '$level', '".$exception->getMessage()."', '".$exception->getFile()."', '".$exception->getLine()."', '', '".serialize($_SESSION)."', '".$date->format('Y-m-d H:i:s')."')");
+		return $this->connection->query("INSERT INTO `LOG` (`ID`, `LEVEL`, `MESSAGE`, `FILE`, `LINE`, `PROCCESS`, `SESSION_VALUE`, `DATE`) 
+			VALUES (NULL, '$level', '$message', '$file', '$line', '$proccess', '".serialize($_SESSION)."', '".$date->format('Y-m-d H:i:s')."')");
 	}
 	function getLastLogs($last){
 		if(!is_int($last)) $last = 10;
