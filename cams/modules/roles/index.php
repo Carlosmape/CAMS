@@ -53,7 +53,7 @@ require "../../includes/sqlfunctions.php";
 								<td id="rowID<?php echo $row['ID']?>" class="rowID"><?php echo $row['ID']?></td>
 								<td id="rowName<?php echo $row['ID']?>" class="rowRole"><?php echo $row['NAME']?></td>
 								<td id="rowDescription<?php echo $row['ID']?>" class="rowDescription"><?php echo $row['DESCRIPTION']?></td>
-								<td id="rowPermissions<?php echo $row['ID']?>" class="rowPermissions"></td>
+								<td id="rowPermissions<?php echo $row['ID']?>" class="rowPermissions">TODO: add comma separated permissions</td>
 								<?php
 								if ($row['ID']<2){  //Not allowed to delete or modify built in roles?>
 								<td></td>
