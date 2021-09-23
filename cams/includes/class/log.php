@@ -14,7 +14,7 @@
 
         public static function Get(Sqlconnection $connection, int $last = 10):mysql{
             if($connection != null){
-                return $connection->getLast($last);
+                return $connection->getLastLogs($last);
             }
         }
 

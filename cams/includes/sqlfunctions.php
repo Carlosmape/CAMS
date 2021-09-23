@@ -215,8 +215,9 @@ class Sqlconnection {
 		return $result = $result = $this->connection->query("INSERT INTO `LOG` (`ID`, `LEVEL`, `MESSAGE`, `FILE`, `LINE`, `PROCCESS`, `SESSION_VALUE`, `DATE`) 
 			VALUES (NULL, '$level', '".$exception->getMessage()."', '".$exception->getFile()."', '".$exception->getLine()."', '', '".serialize($_SESSION)."', '".$date->format('Y-m-d H:i:s')."')");
 	}
-	function getLastLogs(){
-		return $result = $this->connection->query("SELECT * FROM LOG ORDER BY DATE LIMIT 10;");
+	function getLastLogs($last){
+		if(!is_int($last)) $last = 10;
+		return $result = $this->connection->query("SELECT * FROM LOG ORDER BY DATE LIMIT '$last';");
 	}
 	#endregion
 }

@@ -10,9 +10,8 @@ require_once "../includes/class/log.php";
 if (isset($_SESSION['connection']) && !$_SESSION['connection']->timeout() && $_SESSION['connection']->isAdmin()) { //if you are connected
 	$_SESSION['connection']->keepalive(); //refresh connection timeout
 	$database = new Sqlconnection;//connect to database in order to extract users info
-	Log::Add($database, new Exception());
 	if (isset($database)){
-		$records = $database->getLastLogs(); ?>
+		$records = Log::Get() ?>
 		<h1 class="page-header">Log</h1>
 			<div class="table-responsive">
 				<table class="table table-striped">	
@@ -34,7 +33,7 @@ if (isset($_SESSION['connection']) && !$_SESSION['connection']->timeout() && $_S
 							<td id="rowMessage<?php echo $row['ID'];?>"><?php echo $row['MESSAGE'];?></td>
 							<td id="rowFile<?php echo $row['ID'];?>"><?php echo $row['FILE'];?></td>
 							<td id="rowLine<?php echo $row['ID'];?>"><?php echo $row['LINE'];?></td>
-							<td id="rowProcess<?php echo $row['ID'];?>"><?php echo $row['PROCESS'];?></td>
+							<td id="rowProcess<?php echo $row['ID'];?>"><?php echo $row['PROCCESS'];?></td>
 							<td id="rowSessionValue<?php echo $row['ID'];?>"><?php echo $row['SESSION_VALUE'];?></td>
 							<td id="rowDate<?php echo $row['ID'];?>"><?php echo $row['DATE'];?></td>
 						</tr>
