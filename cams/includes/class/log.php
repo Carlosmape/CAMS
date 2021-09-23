@@ -15,7 +15,7 @@ abstract class LogLevels{
 }
 
 class Log{
-	static Sqlconnection $database;
+	public static Sqlconnection $database;
 
 	public static function Get(int $last = 10){
 		if($this->database != null){
