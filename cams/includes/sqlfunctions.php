@@ -217,7 +217,7 @@ class Sqlconnection {
 	}
 	function getLastLogs($last){
 		if(!is_int($last)) $last = 10;
-		return $result = $this->connection->query("SELECT * FROM LOG ORDER BY DATE LIMIT '$last';");
+		return $result = $this->connection->query("SELECT * FROM LOG ORDER BY DATE LIMIT $last;");
 	}
 	#endregion
 }
