@@ -55,7 +55,7 @@ require "../../includes/sqlfunctions.php";
 								<td id="rowDescription<?php echo $row['ID']?>" class="rowDescription"><?php echo $row['DESCRIPTION']?></td>
 								<td id="rowPermissions<?php echo $row['ID']?>" class="rowPermissions"></td>
 								<?php
-								if (!$_SESSION['connection']->isAdmin()){?>
+								if ($row['ID']<2){  //Not allowed to delete or modify built in roles?>
 								<td></td>
 								<td></td>
 								<?php }
