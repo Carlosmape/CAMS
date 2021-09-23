@@ -12,7 +12,7 @@
 
     class Log{
 
-        public static function Get(Sqlconnection $connection, int $last = 10):mysql{
+        public static function Get(Sqlconnection $connection, int $last = 10){
             if($connection != null){
                 return $connection->getLastLogs($last);
             }
