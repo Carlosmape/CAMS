@@ -28,7 +28,7 @@ if (isset($_SESSION['connection']) && !$_SESSION['connection']->timeout()) { //y
 	</nav>
 
 	<div class="container-fluid bg">
-		<div class="row">
+		<div class="row" style="height: 94%;">
 			<div class="col-sm-3 col-md-2 sidebar">
 				<ul class="nav flex-column">
 			  	<li class="nav-item"><a class="nav-link active" href="<?php echo HOST;?>/cams/"><i class="material-icons">dashboard</i></span> Overview</a></li>
