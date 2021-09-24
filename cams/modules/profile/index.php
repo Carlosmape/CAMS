@@ -16,11 +16,11 @@
 					</div>
 					<div class="form-group">
 						<label class="control-label" for="editUser">User:</label>
-						<input class="form-control" type="text" id="editUser" name="editUser" placeholder="" required value="<?php echo $user['USER'];?>">
+						<input class="form-control disabled" type="text" id="editUser" name="editUser" placeholder="" required value="<?php echo $user['USER'];?>">
 					</div>
 					<div class="form-group">
 						<label class="control-label" for="editMail">Mail:</label>
-						<input class="form-control" type="text" id="editMail" name="editMail" placeholder="" value="<?php echo $user['MAIL'];?>">
+						<input class="form-control" type="text" id="editMail" name="editMail" placeholder="" required value="<?php echo $user['MAIL'];?>">
 					</div>
 					<div class="form-group">
 						<label class="control-label" for="email">New password:</label>
