@@ -18,6 +18,11 @@ function ComposeAlert(section, action, error = false, errorMessage = "" ) {
 				<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>		
 			</div>`;
 }
+function AutoCloseAlerts(){
+	$(".alert").delay(5000).slideUp(500, function() {
+    	$(this).remove();
+	});
+}
 $("a#profile").click(function(){
 	$.ajax({
 		type: "post",

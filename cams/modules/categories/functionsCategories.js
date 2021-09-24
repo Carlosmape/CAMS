@@ -14,6 +14,7 @@ $("input#Save").click(function() {
 						$(".main").html(refresh);
 						var alertDiv = ComposeAlert("Category", response);
 						$(".main").append(alertDiv);
+						AutoCloseAlerts();
 					}
 				});
 			},
@@ -49,6 +50,7 @@ $("a.editCategory").click(function() {
 							$(".main").html(refresh);
 							var alertDiv = ComposeAlert("Category", response);
 							$(".main").append(alertDiv);
+							AutoCloseAlerts();
 						}
 					}); 
 				},
@@ -80,6 +82,7 @@ $("a.deleteCategory").click(function() {
 						$(".main").html(refresh);
 						var alertDiv = ComposeAlert("Category", response);
 						$(".main").append(alertDiv);
+						AutoCloseAlerts();
 					}
 				}); 
 			},

@@ -8,6 +8,7 @@ $("input#EditProfile").click(function() {
 		success:function(response){
 			var alertDiv = ComposeAlert("Profile", response);
 			$(".main").append(alertDiv);
+			AutoCloseAlerts();
 		},
 		error: function (xhr, ajaxOptions, thrownError) {
 			alert(xhr.status);
