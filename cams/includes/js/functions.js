@@ -35,7 +35,7 @@ function PerformTransaction(toURL, alertDiv = null){
 				$(".main").append(alertDiv);
 				AutoCloseAlerts();
 			}
-		}
+		},
 		error: function (xhr, ajaxOptions, thrownError) {
 			console.log(xhr.status);
 			console.log(thrownError);
