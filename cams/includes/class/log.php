@@ -15,12 +15,13 @@ abstract class LogLevels{
 }
 
 class Log{
-	public static Sqlconnection $database;
+	var $database;
 
 	public static function Get(int $last = 10){
-		if($this->database != null){
-			return $this->database->getLastLogs($last);
+		if($this->database == null){
+			$database = new Sqlconnection;
 		}
+		return $this->database->getLastLogs($last);
 	}
 
 	public static function GetAll(){
