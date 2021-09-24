@@ -1,6 +1,5 @@
 $("input#Save").click(function() {
 	var formData = $("form#form").serialize();
-	//alert(formData);
 	if( $("form#form")[0].checkValidity()) {
 		$.ajax({
 			type: 'POST',
@@ -30,12 +29,11 @@ $("a.editCategory").click(function() { //editing a user
 	var userID = this.id.match(/\d+$/)[0];
 	$("input#editID").val($("#rowID"+userID).html());
 	$("input#editTitle").val($("#rowTitle"+userID).html());
-	$("input#editParent").val($("#rowParent"+userID).html());
+	$("input#editParent").val($("#rowParent"+userID).html().replace("-","NULL"));
 	$('#editCategoryModal').modal('show');
-	-	$("button#Edit").click(function() {
+	$("button#Edit").click(function() {
 		$('#editCategoryModal').modal('hide');
 		var formData = $("form#editForm").serialize();
-		//alert(formData);
 		$.ajax({
 			type: 'POST',
 			url: 'modules/categories/editCategory.php',
@@ -59,7 +57,6 @@ $("a.editCategory").click(function() { //editing a user
 });	
 $("a.deleteCategory").click(function() { //deleting a user
 	var catID = this.id.match(/\d+$/)[0];
-	//alert(catID);
 	$('#deleteCategoryModal').modal('show');
 	$("button#Delete").click(function(){
 		$('#deleteCategoryModal').modal('hide');
