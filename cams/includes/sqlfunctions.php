@@ -74,6 +74,9 @@ class Sqlconnection {
 	function addRole($name, $description){
 		return $this->connection->query(" INSERT INTO `ROLES`(`NAME`, `DESCRIPTION`) VALUES ('$name', '$description');");
 	}
+	function deleteRole($id){
+		return $this->connection->query("DELETE FROM `ROLE` WHERE ID=$id;");
+	}
 
 	/*SECTIONS*/
 	function getSections(){
