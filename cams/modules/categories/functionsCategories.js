@@ -1,28 +1,6 @@
 $("input#Save").click(function() {
 	var formData = $("form#form").serialize();
 	if( $("form#form")[0].checkValidity()) {
-		/*$.ajax({
-			type: 'POST',
-			url: 'modules/categories/createCategory.php',
-			data: formData,
-			success:function(response){
-				$.ajax({
-					type: "post",
-					url: "modules/categories/index.php",
-					success: function(refresh){
-						$(".main").empty();
-						$(".main").html(refresh);
-						var alertDiv = ComposeAlert("Category", response);
-						$(".main").append(alertDiv);
-						AutoCloseAlerts();
-					}
-				});
-			},
-			error: function (xhr, ajaxOptions, thrownError) {
-				alert(xhr.status);
-				alert(thrownError);
-			}
-		})*/
 		PerformAction("modules/categories/createCategory.php", formData, "modules/categories/index.php");
 	}else{
 		$("form#form")[0].reportValidity();
@@ -38,28 +16,7 @@ $("a.editCategory").click(function() {
 		if($("form#editForm")[0].checkValidity()){
 			$('#editCategoryModal').modal('hide');
 			var formData = $("form#editForm").serialize();
-			$.ajax({
-				type: 'POST',
-				url: 'modules/categories/editCategory.php',
-				data: formData,
-				success:function(response){
-					$.ajax({
-						type: "post",
-						url: "modules/categories/index.php",
-						success: function(refresh){ 
-							$(".main").empty();
-							$(".main").html(refresh);
-							var alertDiv = ComposeAlert("Category", response);
-							$(".main").append(alertDiv);
-							AutoCloseAlerts();
-						}
-					}); 
-				},
-				error: function (xhr, ajaxOptions, thrownError) {
-					alert(xhr.status);
-					alert(thrownError);
-				}
-			})
+			PerformAction("modules/categories/editCategory.php", formData, "modules/categories/index.php");
 		} else {
 			$("form#editForm")[0].reportValidity();
 		}	
