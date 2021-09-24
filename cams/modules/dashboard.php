@@ -15,7 +15,7 @@ if (isset($_SESSION['connection']) && !$_SESSION['connection']->timeout()) { //y
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
-		<div class="collapse navbar-collapse" id="navbarNav">
+		<div class="collapse navbar-collapse justify-content-end" id="navbarNav">
 			<ul class="navbar-nav">						
 				<?php if ($_SESSION['connection']->isAdmin()) { ?> 
 				<li class="nav-item"><a class="nav-link"id="settings" href="#settings"><i class="material-icons"> settings </i></span> Settings</a></li>
