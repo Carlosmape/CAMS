@@ -75,7 +75,7 @@ class Sqlconnection {
 		return $this->connection->query(" INSERT INTO `ROLES`(`NAME`, `DESCRIPTION`) VALUES ('$name', '$description');");
 	}
 	function deleteRole($id){
-		return $this->connection->query("DELETE FROM `ROLE` WHERE ID=$id;");
+		return $this->connection->query(" DELETE FROM `ROLE` WHERE ID=$id;");
 	}
 
 	/*SECTIONS*/
@@ -89,9 +89,6 @@ class Sqlconnection {
 	}
 	function addPermissionToRole($role, $permission){
 		return $this->connection->query(" INSERT INTO `ROLES_PERMISSIONS` (`ID_ROLE`, `ID_PERMISSION`) VALUES ('$role', '$permission');");
-	}
-	function deletePermissionFromRole($role, $permission){
-		return $this->connection->query("DELETE FROM `ROLES_PERMISSIONS` WHERE `ID_ROLE` = '$role' AND `ID_PERMISSION` = '$permission';");
 	}
 
 	/*CATEGORIES*/
