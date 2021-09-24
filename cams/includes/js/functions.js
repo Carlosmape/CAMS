@@ -2,6 +2,22 @@
 /*$("table.table") 
   .tablesorter({widthFixed: true, widgets: ['zebra']}) 
   .tablesorterPager({container: $("#pager")}); */    
+function ComposeAlert(section, action, error = false, errorMessage = null ) {
+	var alertClass;
+	var operationResult;
+	if(error){
+		alertClass = "alert-danger";
+		operationResult = "Error!";
+	}else{
+		alertClass = "alert-success";
+		operationResult = "Done!";
+	}
+
+	return `<div class="alert ${alertClass} alert-dismissible fade show" role="alert">
+				<strong>${operationResult}</strong> ${section} ${action} <i>${errorMessage}</i>
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>		
+			</div>`;
+}
 $("a#profile").click(function(){
 	$.ajax({
 		type: "post",
