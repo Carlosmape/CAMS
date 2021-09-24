@@ -19,13 +19,13 @@ class Sqlconnection {
 
 	/*USERS*/
 	function getAllUsers(){
-		return $result = $this->connection->query(" SELECT U.*, R.NAME AS ROLE FROM USERS AS U INNER JOIN ROLES AS R ON (U.TYPE = R.ID);");
+		return $this->connection->query(" SELECT U.*, R.NAME AS ROLE FROM USERS AS U INNER JOIN ROLES AS R ON (U.TYPE = R.ID);");
 	}
 	function getUser($username){
-		return $result = $this->connection->query(" SELECT * FROM USERS WHERE USER='$username';");
+		return $this->connection->query(" SELECT * FROM USERS WHERE USER='$username';");
 	}
 	function countUsers(){
-		return $result = $this->connection->query(" SELECT COUNT(*) FROM USERS;");
+		return $this->connection->query(" SELECT COUNT(*) FROM USERS;");
 	}
 	function checkLogin($user, $pass){
 		$result = $this->connection->query(" SELECT * FROM USERS WHERE USER = '$user' AND PASSWORD = '$pass';");
@@ -63,46 +63,46 @@ class Sqlconnection {
 	}
 	/*ROLES*/
 	function getRoles(){
-		return $result = $this->connection->query(" SELECT * FROM ROLES;");
+		return $this->connection->query(" SELECT * FROM ROLES;");
 	}
 	function getRole($name){
 		return $this->connection->query(" SELECT * FROM ROLES WHERE `NAME` = '$name';");
 	}
 	function countRoles(){
-		return $result = $this->connection->query(" SELECT COUNT(*) FROM ROLES;");
+		return $this->connection->query(" SELECT COUNT(*) FROM ROLES;");
 	}
 	function addRole($name, $description){
-		return $result = $this->connection->query(" INSERT INTO `ROLES`(`NAME`, `DESCRIPTION`) VALUES ('$name', '$description');");
+		return $this->connection->query(" INSERT INTO `ROLES`(`NAME`, `DESCRIPTION`) VALUES ('$name', '$description');");
 	}
 
 	/*SECTIONS*/
 	function getSections(){
-		return $result = $this->connection->query(" SELECT * FROM SECTIONS;");
+		return $this->connection->query(" SELECT * FROM SECTIONS;");
 	}
 
 	/*PERMISSIONS*/
 	function getPermissionsPerRole($role){
-		return $result = $this->connection->query(" SELECT * FROM ROLES_PERMISSIONS WHERE `ID_ROLE` = '$role'");
+		return $this->connection->query(" SELECT * FROM ROLES_PERMISSIONS WHERE `ID_ROLE` = '$role'");
 	}
 	function addPermissionToRole($role, $permission){
-		return $result = $this->connection->query(" INSERT INTO `ROLES_PERMISSIONS` (`ID_ROLE`, `ID_PERMISSION`) VALUES ('$role', '$permission');");
+		return $this->connection->query(" INSERT INTO `ROLES_PERMISSIONS` (`ID_ROLE`, `ID_PERMISSION`) VALUES ('$role', '$permission');");
 	}
 	function deletePermissionFromRole($role, $permission){
-		return $result = $this->connection->query("DELETE FROM `ROLES_PERMISSIONS` WHERE `ID_ROLE` = '$role' AND `ID_PERMISSION` = '$permission';");
+		return $this->connection->query("DELETE FROM `ROLES_PERMISSIONS` WHERE `ID_ROLE` = '$role' AND `ID_PERMISSION` = '$permission';");
 	}
 
 	/*CATEGORIES*/
 	function getAllCategories(){
-		return $result = $this->connection->query(" SELECT * FROM CATEGORIES;");
+		return $this->connection->query(" SELECT * FROM CATEGORIES;");
 	}
 	function countCategories(){
-		return $result = $this->connection->query(" SELECT COUNT(*) FROM CATEGORIES;");
+		return $this->connection->query(" SELECT COUNT(*) FROM CATEGORIES;");
 	}
 	function getParentCategories(){
-		return $result = $this->connection->query(" SELECT * FROM CATEGORIES WHERE PARENTID IS NULL;");
+		return $this->connection->query(" SELECT * FROM CATEGORIES WHERE PARENTID IS NULL;");
 	}
 	function getChildCategories(){
-		return $result = $this->connection->query(" SELECT * FROM CATEGORIES WHERE PARENTID IS NOT NULL ORDER BY PARENTID;");
+		return $this->connection->query(" SELECT * FROM CATEGORIES WHERE PARENTID IS NOT NULL ORDER BY PARENTID;");
 	}
 	function addCategory($title, $parentid){
 		$result = $this->connection->query("INSERT INTO `CATEGORIES`(`PARENTID`, `TITLE`) VALUES ($parentid ,'$title');");
@@ -123,44 +123,44 @@ class Sqlconnection {
 
 	/*PAGES AND ARTICLES*/
 	function getMenuPages(){
-		return $result = $this->connection->query(" SELECT * FROM `PAGES` WHERE TYPE=0 ORDER BY `DATE` DESC, `ID` DESC;");
+		return $this->connection->query(" SELECT * FROM `PAGES` WHERE TYPE=0 ORDER BY `DATE` DESC, `ID` DESC;");
 	}
 	function getHiddenPages(){
-		return $result = $this->connection->query(" SELECT * FROM `PAGES` WHERE TYPE=2 ORDER BY `DATE` DESC, `ID` DESC;");
+		return $this->connection->query(" SELECT * FROM `PAGES` WHERE TYPE=2 ORDER BY `DATE` DESC, `ID` DESC;");
 	}
 	function getAllArticles(){
-		return $result = $this->connection->query(" SELECT * FROM `ARTICLES` ORDER BY `DATE` DESC, `ID` DESC;");
+		return $this->connection->query(" SELECT * FROM `ARTICLES` ORDER BY `DATE` DESC, `ID` DESC;");
 	}
 	function getAllPages(){
-		return $result = $this->connection->query(" SELECT * FROM `PAGES` ORDER BY `DATE` DESC, `ID` DESC;");
+		return $this->connection->query(" SELECT * FROM `PAGES` ORDER BY `DATE` DESC, `ID` DESC;");
 	}
 	function countArticles(){
-		return $result = $this->connection->query(" SELECT COUNT(*) FROM ARTICLES;");
+		return $this->connection->query(" SELECT COUNT(*) FROM ARTICLES;");
 	}
 	function countPages(){
-		return $result = $this->connection->query(" SELECT COUNT(*) FROM PAGES;");
+		return $this->connection->query(" SELECT COUNT(*) FROM PAGES;");
 	}
 	function getRandomArticles(){
-		return $result = $this->connection->query(" SELECT TITLE,IMAGEHEADER FROM ARTICLES ORDER BY RAND() LIMIT 6;");
+		return $this->connection->query(" SELECT TITLE,IMAGEHEADER FROM ARTICLES ORDER BY RAND() LIMIT 6;");
 	}
 	function getArticlesByCategory($category){
-		return $result = $this->connection->query(" SELECT ARTICLES.TITLE,ARTICLES.DATE,ARTICLES.IMAGEHEADER FROM ARTICLES, CATEGORIES WHERE ARTICLES.CATEGORY = CATEGORIES.ID AND CATEGORIES.TITLE = '$category';");
+		return $this->connection->query(" SELECT ARTICLES.TITLE,ARTICLES.DATE,ARTICLES.IMAGEHEADER FROM ARTICLES, CATEGORIES WHERE ARTICLES.CATEGORY = CATEGORIES.ID AND CATEGORIES.TITLE = '$category';");
 	}
 	function getAllArticlesIndex($limit = 0){
 		$limit = $limit*10;
-		return $result = $this->connection->query(" SELECT TITLE,DATE,IMAGEHEADER FROM `ARTICLES` ORDER BY `DATE` DESC, `ID` DESC LIMIT $limit,10;");
+		return $this->connection->query(" SELECT TITLE,DATE,IMAGEHEADER FROM `ARTICLES` ORDER BY `DATE` DESC, `ID` DESC LIMIT $limit,10;");
 	}
 	function getAllArticlesLike($string){
-		return $result = $this->connection->query(" SELECT TITLE,DATE,IMAGEHEADER FROM `ARTICLES` WHERE CONTENT LIKE '%$string%' OR TITLE LIKE '%$string%' ORDER BY `DATE` DESC, `ID` DESC;");
+		return $this->connection->query(" SELECT TITLE,DATE,IMAGEHEADER FROM `ARTICLES` WHERE CONTENT LIKE '%$string%' OR TITLE LIKE '%$string%' ORDER BY `DATE` DESC, `ID` DESC;");
 	}
 	function getArticle($id){
-		return $result = $this->connection->query(" SELECT * FROM `ARTICLES` WHERE `ID`=$id;");
+		return $this->connection->query(" SELECT * FROM `ARTICLES` WHERE `ID`=$id;");
 	}
 	function getPage($id){
-		return $result = $this->connection->query(" SELECT * FROM `PAGES` WHERE `ID`=$id;");
+		return $this->connection->query(" SELECT * FROM `PAGES` WHERE `ID`=$id;");
 	}	
 	function getArticleByTITLE($title){
-		return $result = $this->connection->query(" SELECT TITLE,DATE,IMAGEHEADER,CONTENT FROM `ARTICLES` WHERE `TITLE`='$title';");
+		return $this->connection->query(" SELECT TITLE,DATE,IMAGEHEADER,CONTENT FROM `ARTICLES` WHERE `TITLE`='$title';");
 	}
 	function deleteArticle($id){
 		$result = $this->connection->query("DELETE FROM `ARTICLES` WHERE `ID`=$id;");
@@ -198,14 +198,14 @@ class Sqlconnection {
 
 	/*ACTIONS RECORD*/
 	function getAllRecords(){
-		return $result = $this->connection->query(" SELECT * FROM RECORD ORDER BY DATE;");
+		return $this->connection->query(" SELECT * FROM RECORD ORDER BY DATE;");
 	}
 	function getLastRecords(){
-		return $result = $this->connection->query(" SELECT * FROM RECORD ORDER BY DATE LIMIT 10;");
+		return $this->connection->query(" SELECT * FROM RECORD ORDER BY DATE LIMIT 10;");
 	}
 	function logRecord($action,$autor,$reciber,$context){
 		$date = new DateTime();
-		return $result = $result = $this->connection->query("INSERT INTO `RECORD`(`ID`, `ACTION`, `AUTOR`, `RECIBER`, `RECIBERCONTEXT`, `DATE`) VALUES (NULL, '$action','$autor','$reciber','$context','".$date->format('Y-m-d H:i:s')."')");
+		return $this->connection->query("INSERT INTO `RECORD`(`ID`, `ACTION`, `AUTOR`, `RECIBER`, `RECIBERCONTEXT`, `DATE`) VALUES (NULL, '$action','$autor','$reciber','$context','".$date->format('Y-m-d H:i:s')."')");
 	}
 
 	#region Log
@@ -220,7 +220,7 @@ class Sqlconnection {
 	}
 	function getLastLogs($last){
 		if(!is_int($last)) $last = 10;
-		return $result = $this->connection->query("SELECT * FROM LOG ORDER BY DATE LIMIT $last;");
+		return $this->connection->query("SELECT * FROM LOG ORDER BY DATE LIMIT $last;");
 	}
 	#endregion
 }
