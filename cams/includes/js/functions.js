@@ -23,8 +23,35 @@ function AutoCloseAlerts(){
     	$(this).remove();
 	});
 }
-$("a#profile").click(function(){
+function PerformTransaction(toURL, alertDiv = null){
 	$.ajax({
+		type: "post",
+		url: toURL,
+		data: null,
+		success: function(response){
+			$(".main").epmty();
+			$(".main").html(response);
+			if(alertDiv){
+				$(".main").append(alertDiv);
+				AutoCloseAlerts();
+			}
+		}
+		error: function (xhr, ajaxOptions, thrownError) {
+			console.log(xhr.status);
+			console.log(thrownError);
+		}
+	})
+}
+
+function PerformAction(toURL, withData, refresh = true, alertDiv){
+	//TODO
+	//
+	//And finally call index
+	// PerformTransaction(toURLIndex...)
+}
+
+$("a#profile").click(function(){
+	/*$.ajax({
 		type: "post",
 		url: "modules/profile/index.php",
 		data: $(this).val(),
@@ -35,7 +62,8 @@ $("a#profile").click(function(){
 
 		}
 
-	});
+	});*/
+	PerformTransaction("modules/profile/index.php");
 });
 $("a#settings").click(function(){
 	$.ajax({
