@@ -2,7 +2,7 @@
 /*$("table.table") 
   .tablesorter({widthFixed: true, widgets: ['zebra']}) 
   .tablesorterPager({container: $("#pager")}); */    
-function ComposeAlert(section, action, error = false, errorMessage = null ) {
+function ComposeAlert(section, action, error = false, errorMessage = "" ) {
 	var alertClass;
 	var operationResult;
 	if(error){
