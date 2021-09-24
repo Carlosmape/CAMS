@@ -20,7 +20,7 @@ function ComposeAlert(section, action, error = false, errorMessage = "" ) {
 }
 function AutoCloseAlerts(){
 	$(".alert").delay(5000).slideUp(500, function() {
-    	$(this).remove();
+		$(this).remove();
 	});
 }
 function PerformTransaction(toURL, alertDiv = null){
@@ -52,146 +52,33 @@ function PerformAction(toURL, withData, refreshURL = true){
 }
 
 $("a#profile").click(function(){
-	/*$.ajax({
-		type: "post",
-		url: "modules/profile/index.php",
-		data: $(this).val(),
-		success: function(response){ //si recibimos respuesta, quitamos el anterior artículo y colocamos el uevo
-			// log a message to the console
-			$(".main").empty();
-			$(".main").html(response);
-
-		}
-
-	});*/
 	PerformTransaction("modules/profile/index.php");
 });
 $("a#settings").click(function(){
-	$.ajax({
-		type: "post",
-		url: "modules/settings/index.php",
-		data: $(this).val(),
-		success: function(response){ //si recibimos respuesta, quitamos el anterior artículo y colocamos el uevo
-			// log a message to the console
-			$(".main").empty();
-			$(".main").html(response);
-
-		}
-
-	});
+	PerformTransaction("modules/settings/index.php");
 });
 $("a#log").click(function(){
-	$.ajax({
-		type: "post",
-		url: "modules/record.php",
-		data: $(this).val(),
-		success: function(response){ //si recibimos respuesta, quitamos el anterior artículo y colocamos el uevo
-			// log a message to the console
-			$(".main").empty();
-			$(".main").html(response);
-
-		}
-
-	});
+	PerformTransaction("modules/record.php");
 });
 $("a#users").click(function(){
-	$.ajax({
-		type: "post",
-		url: "modules/users/index.php",
-		data: $(this).val(),
-		success: function(response){ //si recibimos respuesta, quitamos el anterior artículo y colocamos el uevo
-			// log a message to the console
-			$(".main").empty();
-			$(".main").html(response);
-			$("table.table").tablesorter();
-		}
-
-	});
+	PerformTransaction("modules/users/index.php");
 });
 $("a#roles").click(function(){
-	$.ajax({
-		type: "post",
-		url: "modules/roles/index.php",
-		data: $(this).val(),
-		success: function(response){ //si recibimos respuesta, quitamos el anterior artículo y colocamos el uevo
-			// log a message to the console
-			$(".main").empty();
-			$(".main").html(response);
-			$("table.table").tablesorter();
-		}
-
-	});
+	PerformTransaction("modules/roles/index.php");
 });
 $("a#pages").click(function(){
-	$.ajax({
-		type: "post",
-		url: "modules/pages/index.php",
-		data: $(this).val(),
-		success: function(response){ //si recibimos respuesta, quitamos el anterior artículo y colocamos el uevo
-			// log a message to the console
-			$(".main").empty();
-			$(".main").html(response);
-			$("table.table").tablesorter();
-		}
-
-	});
+	PerformTransaction("modules/pages/index.php");
 });
 $("a#articles").click(function(){
-	$.ajax({
-		type: "post",
-		url: "modules/articles/index.php",
-		data: $(this).val(),
-		success: function(response){ //si recibimos respuesta, quitamos el anterior artículo y colocamos el uevo
-			// log a message to the console
-			$(".main").empty();
-			$(".main").html(response);
-			$("table.table").tablesorter();
-		}
-
-	});
+	PerformTransaction("modules/articles/index.php");
 });
 $("a#categories").click(function(){
-	$.ajax({
-		type: "post",
-		url: "modules/categories/index.php",
-		data: $(this).val(),
-		success: function(response){ //si recibimos respuesta, quitamos el anterior artículo y colocamos el uevo
-			// log a message to the console
-			$(".main").empty();
-			$(".main").html(response);
-			$("table.table").tablesorter();
-
-		}
-
-	});
+	PerformTransaction("modules/categories/index.php");
 });
 $("a#files").click(function(){
-	$.ajax({
-		type: "post",
-		url: "modules/files/index.php",
-		data: $(this).val(),
-		success: function(response){ //si recibimos respuesta, quitamos el anterior artículo y colocamos el uevo
-			// log a message to the console
-			$(".main").empty();
-			$(".main").html(response);
-			$("table.table").tablesorter();
-
-		}
-
-	});
+	PerformTransaction("modules/files/index.php");
 });
 $("a#styles").click(function(){
-	$.ajax({
-		type: "post",
-		url: "modules/styles/index.php",
-		data: $(this).val(),
-		success: function(response){ //si recibimos respuesta, quitamos el anterior artículo y colocamos el uevo
-			// log a message to the console
-			$(".main").empty();
-			$(".main").html(response);
-			//$("table.table").tablesorter();
-		}
-
-	});
+	PerformTransaction("modules/styles/index.php");
 });
 //};
