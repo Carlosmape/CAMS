@@ -22,8 +22,7 @@ require "../../includes/sqlfunctions.php";
 				$result = $database->getArticle($id);
 				$row =mysqli_fetch_array($result);	
 				$title=$row['TITLE'];
-				$type=$row['TYPE'];
-				$category=$row['CATEGORIES'];
+				$category=$row['CATEGORY'];
 				$date=$row['DATE'];
 				$text=$row['CONTENT'];
 				$image=$row['IMAGEHEADER'];
@@ -38,12 +37,11 @@ require "../../includes/sqlfunctions.php";
 					<label class="control-label col-md-2" for="articleTitle">Title</label>
 					<input class="form-control col-md-12" type="text" id="articleTitle" name="articleTitle" value="<?php echo $title?>" placeholder="A title for your article...">
 					<div class="row"></div>
-					<input class="form-control col-md-6" type="hidden" id="articleType" name="articleType" value="1">
 				</div>
 				<div class="form-group col-md-6">
 					<label class="control-label col-md-2" for="articleCategory">Category</label>
 					<select class="form-control col-md-12" type="number" id="articleCategory" name="articleCategory" placeholder="A category...">
-						<option value="0">-</option>
+						<option value="NULL">None</option>
 						<?php 
 						foreach ($parentscategories as $patcat){
 							?>

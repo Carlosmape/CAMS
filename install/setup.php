@@ -6,7 +6,6 @@ error_reporting(E_ALL);
 
 require 'saveConfig.php';
 require 'dbConfig.php';
-require 'dbData.php';
 require 'removeInstallFiles.php';
 
 if (isset($_POST['setup'])){
@@ -29,8 +28,7 @@ if (isset($_POST['setup'])){
 		$result = CreateDatabase($connection);
 		echo ('Deploying needed tables...</br>');
 		$tablesCreated = CreateTablesStructures($connection);
-
-		if (CreateDefAdminUser($connection) && CreateSampleArticle($connection)){	
+		if($tablesCreated){
 			require_once "../cams/includes/config.php";
 		?>
 			<!DOCTYPE html>

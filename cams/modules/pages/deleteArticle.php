@@ -9,7 +9,7 @@ require "../../includes/sqlfunctions.php";
 		if (isset($database)){
 			//save method
 			if (isset($_POST['ID'])){
-				echo $database->deleteArticle($_POST['ID']);
+				echo $database->deletePage($_POST['ID']);
 			}
 		}
 	}

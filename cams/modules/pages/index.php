@@ -7,7 +7,7 @@ require "../../includes/sqlfunctions.php";
 		$_SESSION['connection']->keepalive(); //refresh connection timeout
 		$database = new Sqlconnection;//connect to database in order to extract users info
 		if (isset($database)){
-			$articles = $database->getAllPages();
+			$pages = $database->getAllPages();
 			echo '<h1 class="page-header">Pages</h1>';?>
 				<form id="form" class="row" action="" method="post">
 					<div class="form-group col-md-2">
@@ -35,7 +35,7 @@ require "../../includes/sqlfunctions.php";
 					</thead>
 					<tbody>
 					';
-						while($row = mysqli_fetch_array($articles)) { ?>
+						while($row = mysqli_fetch_array($pages)) { ?>
 							<tr>
 								<td id="rowID<?php echo $row['ID']?>" class="rowID"><?php echo $row['ID']?></td>
 								<td id="rowUser<?php echo $row['ID']?>" class="rowUser"><?php echo $row['TITLE']?></td>
@@ -43,7 +43,7 @@ require "../../includes/sqlfunctions.php";
 									<?php if($row['TYPE'] == 2){ ?><i class="material-icons">visibility_off</i>
 									<?php }else{ ?><i class="material-icons">visibility_on</i><?php } ?>
 								</td>
-								<td id="rowCategory<?php echo $row['ID']?>" class="rowCategory"><?php echo $row['CATEGORIES']?></td>
+								<td id="rowCategory<?php echo $row['ID']?>" class="rowCategory"><?php echo $row['CATEGORY']?></td>
 								<td id="rowDate<?php echo $row['ID']?>" class="rowDate"><?php echo $row['DATE']?></td>
 								<?php if ($row['AUTOR']==$_SESSION['connection']->userid || $_SESSION['connection']->isAdmin()){ ?>
 									<td><a href="#" class="edit editArticle" id="edit<?php echo $row['ID']?>">		<i class="material-icons">edit</i></a></td>

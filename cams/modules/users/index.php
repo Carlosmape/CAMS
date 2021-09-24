@@ -8,21 +8,26 @@ require "../../includes/sqlfunctions.php";
 		$database = new Sqlconnection;//connect to database in order to extract users info
 		if (isset($database)){
 			$users = $database->getAllUsers();
+			$roles = $database->getRoles();
 			echo '<h1 class="page-header">Users</h1>';?>
 				<form id="form" class="row" action="" method="post">
 					<div class="form-group col-md-2">
 						<input class="form-control btn btn-info" type="button" id="Save" name="Save" value="Add user">
 					</div>
-					<div class="form-group col-md-4">
-						<input class="form-control" type="text" id="Name" name="Name" placeholder="A username ...">
+					<div class="form-group col-md-2">
+						<input required class="form-control" type="text" id="Name" name="Name" placeholder="A username ...">
 					</div>
-					<div class="form-group col-md-4">
-						<input class="form-control" type="password" id="Password" name="Password" placeholder="A Password ...">
+					<div class="form-group col-md-3">
+						<input required class="form-control" type="email" id="Mail" name="Mail" placeholder="username@mail ...">
+					</div>
+					<div class="form-group col-md-3">
+						<input required class="form-control" type="password" id="Password" name="Password" placeholder="A Password ...">
 					</div>
 					<div class="form-group col-md-2">
-						<select class="form-control btn-default" type="number" id="Type" name="Type" placeholder="A type" required>
-							<option value="1">User</option>
-							<option value="0">Admin</option>
+						<select class="form-control btn-default" type="number" id="Type" name="Type" placeholder="A type" >
+							<?php while($role = mysqli_fetch_array($roles)) { ?>
+							<option value=<?php echo $role['ID'] ?>><?php echo $role['NAME'] ?></option>
+							<?php } ?>
 						</select>					
 					</div>
 				</form>
@@ -49,15 +54,7 @@ require "../../includes/sqlfunctions.php";
 								<td id="rowID<?php echo $row['ID']?>" class="rowID"><?php echo $row['ID']?></td>
 								<td id="rowUser<?php echo $row['ID']?>" class="rowUser"><?php echo $row['USER']?></td>
 								<td id="rowMail<?php echo $row['ID']?>" class="rowMail"><?php echo $row['MAIL']?></td>
-								<td id="rowType<?php echo $row['ID']?>" class="rowType">
-									<?php 
-									if ($row['TYPE']==0)
-										echo "Admin";
-									else if($row['TYPE']==1){
-										echo "User";
-									}
-									?>
-								</td>
+								<td id="rowType<?php echo $row['ID']?>" class="rowType"><?php echo $row['ROLE']?></td>
 								<?php
 								if ($_SESSION['connection']->user == $row['USER']){?>
 									<td></td>

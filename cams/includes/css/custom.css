@@ -10,7 +10,6 @@ body {
   background: #eee;
 }
 .sidebar>ul.nav>li{
-  font-size: larger
 }
 .sidebar>ul.nav>li>a:hover{
 	background:#e0e0e0;

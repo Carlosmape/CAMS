@@ -1,6 +1,7 @@
 $("input#Save").click(function() {
 	var formData = $("form#form").serialize();
 	//alert(formData);
+	if( $("form#form")[0].checkValidity()) {
 	$.ajax({
 		type: 'POST',
 		url: 'modules/users/createUser.php',
@@ -10,8 +11,8 @@ $("input#Save").click(function() {
 				type: "post",
 				url: "modules/users/index.php",
 				success: function(refresh){ //si recibimos respuesta, quitamos el anterior artículo y colocamos el uevo
-					 $(".main").empty();
-					 $(".main").html(refresh);
+					$(".main").empty();
+					$(".main").html(refresh);
 				}
 			});
 		},
@@ -20,6 +21,9 @@ $("input#Save").click(function() {
 			alert(thrownError);
 		}
 	})
+	}else{
+		$("form#form")[0].reportValidity();
+	}
 });
 $("a.editUser").click(function() { //editing a user
 	//rellenamos el modal con los datos de este usuario
@@ -39,12 +43,12 @@ $("a.editUser").click(function() { //editing a user
 			url: 'modules/users/editUser.php',
 			data: formData,
 			success:function(response){
-			 $.ajax({//refreshing the page
+				$.ajax({//refreshing the page
 					type: "post",
 					url: "modules/users/index.php",
 					success: function(refresh){ //si recibimos respuesta, quitamos el anterior artículo y colocamos el uevo
-						 $(".main").empty();
-						 $(".main").html(refresh);
+						$(".main").empty();
+						$(".main").html(refresh);
 					}
 				}); 
 			},
@@ -71,8 +75,8 @@ $("a.deleteUser").click(function() { //deleting a user
 					type: "post",
 					url: "modules/users/index.php",
 					success: function(refresh){ //si recibimos respuesta, quitamos el anterior artículo y colocamos el uevo
-						 $(".main").empty();
-						 $(".main").html(refresh);
+						$(".main").empty();
+						$(".main").html(refresh);
 					}
 				}); 
 			},

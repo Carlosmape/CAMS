@@ -15,12 +15,12 @@ require "../../includes/sqlfunctions.php";
 						<input class="form-control btn btn-info" type="button" id="Save" name="Save" value="Add category">
 					</div>
 					<div class="form-group col-md-5">
-						<input class="form-control" type="text" id="Title" name="Title" placeholder="A title ...">
+						<input required class="form-control" type="text" id="Title" name="Title" placeholder="A title ...">
 					</div>
 					<div class="form-group col-md-5 row">
 						<label class="col-form-label col-md-4" for="categoryParent">Parent</label>
 						<select class="form-control btn-default col-md-8" type="number" id="categoryParent" name="categoryParent" placeholder="A category...">
-							<option value="0">-</option>
+							<option value="NULL">No parent</option>
 							<?php 
 							foreach ($parentscategories as $patcat){
 								echo "<option value='".$patcat['ID']."'>".$patcat['TITLE']."</option>";
@@ -48,29 +48,28 @@ require "../../includes/sqlfunctions.php";
 					</thead>
 					<tbody>
 					';
-							foreach ($parentscategories as $patcat){
+						foreach ($parentscategories as $patcat){ ?>
+							<tr>
+								<td id="rowID<?php echo $patcat['ID']?>" class="rowID"><?php echo $patcat['ID']?></td>
+								<td id="rowParent<?php echo $patcat['ID']?>" class="rowParent"><?php echo $patcat['PARENTID'] ? $patcat['PARENTID'] : "-" ?></td>
+								<td id="rowTitle<?php echo $patcat['ID']?>" class="rowTitle"><?php echo $patcat['TITLE']?></td>
+								<td><a href="#" class="editCategory" id="editCategory<?php echo $patcat['ID']?>"><i class="material-icons">edit</i></a></td>
+								<td><a href="#" class="delete deleteCategory" id="deleteCaegory<?php echo $patcat['ID']?>"><i class="material-icons">delete</i></a>
+								</td>
+							</tr> 
+							<?php 
+							foreach ($childcategories as $chicat){
+								if($patcat['ID'] == $chicat['PARENTID']){
 								?>
-									<tr>
-										<td id="rowID<?php echo $patcat['ID']?>" class="rowID"><?php echo $patcat['ID']?></td>
-										<td id="rowParent<?php echo $patcat['ID']?>" class="rowParent"><?php echo $patcat['PARENTID']?></td>
-										<td id="rowTitle<?php echo $patcat['ID']?>" class="rowTitle"><?php echo $patcat['TITLE']?></td>
-										<td><a href="#" class="editCategory" id="editCategory<?php echo $patcat['ID']?>">			<i class="material-icons">edit</i></a></td>
-										<td><a href="#" class="delete deleteCategory" id="deleteCaegory<?php echo $patcat['ID']?>">	<i class="material-icons">delete</i>	</a>
-										</td>
-									</tr> 
-								<?php 
-								foreach ($childcategories as $chicat){
-									if($patcat['ID'] == $chicat['PARENTID']){
-										?>
-											<tr class="active">
-												<td id="rowID<?php echo $chicat['ID']?>" class="rowID">- <?php echo $chicat['ID']?></td>
-												<td id="rowParent<?php echo $chicat['ID']?>" class="rowParent"><?php echo $chicat['PARENTID']?></td>
-												<td id="rowTitle<?php echo $chicat['ID']?>" class="rowTitle"><?php echo $chicat['TITLE']?></td>
-												<td><a href="#" class="editCategory" id="editCategory<?php echo $chicat['ID']?>"><span class="glyphicon glyphicon-pencil"></span></a></td>
-												<td><a href="#" class="delete deleteCategory" id="deleteCaegory<?php echo $chicat['ID']?>"><span class="glyphicon glyphicon-trash"></span></a>
-												</td>
-											</tr> 
-										<?php
+								<tr class="active">
+									<td id="rowID<?php echo $chicat['ID']?>" class="rowID"><?php echo $chicat['ID']?></td>
+									<td id="rowParent<?php echo $chicat['ID']?>" class="rowParent"><?php echo $chicat['PARENTID']?></td>
+									<td id="rowTitle<?php echo $chicat['ID']?>" class="rowTitle"><?php echo $chicat['TITLE']?></td>
+									<td><a href="#" class="editCategory" id="editCategory<?php echo $chicat['ID']?>"><i class="material-icons">edit</i></a></td>
+									<td><a href="#" class="delete deleteCategory" id="deleteCaegory<?php echo $chicat['ID']?>"><i class="material-icons">delete</i></a>
+									</td>
+								</tr> 
+							<?php
 									}
 								}
 							}
@@ -85,14 +84,14 @@ require "../../includes/sqlfunctions.php";
 ?>
 <!--MODAL WINDOW FOR EDITING USERS -->
   <!-- Modal -->
-<div class="modal fade" id="editCategoryModal" role="dialog">
+<div class="modal fade" id="editCategoryModal">
 	<div class="modal-dialog">
 	
 		<!-- Modal content-->
 		<div class="modal-content">
 			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal">&times;</button>
 				<h4 class="modal-title">Editing Category</h4>
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
 			</div>
 			<div class="modal-body">
 				<form id="editForm" class="form-horizontal col-md-12">
@@ -106,43 +105,33 @@ require "../../includes/sqlfunctions.php";
 					<div class="form-group">
 						<label class="control-label col-sm-2" for="email">Parent:</label>
 						<select class="form-control col-md-6" type="number" id="editParent" name="editParent" placeholder="A category...">
-							<option value="0">-</option>
+							<option value="NULL">No parent</option>
 							<?php 
 							foreach ($parentscategories as $patcat){
 								echo "<option value='".$patcat['ID']."'>".$patcat['TITLE']."</option>";
-								foreach ($childcategories as $chicat){
-									if($patcat['ID'] == $chicat['PARENTID']){
-										echo "<option value='".$chicat['ID']."'>|→".$chicat['TITLE']."</option>";
-									}
-								}
 							}
 							?>
 						</select>
 					</div>
-					<div class="form-group">
-						<button type="button" class="col-sm-offset-2 col-sm-4 btn btn-default" data-dismiss="modal">Cancel</button>
-						<button class="btn btn-info col-sm-4" type="button" id="Edit" name="Edit" value="Edit" data-dismiss="modal">Edit</button>
-					</div>
 				</form>
 			</div>
-			<div	class="modal-footer">
+			<div class="modal-footer">
+				<button type="button" class="col-sm-offset-2 col-sm-4 btn btn-default" data-dismiss="modal">Cancel</button>
+				<button class="btn btn-info col-sm-4" type="button" id="Edit" name="Edit" value="Edit" data-dismiss="modal">Edit</button>
 			</div>
 		</div>
 		
 	</div>
 </div>
-<div class="modal fade" id="deleteCategoryModal" role="dialog">
+<div class="modal fade" id="deleteCategoryModal">
 	<div class="modal-dialog">
-		<!-- Modal content-->
 		<div class="modal-content">
 			<div class="modal-body">
 				<h3>¿Are you sure?</h3>
 			</div>
-			<div	class="modal-footer">
-				<form>
-					<button type="button" class="col-sm-offset-2 col-sm-4 btn btn-default" data-dismiss="modal">Cancel</button>
-					<button class="btn btn-danger col-sm-4" type="button" id="Delete" name="Delete" value="Delete">Delete</button>
-				</form>
+			<div class="modal-footer">
+				<button type="button" class="col-sm-offset-2 col-sm-4 btn btn-default" data-dismiss="modal">Cancel</button>
+				<button class="btn btn-danger col-sm-4" type="button" id="Delete" name="Delete" value="Delete">Delete</button>
 			</div>
 		</div>
 		

@@ -1,79 +1,88 @@
 $("input#Save").click(function() {
 	var formData = $("form#form").serialize();
-	//alert(formData);
-	$.ajax({
-		type: 'POST',
-		url: 'modules/categories/createCategory.php',
-		data: formData,
-		success:function(response){
-			$.ajax({//refreshing the page
-				type: "post",
-				url: "modules/categories/index.php",
-				success: function(refresh){ //si recibimos respuesta, quitamos el anterior artículo y colocamos el uevo
-					 $(".main").empty();
-					 $(".main").html(refresh);
-				}
-			});
-		},
-		error: function (xhr, ajaxOptions, thrownError) {
-			alert(xhr.status);
-			alert(thrownError);
-		}
-	})
-});
-$("a.editCategory").click(function() { //editing a user
-	//rellenamos el modal con los datos de este usuario
-	var userID = this.id.match(/\d+$/)[0];
-	$("input#editID").val($("#rowID"+userID).html());
-	$("input#editTitle").val($("#rowTitle"+userID).html());
-	$("input#editParent").val($("#rowParent"+userID).html());
-	$('#editCategoryModal').modal('show');
--	$("button#Edit").click(function() {
-		$('#editCategoryModal').modal('hide');
-		$('.modal-backdrop.fade.in').remove();
-		var formData = $("form#editForm").serialize();
-		//alert(formData);
+	if( $("form#form")[0].checkValidity()) {
 		$.ajax({
 			type: 'POST',
-			url: 'modules/categories/editCategory.php',
+			url: 'modules/categories/createCategory.php',
 			data: formData,
 			success:function(response){
-			 $.ajax({//refreshing the page
+				$.ajax({
 					type: "post",
 					url: "modules/categories/index.php",
-					success: function(refresh){ //si recibimos respuesta, quitamos el anterior artículo y colocamos el uevo
-						 $(".main").empty();
-						 $(".main").html(refresh);
+					success: function(refresh){
+						$(".main").empty();
+						$(".main").html(refresh);
+						var alertDiv = ComposeAlert("Category", response);
+						$(".main").append(alertDiv);
+						AutoCloseAlerts();
 					}
-				}); 
+				});
 			},
 			error: function (xhr, ajaxOptions, thrownError) {
 				alert(xhr.status);
 				alert(thrownError);
 			}
 		})
+	}else{
+		$("form#form")[0].reportValidity();
+	}
+});
+$("a.editCategory").click(function() { 
+	var catID = this.id.match(/\d+$/)[0];
+	$("input#editID").val($("#rowID"+catID).html());
+	$("input#editTitle").val($("#rowTitle"+catID).html());
+	$("input#editParent").val($("#rowParent"+catID).html().replace("-","NULL"));
+	$('#editCategoryModal').modal('show');
+	$("button#Edit").click(function() {
+		if($("form#editForm")[0].checkValidity()){
+			$('#editCategoryModal').modal('hide');
+			var formData = $("form#editForm").serialize();
+			$.ajax({
+				type: 'POST',
+				url: 'modules/categories/editCategory.php',
+				data: formData,
+				success:function(response){
+					$.ajax({
+						type: "post",
+						url: "modules/categories/index.php",
+						success: function(refresh){ 
+							$(".main").empty();
+							$(".main").html(refresh);
+							var alertDiv = ComposeAlert("Category", response);
+							$(".main").append(alertDiv);
+							AutoCloseAlerts();
+						}
+					}); 
+				},
+				error: function (xhr, ajaxOptions, thrownError) {
+					alert(xhr.status);
+					alert(thrownError);
+				}
+			})
+		} else {
+			$("form#editForm")[0].reportValidity();
+		}	
 	});
 });	
-$("a.deleteCategory").click(function() { //deleting a user
+$("a.deleteCategory").click(function() { 
 	var catID = this.id.match(/\d+$/)[0];
-	//alert(catID);
 	$('#deleteCategoryModal').modal('show');
 	$("button#Delete").click(function(){
 		$('#deleteCategoryModal').modal('hide');
-		$('.modal-backdrop.fade.in').remove();
 		$.ajax({
 			type: 'POST',
 			url: 'modules/categories/deleteCategory.php',
 			data: {ID : catID},
 			success:function(response){
-				$('#deleteCategoryModal').modal('hide');
-				$('.modal-backdrop.fade.in').remove();
-				$.ajax({//refreshing the page
+				$.ajax({
 					type: "post",
 					url: "modules/categories/index.php",
-					success: function(refresh){ //si recibimos respuesta, quitamos el anterior artículo y colocamos el uevo
-						 $(".main").empty();
-						 $(".main").html(refresh);
+					success: function(refresh){ 
+						$(".main").empty();
+						$(".main").html(refresh);
+						var alertDiv = ComposeAlert("Category", response);
+						$(".main").append(alertDiv);
+						AutoCloseAlerts();
 					}
 				}); 
 			},
