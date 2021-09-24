@@ -15,7 +15,7 @@ abstract class LogLevels{
 }
 
 class Log{
-	var $database;
+	static $database;
 
 	public static function Get(int $last = 10){
 		if(self::$database == null){
