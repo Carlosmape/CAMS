@@ -137,7 +137,8 @@ CREATE TABLE `ROLES` (
 INSERT INTO `ROLES` (`ID`, `NAME`, `DESCRIPTION`) VALUES
 (0,	'Admin',	'Website administrator'),
 (1,	'Contributor',	'Website contributor (allowed to upload content)'),
-(24,	'sample',	'Nothing to do');
+(24,	'sample',	'Nothing to do'),
+(25,	'sample',	'Nothing to do');
 
 DROP TABLE IF EXISTS `ROLES_PERMISSIONS`;
 CREATE TABLE `ROLES_PERMISSIONS` (
@@ -175,11 +176,11 @@ CREATE TABLE `USERS` (
   `USER` varchar(32) NOT NULL,
   `MAIL` varchar(32) NOT NULL,
   `PASSWORD` varchar(64) NOT NULL,
-  `TYPE` int(11) NOT NULL,
+  `TYPE` int(11) DEFAULT NULL,
   PRIMARY KEY (`ID`),
   UNIQUE KEY `USER` (`USER`,`MAIL`),
   KEY `TYPE` (`TYPE`),
-  CONSTRAINT `USERS_ibfk_1` FOREIGN KEY (`TYPE`) REFERENCES `ROLES` (`ID`),
+  CONSTRAINT `USERS_ibfk_2` FOREIGN KEY (`TYPE`) REFERENCES `ROLES` (`ID`) ON DELETE SET NULL,
   CONSTRAINT `CONSTRAINT_1` CHECK (`TYPE` between 0 and 1)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -187,7 +188,7 @@ INSERT INTO `USERS` (`ID`, `USER`, `MAIL`, `PASSWORD`, `TYPE`) VALUES
 (1,	'Admin',	'admin@mail.com',	'e3afed0047b08059d0fada10f400c1e5',	0),
 (26,	'sample',	'sample@sample.com',	'5e8ff9bf55ba3508199d22e984129be6',	1);
 
--- 2021-09-24 16:14:25"); 
+-- 2021-09-24 16:27:08"); 
 	} catch (Exception $e){
 		throw $e;
 	}
