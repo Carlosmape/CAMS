@@ -1,7 +1,3 @@
-//window.onload = function() {
-/*$("table.table") 
-  .tablesorter({widthFixed: true, widgets: ['zebra']}) 
-  .tablesorterPager({container: $("#pager")}); */    
 function ComposeAlert(section, action, error = false, errorMessage = "" ) {
 	var alertClass;
 	var operationResult;
@@ -23,11 +19,11 @@ function AutoCloseAlerts(){
 		$(this).remove();
 	});
 }
-function PerformTransaction(toURL, alertDiv = null){
+function PerformTransaction(toURL, withData = null, alertDiv = null){
 	$.ajax({
 		type: "post",
 		url: toURL,
-		data: null,
+		data: withData,
 		success: function(response){
 			$(".main").empty();
 			$(".main").html(response);
@@ -45,10 +41,19 @@ function PerformTransaction(toURL, alertDiv = null){
 }
 
 function PerformAction(toURL, withData, refreshURL = true){
-	//TODO
-	//
-	//And finally call index
-	PerformTransaction(refreshURL);
+	$.ajax({
+		type: "post",
+		url: toURL,
+		data: withData,
+		success: function(response){
+			var alertDiv = ComposeAlert("Server:", response);
+			PerformTransaction(refreshURL, null, alertDiv);
+		},
+		error: function (xhr, ajaxOptions, thrownError) {
+			console.log(xhr.status);
+			console.log(thrownError);
+		}
+	})
 }
 
 $("a#profile").click(function(){
@@ -81,4 +86,3 @@ $("a#files").click(function(){
 $("a#styles").click(function(){
 	PerformTransaction("modules/styles/index.php");
 });
-//};
