@@ -29,7 +29,7 @@ function PerformTransaction(toURL, alertDiv = null){
 		url: toURL,
 		data: null,
 		success: function(response){
-			$(".main").epmty();
+			$(".main").empty();
 			$(".main").html(response);
 			if(alertDiv){
 				$(".main").append(alertDiv);
@@ -43,11 +43,11 @@ function PerformTransaction(toURL, alertDiv = null){
 	})
 }
 
-function PerformAction(toURL, withData, refresh = true, alertDiv){
+function PerformAction(toURL, withData, refreshURL = true){
 	//TODO
 	//
 	//And finally call index
-	// PerformTransaction(toURLIndex...)
+	PerformTransaction(refreshURL);
 }
 
 $("a#profile").click(function(){
