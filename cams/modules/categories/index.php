@@ -51,7 +51,7 @@ require "../../includes/sqlfunctions.php";
 						foreach ($parentscategories as $patcat){ ?>
 							<tr>
 								<td id="rowID<?php echo $patcat['ID']?>" class="rowID"><?php echo $patcat['ID']?></td>
-								<td id="rowParent<?php echo $patcat['ID']?>" class="rowParent"><?php echo $patcat['PARENTID']?></td>
+								<td id="rowParent<?php echo $patcat['ID']?>" class="rowParent"><?php echo $patcat['PARENTID'] ? $patcat['PARENTID'] : "-" ?></td>
 								<td id="rowTitle<?php echo $patcat['ID']?>" class="rowTitle"><?php echo $patcat['TITLE']?></td>
 								<td><a href="#" class="editCategory" id="editCategory<?php echo $patcat['ID']?>"><i class="material-icons">edit</i></a></td>
 								<td><a href="#" class="delete deleteCategory" id="deleteCaegory<?php echo $patcat['ID']?>"><i class="material-icons">delete</i></a>
@@ -90,8 +90,8 @@ require "../../includes/sqlfunctions.php";
 		<!-- Modal content-->
 		<div class="modal-content">
 			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal">&times;</button>
 				<h4 class="modal-title">Editing Category</h4>
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
 			</div>
 			<div class="modal-body">
 				<form id="editForm" class="form-horizontal col-md-12">
