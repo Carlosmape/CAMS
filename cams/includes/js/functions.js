@@ -35,6 +35,7 @@ function PerformTransaction(toURL, alertDiv = null){
 				$(".main").append(alertDiv);
 				AutoCloseAlerts();
 			}
+			$("table.table").tablesorter();
 		},
 		error: function (xhr, ajaxOptions, thrownError) {
 			console.log(xhr.status);
