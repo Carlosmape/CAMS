@@ -16,7 +16,7 @@
 					</div>
 					<div class="form-group">
 						<label class="control-label" for="editUser">User:</label>
-						<input disabled class="form-control" type="text" id="editUser" name="editUser" required value="<?php echo $user['USER'];?>">
+						<input class="form-control" type="text" id="editUser" name="editUser" required value="<?php echo $user['USER'];?>">
 					</div>
 					<div class="form-group">
 						<label class="control-label" for="editMail">Mail:</label>
