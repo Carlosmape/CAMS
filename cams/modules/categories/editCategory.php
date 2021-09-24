@@ -7,10 +7,10 @@
 		$database = new Sqlconnection;//connect to database in order to extract users info
 		if (isset($database)){
 			if($database->editCategory(strip_tags($_POST['editID']), strip_tags($_POST['editTitle']), strip_tags($_POST['editParent']))){
-				echo "User edited!";
+				echo "Category edited!";
 			}
 			else{
-				echo "Cant edit user";
+				echo "Cant edit category";
 			}
 		}else{
 		  echo "Error CAMS could not connect to your DATABASE";

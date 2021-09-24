@@ -7,10 +7,10 @@
 		$database = new Sqlconnection;//connect to database in order to extract users info
 		if (isset($database)){
 			if($database->deleteCategory(strip_tags($_POST['ID']))){
-				echo "User deleted!";
+				echo "Category deleted!";
 			}
 			else{
-				echo "Cant delete user";
+				echo "Cant delete category";
 			}
 		}else{
 		  echo "Error CAMS could not connect to your DATABASE";
