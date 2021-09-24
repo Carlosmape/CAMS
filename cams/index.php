@@ -5,7 +5,6 @@ require_once "includes/header.php";
 require_once "includes/sqlfunctions.php"; 
 $database = new Sqlconnection;
 try{
-	throw new Exception();
 	if (isset($_SESSION['connection']) && !$_SESSION['connection']->timeout()) { //you are connected
 		$_SESSION['connection']->keepalive();
 		require "modules/dashboard.php";
