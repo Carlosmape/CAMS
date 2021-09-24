@@ -105,15 +105,10 @@ require "../../includes/sqlfunctions.php";
 					<div class="form-group">
 						<label class="control-label col-sm-2" for="email">Parent:</label>
 						<select class="form-control col-md-6" type="number" id="editParent" name="editParent" placeholder="A category...">
-							<option value="0">-</option>
+							<option value="NULL">No parent</option>
 							<?php 
 							foreach ($parentscategories as $patcat){
 								echo "<option value='".$patcat['ID']."'>".$patcat['TITLE']."</option>";
-								foreach ($childcategories as $chicat){
-									if($patcat['ID'] == $chicat['PARENTID']){
-										echo "<option value='".$chicat['ID']."'>|→".$chicat['TITLE']."</option>";
-									}
-								}
 							}
 							?>
 						</select>
