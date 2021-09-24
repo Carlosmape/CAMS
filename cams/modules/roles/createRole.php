@@ -15,7 +15,7 @@ if (isset($_SESSION['connection']) && !$_SESSION['connection']->timeout() && $_S
 			}
 		}
 		else{
-			echo "Cant create role";
+			echo "Cant create role. Error".mysqli_error($database->connection);
 		}
 	}else{
 		echo "Error CAMS could not connect to your DATABASE";
