@@ -34,7 +34,6 @@ $("a.editCategory").click(function() { //editing a user
 	$('#editCategoryModal').modal('show');
 	-	$("button#Edit").click(function() {
 		$('#editCategoryModal').modal('hide');
-		$('.modal-backdrop.fade.in').remove();
 		var formData = $("form#editForm").serialize();
 		//alert(formData);
 		$.ajax({
@@ -64,14 +63,11 @@ $("a.deleteCategory").click(function() { //deleting a user
 	$('#deleteCategoryModal').modal('show');
 	$("button#Delete").click(function(){
 		$('#deleteCategoryModal').modal('hide');
-		$('.modal-backdrop.fade.in').remove();
 		$.ajax({
 			type: 'POST',
 			url: 'modules/categories/deleteCategory.php',
 			data: {ID : catID},
 			success:function(response){
-				$('#deleteCategoryModal').modal('hide');
-				$('.modal-backdrop.fade.in').remove();
 				$.ajax({//refreshing the page
 					type: "post",
 					url: "modules/categories/index.php",
