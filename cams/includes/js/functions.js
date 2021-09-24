@@ -13,7 +13,7 @@ function ComposeAlert(section, action, error = false, errorMessage = "" ) {
 		operationResult = "Done!";
 	}
 
-	return `<div class="alert ${alertClass} alert-dismissible fade show" role="alert">
+	return `<div class="col-md-12 alert ${alertClass} alert-dismissible fade show" role="alert">
 				<strong>${operationResult}</strong> ${section} ${action} <i>${errorMessage}</i>
 				<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>		
 			</div>`;
