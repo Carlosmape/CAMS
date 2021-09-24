@@ -43,11 +43,11 @@ CREATE TABLE `ARTICLES` (
   PRIMARY KEY (`ID`),
   UNIQUE KEY `TITLE` (`TITLE`),
   KEY `AUTOR` (`AUTOR`),
-  CONSTRAINT `ARTICLES_ibfk_1` FOREIGN KEY (`AUTOR`) REFERENCES `USERS` (`ID`)
+  CONSTRAINT `ARTICLES_ibfk_2` FOREIGN KEY (`AUTOR`) REFERENCES `USERS` (`ID`) ON DELETE SET NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ARTICLES` (`ID`, `TITLE`, `IMAGEHEADER`, `CATEGORY`, `CONTENT`, `PINNED`, `AUTOR`, `DATE`) VALUES
-(1,	'Lorem ipsum dolor',	'http://www.highreshdwallpapers.com/wp-content/uploads/2012/10/Lorem-Ipsum-Wallpaper.jpg',	NULL,	'<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. y tal</p>',	NULL,	NULL,	'2021-09-19');
+(1,	'Lorem ipsum dolor',	'http://www.highreshdwallpapers.com/wp-content/uploads/2012/10/Lorem-Ipsum-Wallpaper.jpg',	1,	'<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. y tal</p>',	NULL,	NULL,	'2021-09-19');
 
 DROP TABLE IF EXISTS `CATEGORIES`;
 CREATE TABLE `CATEGORIES` (
@@ -98,6 +98,7 @@ CREATE TABLE `PAGES` (
   PRIMARY KEY (`ID`),
   UNIQUE KEY `TITLE` (`TITLE`),
   KEY `AUTOR` (`AUTOR`),
+  CONSTRAINT `PAGES_ibfk_1` FOREIGN KEY (`AUTOR`) REFERENCES `USERS` (`ID`) ON DELETE SET NULL,
   CONSTRAINT `CONSTRAINT_1` CHECK (`TYPE` between 0 and 2)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -135,7 +136,8 @@ CREATE TABLE `ROLES` (
 
 INSERT INTO `ROLES` (`ID`, `NAME`, `DESCRIPTION`) VALUES
 (0,	'Admin',	'Website administrator'),
-(1,	'Contributor',	'Website contributor (allowed to upload content)');
+(1,	'Contributor',	'Website contributor (allowed to upload content)'),
+(24,	'sample',	'Nothing to do');
 
 DROP TABLE IF EXISTS `ROLES_PERMISSIONS`;
 CREATE TABLE `ROLES_PERMISSIONS` (
@@ -151,7 +153,8 @@ CREATE TABLE `ROLES_PERMISSIONS` (
 
 INSERT INTO `ROLES_PERMISSIONS` (`ID`, `ID_ROLE`, `ID_PERMISSION`) VALUES
 (1,	0,	0),
-(5,	1,	1);
+(5,	1,	1),
+(10,	24,	1);
 
 DROP TABLE IF EXISTS `SECTIONS`;
 CREATE TABLE `SECTIONS` (
@@ -184,7 +187,7 @@ INSERT INTO `USERS` (`ID`, `USER`, `MAIL`, `PASSWORD`, `TYPE`) VALUES
 (1,	'Admin',	'admin@mail.com',	'e3afed0047b08059d0fada10f400c1e5',	0),
 (26,	'sample',	'sample@sample.com',	'5e8ff9bf55ba3508199d22e984129be6',	1);
 
--- 2021-09-24 15:59:29"); 
+-- 2021-09-24 16:14:25"); 
 	} catch (Exception $e){
 		throw $e;
 	}
