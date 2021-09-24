@@ -19,8 +19,7 @@ function CreateTablesStructures($connection){
 
 function CreateTables($connection){
 	try {
-		return mysqli_query($connection,
-"-- Adminer 4.8.1 MySQL 5.5.5-10.3.29-MariaDB-0+deb10u1 dump
+		return mysqli_query($connection,"
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -128,20 +127,22 @@ INSERT INTO `SECTIONS` (`ID`, `ENTITY`) VALUES
 (2,	'CATEGORIES'),
 (3,	'USERS');
 
+
 DROP TABLE IF EXISTS `ROLES_PERMISSIONS`;
 CREATE TABLE `ROLES_PERMISSIONS` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   `ID_ROLE` int(11) NOT NULL,
   `ID_PERMISSION` int(11) NOT NULL,
   PRIMARY KEY (`ID`),
-  KEY `ID_ROLE` (`ID_ROLE`),
   KEY `ID_PERMISSION` (`ID_PERMISSION`),
-  CONSTRAINT `ROLES_PERMISSIONS_ibfk_1` FOREIGN KEY (`ID_ROLE`) REFERENCES `ROLES` (`ID`),
-  CONSTRAINT `ROLES_PERMISSIONS_ibfk_2` FOREIGN KEY (`ID_PERMISSION`) REFERENCES `SECTIONS` (`ID`)
+  KEY `ID_ROLE` (`ID_ROLE`),
+  CONSTRAINT `ROLES_PERMISSIONS_ibfk_2` FOREIGN KEY (`ID_PERMISSION`) REFERENCES `SECTIONS` (`ID`),
+  CONSTRAINT `ROLES_PERMISSIONS_ibfk_6` FOREIGN KEY (`ID_ROLE`) REFERENCES `ROLES` (`ID`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ROLES_PERMISSIONS` (`ID`, `ID_ROLE`, `ID_PERMISSION`) VALUES
-(1,	0,	0);
+(0,	0,	0),
+(1,	1,	1);
 
 DROP TABLE IF EXISTS `USERS`;
 CREATE TABLE `USERS` (
@@ -161,10 +162,10 @@ INSERT INTO `USERS` (`ID`, `USER`, `MAIL`, `PASSWORD`, `TYPE`) VALUES
 (1,	'admin',	'example@mail.com',	'e3afed0047b08059d0fada10f400c1e5',	0),
 (6,	'user',	'sample@mymail.com',	'ee11cbb19052e40b07aac0ca060c23ee',	1);
 
-INSERT INTO `ARTICLES` (`ID`, `TITLE`, `IMAGEHEADER`, `TYPE`, `CATEGORY`, `CONTENT`, `PINNED`, `AUTOR`, `DATE`) VALUES
-(1,	'Lorem ipsum dolor',	'http://www.highreshdwallpapers.com/wp-content/uploads/2012/10/Lorem-Ipsum-Wallpaper.jpg',	1,	0,	'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.',	NULL,	NULL,	'2021-09-19');
+INSERT INTO `ARTICLES` (`ID`, `TITLE`, `IMAGEHEADER`, `CATEGORY`, `CONTENT`, `PINNED`, `AUTOR`, `DATE`) VALUES
+(1,	'Lorem ipsum dolor',	'http://www.highreshdwallpapers.com/wp-content/uploads/2012/10/Lorem-Ipsum-Wallpaper.jpg',	NULL,	'<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. y tal</p>',	NULL,	NULL,	'2021-09-19');
 
--- 2021-09-20 15:36:32"); 
+"); 
 	} catch (Exception $e){
 		throw $e;
 	}
