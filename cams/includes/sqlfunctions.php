@@ -213,7 +213,7 @@ class Sqlconnection {
 		return $this->addLog(LogLevels::ERROR, $exception->getMessage(), $exception->getFile(), $exception->getLine(),
 		   $exception->getTraceAsString());
 	}
-	function addLog(LogLevels $level, string $message, string $file = "", string $line = "", string $proccess = ""){
+	function addLog(int $level, string $message, string $file = "", string $line = "", string $proccess = ""){
 		$date = new DateTime();
 		return $this->connection->query("INSERT INTO `LOG` (`ID`, `LEVEL`, `MESSAGE`, `FILE`, `LINE`, `PROCCESS`, `SESSION_VALUE`, `DATE`) 
 			VALUES (NULL, '$level', '$message', '$file', '$line', '$proccess', '".serialize($_SESSION)."', '".$date->format('Y-m-d H:i:s')."')");
