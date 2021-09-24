@@ -10,7 +10,7 @@
 				echo "Role deleted!";
 			}
 			else{
-				echo "Cant delete role";
+				echo "Cant delete role Error:".mysqli_error($database->connection);
 			}
 		}else{
 		  echo "Error CAMS could not connect to your DATABASE";
