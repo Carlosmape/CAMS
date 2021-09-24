@@ -17,15 +17,15 @@
 						</div>
 						<div class="form-group">
 							<label class="control-label col-sm-2" for="editUser">User:</label>
-							<input class="col-sm-8" type="text" id="editUser" name="editUser" placeholder="" required value="<?php echo $user['USER'];?>">
+							<input class="form-control col-sm-8" type="text" id="editUser" name="editUser" placeholder="" required value="<?php echo $user['USER'];?>">
 						</div>
 						<div class="form-group">
 							<label class="control-label col-sm-2" for="editMail">Mail:</label>
-							<input class="col-sm-8" type="text" id="editMail" name="editMail" placeholder="" value="<?php echo $user['MAIL'];?>">
+							<input class="form-control col-sm-8" type="text" id="editMail" name="editMail" placeholder="" value="<?php echo $user['MAIL'];?>">
 						</div>
 						<div class="form-group">
 							<label class="control-label col-sm-2" for="email">New password:</label>
-							<input class="col-sm-8" type="text" id="editPass" name="editPass" placeholder="New pass...">
+							<input class="form-control col-sm-8" type="text" id="editPass" name="editPass" placeholder="New pass...">
 						</div>						
 						<div class="form-group">
 							<input class="btn btn-info" type="button" id="EditProfile" name="EditProfile" value="Edit">
