@@ -40,7 +40,7 @@ function PerformTransaction(toURL, withData = null, alertDiv = null){
 	})
 }
 
-function PerformAction(toURL, withData, refreshURL = true){
+function PerformAction(toURL, withData, refreshURL){
 	$.ajax({
 		type: "post",
 		url: toURL,

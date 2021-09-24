@@ -1,7 +1,7 @@
 $("input#Save").click(function() {
 	var formData = $("form#form").serialize();
 	if( $("form#form")[0].checkValidity()) {
-		$.ajax({
+		/*$.ajax({
 			type: 'POST',
 			url: 'modules/categories/createCategory.php',
 			data: formData,
@@ -22,7 +22,8 @@ $("input#Save").click(function() {
 				alert(xhr.status);
 				alert(thrownError);
 			}
-		})
+		})*/
+		PerformAction("modules/categories/createCategory.php", formData, "modules/categories/index.php");
 	}else{
 		$("form#form")[0].reportValidity();
 	}
