@@ -84,7 +84,7 @@ require "../../includes/sqlfunctions.php";
 ?>
 <!--MODAL WINDOW FOR EDITING USERS -->
   <!-- Modal -->
-<div class="modal fade" id="editCategoryModal" role="dialog">
+<div class="modal fade" id="editCategoryModal">
 	<div class="modal-dialog">
 	
 		<!-- Modal content-->
@@ -118,30 +118,25 @@ require "../../includes/sqlfunctions.php";
 							?>
 						</select>
 					</div>
-					<div class="form-group">
-						<button type="button" class="col-sm-offset-2 col-sm-4 btn btn-default" data-dismiss="modal">Cancel</button>
-						<button class="btn btn-info col-sm-4" type="button" id="Edit" name="Edit" value="Edit" data-dismiss="modal">Edit</button>
-					</div>
 				</form>
 			</div>
-			<div	class="modal-footer">
+			<div class="modal-footer">
+				<button type="button" class="col-sm-offset-2 col-sm-4 btn btn-default" data-dismiss="modal">Cancel</button>
+				<button class="btn btn-info col-sm-4" type="button" id="Edit" name="Edit" value="Edit" data-dismiss="modal">Edit</button>
 			</div>
 		</div>
 		
 	</div>
 </div>
-<div class="modal fade" id="deleteCategoryModal" role="dialog">
+<div class="modal fade" id="deleteCategoryModal">
 	<div class="modal-dialog">
-		<!-- Modal content-->
 		<div class="modal-content">
 			<div class="modal-body">
 				<h3>¿Are you sure?</h3>
 			</div>
-			<div	class="modal-footer">
-				<form>
-					<button type="button" class="col-sm-offset-2 col-sm-4 btn btn-default" data-dismiss="modal">Cancel</button>
-					<button class="btn btn-danger col-sm-4" type="button" id="Delete" name="Delete" value="Delete">Delete</button>
-				</form>
+			<div class="modal-footer">
+				<button type="button" class="col-sm-offset-2 col-sm-4 btn btn-default" data-dismiss="modal">Cancel</button>
+				<button class="btn btn-danger col-sm-4" type="button" id="Delete" name="Delete" value="Delete">Delete</button>
 			</div>
 		</div>
 		
