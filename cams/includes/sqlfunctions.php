@@ -110,7 +110,7 @@ class Sqlconnection {
 		return $result;
 	}
 	function editCategory($id, $title, $parentid){
-		$result = $this->connection->query("UPDATE `CATEGORIES` SET `TITLE`='$title',`PARENTID`='$parentid' WHERE `ID`=$id;");
+		$result = $this->connection->query("UPDATE `CATEGORIES` SET `TITLE`='$title',`PARENTID`=$parentid WHERE `ID`=$id;");
 		echo mysqli_error($this->connection);
 		return $result;
 	}
