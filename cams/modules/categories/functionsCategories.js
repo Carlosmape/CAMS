@@ -33,7 +33,7 @@ $("a.editCategory").click(function() {
 	$("input#editParent").val($("#rowParent"+catID).html().replace("-","NULL"));
 	$('#editCategoryModal').modal('show');
 	$("button#Edit").click(function() {
-		if($("form#editForm").checkValidity()){
+		if($("form#editForm")[0].checkValidity()){
 			$('#editCategoryModal').modal('hide');
 			var formData = $("form#editForm").serialize();
 			$.ajax({
@@ -58,7 +58,7 @@ $("a.editCategory").click(function() {
 				}
 			})
 		} else {
-			$("form#editForm").reportValidity();
+			$("form#editForm")[0].reportValidity();
 		}	
 	});
 });	
