@@ -18,31 +18,31 @@ class Log{
 	var $database;
 
 	public static function Get(int $last = 10){
-		if($database == null){
-			$database = new Sqlconnection;
+		if($this->database == null){
+			$this->database = new Sqlconnection;
 		}
-		return $database->getLastLogs($last);
+		return $this->database->getLastLogs($last);
 	}
 
 	public static function GetAll(){
-		if($database == null){
-			$database = new Sqlconnection;
+		if($this->database == null){
+			$this->database = new Sqlconnection;
 		}
-		return $database->getAllRecords();
+		return $this->database->getAllRecords();
 	}
 
 	public static function Add(Exception $exception){
-		if($database == null){
-			$database = new Sqlconnection;
+		if($this->database == null){
+			$this->database = new Sqlconnection;
 		}
-		$database->addLogException($exception);
+		$this->database->addLogException($exception);
 	}
 
 	public static function AddMsg(string $message, LogLevels $level = LogLevels::DEBUG){
-		if($database == null){
-			$database = new Sqlconnection;
+		if($this->database == null){
+			$this->database = new Sqlconnection;
 		}
-		$database->addLog($level, $message);
+		$this->database->addLog($level, $message);
 	}
 
 }
