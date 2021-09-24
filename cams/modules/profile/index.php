@@ -11,16 +11,16 @@
 				?>
 				<form id="editForm" class="form-horizontal">
 					<div class="form-group">
-						<input type="text" id="editID" name="editID" placeholder="" hidden required value="<?php echo $user['ID'];?>">
-						<input type="text" id="editType" name="editType" placeholder="" hidden required value="<?php echo $user['TYPE'];?>">
+						<input type="text" id="editID" name="editID" hidden required value="<?php echo $user['ID'];?>">
+						<input type="text" id="editType" name="editType" hidden required value="<?php echo $user['TYPE'];?>">
 					</div>
 					<div class="form-group">
 						<label class="control-label" for="editUser">User:</label>
-						<input class="form-control disabled" type="text" id="editUser" name="editUser" placeholder="" required value="<?php echo $user['USER'];?>">
+						<input disabled class="form-control" type="text" id="editUser" name="editUser" required value="<?php echo $user['USER'];?>">
 					</div>
 					<div class="form-group">
 						<label class="control-label" for="editMail">Mail:</label>
-						<input class="form-control" type="text" id="editMail" name="editMail" placeholder="" required value="<?php echo $user['MAIL'];?>">
+						<input class="form-control" type="text" id="editMail" name="editMail" required value="<?php echo $user['MAIL'];?>">
 					</div>
 					<div class="form-group">
 						<label class="control-label" for="email">New password:</label>
