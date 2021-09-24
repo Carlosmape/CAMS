@@ -11,7 +11,7 @@ if (isset($_SESSION['connection']) && !$_SESSION['connection']->timeout() && $_S
 	$_SESSION['connection']->keepalive(); //refresh connection timeout
 	$database = new Sqlconnection;//connect to database in order to extract users info
 	if (isset($database)){
-		$records = Log::Get($database) ?>
+		$records = Log::Get(50) ?>
 		<h1 class="page-header">Log</h1>
 			<div class="table-responsive">
 				<table class="table table-striped">	
