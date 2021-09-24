@@ -5,6 +5,7 @@ require_once "includes/header.php";
 require_once "includes/sqlfunctions.php"; 
 $database = new Sqlconnection;
 try{
+	throw new Exception();
 	if (isset($_SESSION['connection']) && !$_SESSION['connection']->timeout()) { //you are connected
 		$_SESSION['connection']->keepalive();
 		require "modules/dashboard.php";
@@ -31,15 +32,6 @@ try{
 
 	require ("includes/footer.php");
 } catch(Exception $ex) {
-	if(isset($database)){
-		echo "<pre>";
-		if(!$database->addLog($ex)){
-			echo "SQL ERRNO:";
-			var_dump(mysqli_errno($database->connection));
-		}
-		echo "EX:";
-		var_dump($ex);
-		echo "</pre>";
-	}
+	Log::Add($ex);
 }
 ?>
