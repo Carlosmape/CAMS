@@ -9,7 +9,7 @@ $("a.deleteFile").click(function() { //deleting a user
 });
 $("input#Upload").click(function() {
 	var formData = new FormData($("form#form")[0])
-	var files = $ ('#file' )[0].files[0];
+	var files = $ ('#File' )[0].files[0];
 	formData.append( 'file', files );
 	$.ajax( {
 		cache :fale,
