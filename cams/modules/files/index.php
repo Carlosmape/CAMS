@@ -9,7 +9,7 @@ require "../../includes/sqlfunctions.php";
 			echo '<h1 class="page-header">Files</h1>';?>
 				<form id="form" class="row">
 					<div class="form-group col-md-2">
-						<input class="form-control btn btn-info" type="submit" id="Upload" name="Upload" value="Upload">
+						<input class="form-control btn btn-info" type="button" id="Upload" name="Upload" value="Upload">
 					</div>
 					<div class="form-group col-md-10">
 						<input class="form-control" type="file" id="File" name="File" placeholder="A file ...">
