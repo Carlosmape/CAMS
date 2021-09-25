@@ -43,7 +43,6 @@ require "../../includes/config.php";
 			} else {
 					if (move_uploaded_file($_FILES["File"]["tmp_name"], $target_file)) {
 							echo "The file ". basename( $_FILES["File"]["name"]). " has been uploaded.";
-							echo "<meta http-equiv='refresh' content='0; url=".HOST."/cams'>";
 					} else {
 							echo "Sorry, there was an error uploading your file.";
 					}
