@@ -9,7 +9,20 @@ $("a.deleteFile").click(function() { //deleting a user
 });
 $("input#Upload").click(function() {
 	var formData = new FormData($("form#form")[0])
-	PerformAction("modules/files/uploadFile.php", formData, "modules/files/index.php");
+	var files = $ ('#file' )[0].files[0];
+	formData.append( 'file', files );
+	$.ajax( {
+		cache :fale,
+		data : formData,
+		url : "modules/files/uploadFile.php",
+		type : 'post',
+		processData : false,
+		contentType : false,
+		success:(function(response){
+			var alertDiv = ComposeAlert("Server:",response);
+			PerformTransaction("modules/files/index.php", null, alertDiv);
+		})
+	});
 });
 $("a.viewFile").click(function() { //deleting a user
 	var url = this.id;
