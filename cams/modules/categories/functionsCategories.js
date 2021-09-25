@@ -15,7 +15,7 @@ $("a.editCategory").click(function() {
 	$("button#Edit").click(function() {
 		if($("form#editForm")[0].checkValidity()){
 			$('#editCategoryModal').modal('hide');
-			setTimeout(null,100);
+			setTimeout(null,50);
 			var formData = $("form#editForm").serialize();
 			PerformAction("modules/categories/editCategory.php", formData, "modules/categories/index.php");
 		} else {
@@ -28,7 +28,7 @@ $("a.deleteCategory").click(function() {
 	$('#deleteCategoryModal').modal('show');
 	$("button#Delete").click(function(){
 		$('#deleteCategoryModal').modal('hide');
-		setTimeout(null,100);
+		setTimeout(null,50);
 		PerformAction("modules/categories/deleteCategory.php", {ID : catID}, "modules/categories/index.php")
 	});
 });
