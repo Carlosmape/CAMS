@@ -16,6 +16,6 @@ $("a.deleteArticle").click(function() {
 	$("button#Delete").click(function(){
 		$('#deleteArticleModal').modal('hide');
 		setTimeout(null,100);
-		PerformAction("module/page/deleteArticle", {ID : pageID}, "modules/pages/index.php");
+		PerformAction("module/page/deleteArticle.php", {ID : pageID}, "modules/pages/index.php");
 	});
 });
