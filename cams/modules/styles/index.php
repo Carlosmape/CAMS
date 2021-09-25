@@ -25,7 +25,6 @@ if (isset($_SESSION['connection']) && !$_SESSION['connection']->timeout() && $_S
 			</div>
 		</form>
 		<script src="modules/styles/functions.js"></script>
-		<script src="includes/js/bootstrap.js"></script>		
 		<?php fclose($file);
 	}
 }
