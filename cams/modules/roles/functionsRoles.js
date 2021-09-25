@@ -18,7 +18,7 @@ $("a.editRole").click(function() { //editing a role
 		$('#editRoleModal').modal('hide');
 		setTimeout(null,100);
 		var formData = $("form#editForm").serialize();
-		PerformAction("modules/roles/editRole.php", formData, "module/roles/index.php");
+		PerformAction("modules/roles/editRole.php", formData, "modules/roles/index.php");
 	});
 });	
 $("a.deleteRole").click(function() { //deleting a role
