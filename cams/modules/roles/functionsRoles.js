@@ -1,29 +1,7 @@
 $("input#Save").click(function() {
 	var formData = $("form#form").serialize();
-	//alert(formData);
 	if( $("form#form")[0].checkValidity()) {
-		$.ajax({
-			type: 'POST',
-			url: 'modules/roles/createRole.php',
-			data: formData,
-			success:function(response){
-				$.ajax({//refreshing the page
-					type: "post",
-					url: "modules/roles/index.php",
-					success: function(refresh){ //si recibimos respuesta, quitamos el anterior artículo y colocamos el uevo
-						$(".main").empty();
-						$(".main").html(refresh);
-						var alertDiv = ComposeAlert("Category", response);
-						$(".main").append(alertDiv);
-						AutoCloseAlerts();
-					}
-				});
-			},
-			error: function (xhr, ajaxOptions, thrownError) {
-				alert(xhr.status);
-				alert(thrownError);
-			}
-		})
+		PerformAction("modules/roles/createRole.php", formData, "modules/roles/index.php");
 	}else{
 		$("form#form")[0].reportValidity();
 	}
@@ -38,31 +16,9 @@ $("a.editRole").click(function() { //editing a role
 	$('#editRoleModal').modal('show');
 	$("button#Edit").click(function() {
 		$('#editRoleModal').modal('hide');
-		$('.modal-backdrop.fade.in').remove();
+		setTimeout(null,100);
 		var formData = $("form#editForm").serialize();
-		//alert(formData);
-		$.ajax({
-			type: 'POST',
-			url: 'modules/roles/editRole.php',
-			data: formData,
-			success:function(response){
-				$.ajax({//refreshing the page
-					type: "post",
-					url: "modules/roles/index.php",
-					success: function(refresh){ //si recibimos respuesta, quitamos el anterior artículo y colocamos el uevo
-						$(".main").empty();
-						$(".main").html(refresh);
-						var alertDiv = ComposeAlert("Category", response);
-						$(".main").append(alertDiv);
-						AutoCloseAlerts();
-					}
-				}); 
-			},
-			error: function (xhr, ajaxOptions, thrownError) {
-				alert(xhr.status);
-				alert(thrownError);
-			}
-		})
+		PerformAction("modules/roles/editRole.php", formData, "modules/roles/index.php");
 	});
 });	
 $("a.deleteRole").click(function() { //deleting a role
@@ -71,28 +27,7 @@ $("a.deleteRole").click(function() { //deleting a role
 	$('#deleteRoleModal').modal('show');
 	$("button#Delete").click(function(){
 		$('#deleteRoleModal').modal('hide');
-		$('.modal-backdrop.fade.in').remove();
-		$.ajax({
-			type: 'POST',
-			url: 'modules/roles/deleteRole.php',
-			data: {ID : roleID},
-			success:function(response){
-				$.ajax({//refreshing the page
-					type: "post",
-					url: "modules/roles/index.php",
-					success: function(refresh){ //si recibimos respuesta, quitamos el anterior artículo y colocamos el uevo
-						$(".main").empty();
-						$(".main").html(refresh);
-						var alertDiv = ComposeAlert("Category", response);
-						$(".main").append(alertDiv);
-						AutoCloseAlerts();
-					}
-				}); 
-			},
-			error: function (xhr, ajaxOptions, thrownError) {
-				alert(xhr.status);
-				alert(thrownError);
-			}
-		})
+		setTimeout(null,100);
+		PerformAction("modules/roles/deleteRole.php", {ID : roleID}, "modules/roles/index.php");
 	});
 });
