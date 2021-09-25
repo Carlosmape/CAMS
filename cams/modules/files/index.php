@@ -7,7 +7,7 @@ require "../../includes/sqlfunctions.php";
 		$_SESSION['connection']->keepalive(); //refresh connection timeout
 		$directorio = '../../../blog/uploads';
 			echo '<h1 class="page-header">Files</h1>';?>
-				<form id="form" class="row" action="modules/files/uploadFile.php" method="post" enctype="multipart/form-data">
+				<form id="form" class="row">
 					<div class="form-group col-md-2">
 						<input class="form-control btn btn-info" type="submit" id="Upload" name="Upload" value="Upload">
 					</div>
